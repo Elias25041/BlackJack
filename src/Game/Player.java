@@ -48,21 +48,18 @@ public class Player {
 	}
 
 	/**
-	 * Der Spieler zieht fragt an, ob er eine Karte ziehe
-	 */ pub
+	 * Der Spieler fragt an, ob er eine Karte ziehe
+	 */ 
 	public void hit() {
 
+	}
 	
+	public void pullCard(Card c){		
+	}
 
-	/
-	
-	public void karteZiehen(Card		){		
-}
-	.
-rdWh
-	 */
 	public int getCardWorth() {
-		return cardWor
+		return cardWorth;
+	}
 	
 	public int getCredit() {
 		return credit;
@@ -70,7 +67,6 @@ rdWh
 	
 	public int setCoins(int coins) {
 		return coins;
-	}th;
 	}
 
 }
