@@ -14,12 +14,23 @@ public class Table {
 	private Player PlaceFive;
 	private Player PlaceSix;
 	private Dealer PlaceDealer;
+	private int PlayerCount;
 
 	public Table(Dealer pDealer) {
 		PlaceDealer = pDealer;
 	}
+
+	/**
+	 * gibt die Anzahl der Spieler am Tisch zur�ck
+	 * @return PlayerCount
+	 */
+	public int getPlayerCount() {
+		return PlayerCount;
+	}
+
 	/**
 	 * gibt den ersten Sitzplatz zurück
+	 * 
 	 * @return placeOne
 	 */
 	public Player getPlaceOne() {
@@ -79,56 +90,70 @@ public class Table {
 	public Dealer getPlaceDealer() {
 		return PlaceDealer;
 	}
-	
+
 	/**
 	 * setzt einen Spieler auf den ersten Platz
+	 * 
 	 * @param pPlayer
 	 */
 	public void setPlaceOne(Player pPlayer) {
 		PlaceOne = pPlayer;
+		PlayerCount++;
 	}
-	
+
 	/**
 	 * setzt einen Spieler auf den zweiten Platz
+	 * 
 	 * @param pPlayer
 	 */
 	public void setPlaceTwo(Player pPlayer) {
 		PlaceTwo = pPlayer;
+		PlayerCount++;
 	}
-	
+
 	/**
 	 * setzt einen Spieler auf den dritten Platz
+	 * 
 	 * @param pPlayer
 	 */
 	public void setPlaceThree(Player pPlayer) {
 		PlaceThree = pPlayer;
+		PlayerCount++;
 	}
-	
+
 	/**
 	 * setzt einen Spieler auf den vierten Platz
+	 * 
 	 * @param pPlayer
 	 */
 	public void setPlaceFour(Player pPlayer) {
 		PlaceFour = pPlayer;
+		PlayerCount++;
 	}
-	
+
 	/**
 	 * setzt einen Spieler auf den fünften Platz
+	 * 
 	 * @param pPlayer
 	 */
 	public void setPlaceFive(Player pPlayer) {
 		PlaceFive = pPlayer;
+		PlayerCount++;
 	}
-	
+
 	/**
 	 * setzt einen Spieler auf den sechsten Platz
+	 * 
 	 * @param pPlayer
 	 */
 	public void setPlaceSix(Player pPlayer) {
 		PlaceSix = pPlayer;
+		PlayerCount++;
 	}
+
 	/**
 	 * setzt einen Dealer auf seinen Platz
+	 * 
 	 * @param pDealer
 	 */
 	public void setPlaceDealer(Dealer pDealer) {

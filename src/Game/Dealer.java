@@ -19,7 +19,7 @@ public class Dealer {
 	/**
 	 * Dealer zieht Karte und gibt sie an pPlayer
 	 * 
-	 * @return
+	 * @return Card
 	 */
 	public Card giveCard(Player pPlayer) {
 		
