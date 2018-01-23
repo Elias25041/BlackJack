@@ -26,7 +26,7 @@ public class BlackJack {
 	}
 	
 	public void cardToPlayer(Player pPlayer) {
-		//Test
+		//Test2
 	}
 	
 	public static void main(String [] args) {
