@@ -22,64 +22,30 @@ public class Table {
 
 	/**
 	 * gibt die Anzahl der Spieler am Tisch zur�ck
+	 * 
 	 * @return PlayerCount
 	 */
 	public int getPlayerCount() {
 		return PlayerCount;
 	}
 
-	/**
-	 * gibt den ersten Sitzplatz zurück
-	 * 
-	 * @return placeOne
-	 */
-	public Player getPlaceOne() {
-		return PlaceOne;
-	}
-
-	/**
-	 * gibt den zweiten Sitzplatz zurück
-	 * 
-	 * @return PlaceTwo
-	 */
-	public Player getPlaceTwo() {
-		return PlaceTwo;
-	}
-
-	/**
-	 * gibt den dritten Sitzplatz zurück
-	 * 
-	 * @return PlaceThree
-	 */
-	public Player getPlaceThree() {
-		return PlaceThree;
-	}
-
-	/**
-	 * gibt den vierten Sitzplatz
-	 * 
-	 * @return PlaceFour
-	 */
-	public Player getPlaceFour() {
-		return PlaceFour;
-	}
-
-	/**
-	 * gibt den fünften Sitzplatz zurück
-	 * 
-	 * @return PlaceFive
-	 */
-	public Player getPlaceFive() {
-		return PlaceFive;
-	}
-
-	/**
-	 * gibt den sechsten Sitzplatz zurück
-	 * 
-	 * @return PlaceSix
-	 */
-	public Player getPlaceSix() {
-		return PlaceSix;
+	public Player getPlace(int placeNumber) {
+		switch (placeNumber) {
+		case 1:
+			return PlaceOne;
+		case 2:
+			return PlaceTwo;
+		case 3:
+			return PlaceThree;
+		case 4:
+			return PlaceFour;
+		case 5:
+			return PlaceFive;
+		case 6:
+			return PlaceSix;
+		default:
+			return null;
+		}
 	}
 
 	/**

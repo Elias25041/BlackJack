@@ -58,7 +58,7 @@ public class CardDeck {
 	 * gibt das Deck zurück
 	 * @return deck
 	 */
-	public ArrayList getDeck() {
+	public ArrayList<Card> getDeck() {
 		return deck;
 	}
 

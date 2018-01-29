@@ -46,7 +46,7 @@ public class CardStack {
 	/**
 	 * Oberste Karte wird gezogen
 	 * 
-	 * @return
+	 * @return tmp
 	 */
 	public Card getTop() {
 		Card tmp = stack.get(0);
@@ -54,6 +54,10 @@ public class CardStack {
 		// System.out.println(""+tmp);
 		return tmp;
 
+	}
+
+	public ArrayList<Card> getStack() {
+		return stack;
 	}
 
 }
