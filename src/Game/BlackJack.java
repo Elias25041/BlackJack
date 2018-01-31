@@ -12,6 +12,7 @@ public class BlackJack {
 	private Bank bank;
 	private Dealer dealer;
 	private Table table;
+	private int playerTurn = 0;
 
 	/**
 	 * Erstellt eine Bank, einen Dealer, einen Tisch
@@ -23,13 +24,13 @@ public class BlackJack {
 	}
 
 	public static void main(String[] args) {
-//		BlackJack b = new BlackJack(1);
-//		Player p = new Player();
-//		p.getCard(b.dealer.getTop());
-//		b.startGame();
-//		b.setPlayertoTable(p);
-//		p.calculateWorth();
-//		System.out.println(b.table.getPlace(1).getCardWorth());
+//		 BlackJack b = new BlackJack(1);
+//		 Player p = new Player();
+//		 p.getCard(b.dealer.getTop());
+//		 b.startGame();
+//		 b.setPlayertoTable(p);
+//		 p.calculateWorth();
+//		 System.out.println(b.table.getPlace(1).getCardWorth());
 	}
 
 	/**
@@ -88,5 +89,11 @@ public class BlackJack {
 			return false;
 		}
 	}
-
+	
+	/**
+	 * Startet eine Runde
+	 */
+	public void startRound() {
+		playerTurn = 1;
+	}
 }
