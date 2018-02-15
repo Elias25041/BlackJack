@@ -14,6 +14,7 @@ public class Card {
 		type = pType;
 	}
 //test
+	//hallo11
 	/**
 	 * gibt Typ zurück
 	 * @return type
