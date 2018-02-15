@@ -8,7 +8,7 @@ import Cards.Card;
  * @version 15DEC2017
  */
 public class BlackJack {
-
+//test
 	private Bank bank;
 	private Dealer dealer;
 	private Table table;
@@ -89,6 +89,8 @@ public class BlackJack {
 			return false;
 		}
 	}
+	
+	
 	
 	/**
 	 * Startet eine Runde

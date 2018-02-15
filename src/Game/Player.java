@@ -4,8 +4,8 @@ import Cards.Card;
 import java.util.ArrayList;
 
 /**
- * Der Spieler kann über Einsatz, weitere Karten ziehen oder aufhören
- * entscheiden und desweiteren verschiedene Aktionen im Spiel ausführen.
+ * Der Spieler kann ï¿½ber Einsatz, weitere Karten ziehen oder aufhï¿½ren
+ * entscheiden und desweiteren verschiedene Aktionen im Spiel ausfï¿½hren.
  * 
  * @author tamlyn.brandau
  *
@@ -23,6 +23,7 @@ public class Player {
 
 	public Player() {
 		cards = new ArrayList<Card>();
+		cardWorth = 0;
 	}
 
 	/**
@@ -48,14 +49,14 @@ public class Player {
 	}
 
 	/**
-	 * Der Spieler fragt an, ob er eine Karte ziehe
+	 * Der Spieler fragt an, ob er eine Karte ziehen kann
 	 */
 	public boolean hit() {
 		return true;
 	}
 
 	/**
-	 * fügt Karte in cards hinzu
+	 * fï¿½gt Karte in cards hinzu
 	 * 
 	 * @param c
 	 */
@@ -68,7 +69,7 @@ public class Player {
 	public void calculateWorth() {
 		for (int i = 0; i < cards.size(); i++) {
 			Card c = cards.get(i);
-			if (c.getType().equals("König") || c.getType().equals("Dame") || c.getType().equals("Bube")
+			if (c.getType().equals("Kï¿½nig") || c.getType().equals("Dame") || c.getType().equals("Bube")
 					|| c.getType().equals("Zehn")) {
 				cardWorth = cardWorth + 10;
 			} else if (c.getType().equals("Zwei")) {
@@ -77,7 +78,7 @@ public class Player {
 				cardWorth = cardWorth + 3;
 			} else if (c.getType().equals("Vier")) {
 				cardWorth = cardWorth + 4;
-			} else if (c.getType().equals("Fünf")) {
+			} else if (c.getType().equals("Fï¿½nf")) {
 				cardWorth = cardWorth + 5;
 			} else if (c.getType().equals("Sechs")) {
 				cardWorth = cardWorth + 6;
@@ -88,17 +89,17 @@ public class Player {
 			} else if (c.getType().equals("Neun")) {
 				cardWorth = cardWorth + 9;
 			} else if (c.getType().equals("Ass")) {
-				if (cardAmount + 11 <= 21) {
-					cardAmount = cardAmount + 11;
+				if (cardWorth + 11 <= 21) {
+					cardWorth = cardWorth + 11;
 				} else {
-					cardAmount = cardAmount + 1;
+					cardWorth = cardWorth + 1;
 				}
 			}
 		}
 	}
 
 	/**
-	 * Der Kartenwert wird zurückgegeben
+	 * Der Kartenwert wird zurï¿½ckgegeben
 	 * @return cardWorth
 	 */
 	public int getCardWorth() {
@@ -106,7 +107,7 @@ public class Player {
 	}
 
 	/**
-	 * gibt das Guthaben des Spielers zurück
+	 * gibt das Guthaben des Spielers zurï¿½ck
 	 * @return credit
 	 */
 	public int getCredit() {
