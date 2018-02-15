@@ -13,7 +13,7 @@ public class Card {
 		colour = pColour;
 		type = pType;
 	}
-
+//test
 	/**
 	 * gibt Typ zurück
 	 * @return type
