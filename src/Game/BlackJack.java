@@ -16,7 +16,7 @@ public class BlackJack {
 
 	/**
 	 * Erstellt eine Bank, einen Dealer, einen Tisch 
-	 * test123
+	 * test
 	 */
 	public BlackJack(int cardAmount) {
 		dealer = new Dealer(cardAmount);
