@@ -15,7 +15,8 @@ public class BlackJack {
 	private int playerTurn = 0;
 
 	/**
-	 * Erstellt eine Bank, einen Dealer, einen Tisch
+	 * Erstellt eine Bank, einen Dealer, einen Tisch 
+	 * test
 	 */
 	public BlackJack(int cardAmount) {
 		dealer = new Dealer(cardAmount);
