@@ -13,17 +13,17 @@ public class BlackJack {
 	private Dealer dealer;
 	private Table table;
 	private int playerTurn = 0;
-
+	
 	/**
 	 * Erstellt eine Bank, einen Dealer, einen Tisch 
-	 * test 123efd
+	 * 
 	 */
 	public BlackJack(int cardAmount) {
 		dealer = new Dealer(cardAmount);
 		table = new Table(dealer);
 		bank = new Bank();
 	}
-
+	// test 123
 	public static void main(String[] args) {
 //		 BlackJack b = new BlackJack(1);
 //		 Player p = new Player();
