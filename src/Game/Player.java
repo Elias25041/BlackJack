@@ -49,16 +49,6 @@ public class Player {
 	}
 
 	/**
-<<<<<<< HEAD
-	 * fügt Karte in cards hinzu
-=======
-	 * Der Spieler fragt an, ob er eine Karte ziehen kann
-	 */
-	public boolean hit() {
-		return true;
-	}
-
-	/**
 	 * fuegt Karte in cards hinzu
 	 * 
 	 * @param c
