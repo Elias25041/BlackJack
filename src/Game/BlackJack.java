@@ -23,7 +23,7 @@ public class BlackJack {
 		table = new Table(dealer);
 		bank = new Bank();
 	}
-	// test 123
+
 	public static void main(String[] args) {
 //		 BlackJack b = new BlackJack(1);
 //		 Player p = new Player();
