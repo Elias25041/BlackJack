@@ -7,7 +7,13 @@ package Protokoll;
  */
 public class Protokoll {
 	
+	//-----------------------------------------General-----------------------------------------
+	
+	public static final String TRENNER = ":";
+	
 	//-----------------------------------------Client zum Server-----------------------------------------
+	public static final String CS_STARTGAME = "SG";
+	
 	public static final String CS_HIT = "H";
 	
 	public static final String CS_STAND = "S";
@@ -26,5 +32,5 @@ public class Protokoll {
 	
 	public static final String SC_CARD = "C"; // mit dem Trenner wird der Kartenwert angehängt
 	
-	public static final String TRENNER = ":";
+	public static final String SC_GAMESTART = "GS";
 }

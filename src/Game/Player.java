@@ -48,18 +48,11 @@ public class Player {
 	}
 
 	/**
-	 * Der Spieler fragt an, ob er eine Karte ziehe
-	 */
-	public boolean hit() {
-		return true;
-	}
-
-	/**
 	 * fügt Karte in cards hinzu
 	 * 
 	 * @param c
 	 */
-	public void getCard(Card c) {
+	public void hit(Card c) {
 		cards.add(c);
 	}
 	/**
@@ -114,12 +107,19 @@ public class Player {
 	}
 
 	/**
-	 * 
+	 * gibt die coins des Spielers wieder
 	 * @param coins
-	 * @return 
+	 * @return coins
 	 */
 	public int setCoins(int coins) {
 		return coins;
 	}
-
+	
+	public int getCardAmount() {
+		return cardAmount;
+	}
+	
+	public ArrayList<Card> getCards() {
+		return cards;
+	}
 }
