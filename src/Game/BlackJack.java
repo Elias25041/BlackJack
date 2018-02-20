@@ -8,14 +8,15 @@ import Cards.Card;
  * @version 15DEC2017
  */
 public class BlackJack {
-
+//test
 	private Bank bank;
 	private Dealer dealer;
 	private Table table;
 	private int playerTurn = 0;
-
+	
 	/**
-	 * Erstellt eine Bank, einen Dealer, einen Tisch
+	 * Erstellt eine Bank, einen Dealer, einen Tisch 
+	 * 
 	 */
 	public BlackJack(int cardAmount) {
 		dealer = new Dealer(cardAmount);
@@ -89,6 +90,8 @@ public class BlackJack {
 			return false;
 		}
 	}
+	
+	
 	
 	/**
 	 * es wird geguckt ob das Spiel gestartet wird
