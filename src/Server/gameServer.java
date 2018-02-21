@@ -19,7 +19,6 @@ public class gameServer extends Server {
 		accounts = new ArrayList<Account>();
 	}
 
-	@Override
 	public void processNewConnection(String pClientIP, int pClientPort) {
 		if (bj.playerPlay() == true) {
 			switch (accounts.size()) {
@@ -61,32 +60,82 @@ public class gameServer extends Server {
 		}
 	}
 
-	@Override
 	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
-		String backMessage = Protokoll.SC_ERROR;
-		if (this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer() == bj.getPlayerTurn()) {
-			String[] splitMessage = pMessage.split(Protokoll.TRENNER);
-			String start = splitMessage[0];
+		String backMessage = "";
+		int currentMove = 0;
+		String[] splitMessage = pMessage.split(Protokoll.TRENNER);
+		String start = splitMessage[0];
+		if(bj.getPlayerTurn() == 0) {
 			switch (start) {
 			case Protokoll.CS_STARTGAME:
 				backMessage = Protokoll.SC_GAMESTART;
 				if (bj.startGame()) {
 					for (int i = 0; i < accounts.size(); i++) {
 						backMessage += Protokoll.TRENNER + bj.getPlayerCards(accounts.get(i).getPlayer())
-								+ Protokoll.TRENNER + accounts.get(i).getPlayer();
+									 + Protokoll.TRENNER + accounts.get(i).getPlayer();
 					}
 				}
+			default:
+				backMessage = Protokoll.SC_ERROR;
+			}
+		} else if (this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer() == bj.getPlayerTurn()) {
+			currentMove = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
+			switch (start) {
+			case Protokoll.CS_HIT:
+				backMessage = Protokoll.SC_CARD + bj.cardInfo(bj.cardToPlayer(currentMove));
+				if(bj.winLose(currentMove) == 0) {
+					backMessage = Protokoll.SC_WIN;
+					bj.reset();
+				} else if(bj.winLose(currentMove) == 1) {
+					backMessage = Protokoll.SC_LOSE;
+					bj.reset();
+				}
+				backMessage += currentMove;
 				break;
+			case Protokoll.CS_STAND:
+				bj.setPlayerTurn();
 			}
 		}
 		this.sendToAll(backMessage);
 
 	}
 
-	@Override
 	public void processClosingConnection(String pClientIP, int pClientPort) {
-		// TODO Auto-generated method stub
-
+		int player = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
+		switch(player) {
+			case 1:
+				for(int i = 1; i < accounts.size(); i++) {
+					accounts.get(i).setPlayer(i-1);
+					bj.forcePlace(i, i-1);
+				}
+			case 2:
+				for(int i = 2; i < accounts.size(); i++) {
+					accounts.get(i).setPlayer(i-1);
+					bj.forcePlace(i, i-1);
+				}
+			case 3:
+				for(int i = 3; i < accounts.size(); i++) {
+					accounts.get(i).setPlayer(i-1);
+					bj.forcePlace(i, i-1);
+				}
+			case 4:
+				for(int i = 4; i < accounts.size(); i++) {
+					accounts.get(i).setPlayer(i-1);
+					bj.forcePlace(i, i-1);
+				}
+			case 5:
+				for(int i = 5; i < accounts.size(); i++) {
+					accounts.get(i).setPlayer(i-1);
+					bj.forcePlace(i, i-1);
+				}
+			case 6:
+				for(int i = 6; i < accounts.size(); i++) {
+					accounts.get(i).setPlayer(i-1);
+					bj.forcePlace(i, i-1);
+				}
+			this.send(pClientIP, pClientPort, "Verbindung geschlossen");
+		}
+		
 	}
 
 	public Account IPAndPortToAccount(String pClientIP, int pClientPort) {
@@ -99,5 +148,4 @@ public class gameServer extends Server {
 		}
 		return tmp;
 	}
-
 }

@@ -8,14 +8,14 @@ import Cards.Card;
  * @version 15DEC2017
  */
 public class BlackJack {
-//test
+	// test
 	private Bank bank;
 	private Dealer dealer;
 	private Table table;
 	private int playerTurn = 0;
-	
+
 	/**
-	 * Erstellt eine Bank, einen Dealer, einen Tisch 
+	 * Erstellt eine Bank, einen Dealer, einen Tisch
 	 * 
 	 */
 	public BlackJack(int cardAmount) {
@@ -68,8 +68,10 @@ public class BlackJack {
 	 * @param pPlayer
 	 * @param s
 	 */
-	public void cardToPlayer(Player pPlayer, Card s) {
-		pPlayer.hit(s);
+	public Card cardToPlayer(int pPlayer) {
+		Card tmp = dealer.getTop();
+		table.getPlace(pPlayer).hit(tmp);
+		return tmp;
 	}
 
 	/**
@@ -81,7 +83,7 @@ public class BlackJack {
 		if (canStartGame() == true) {
 			for (int j = 0; j < 2; j++) {
 				for (int i = 0; i < table.getPlayerCount(); i++) {
-					cardToPlayer(table.getPlace(i), dealer.getTop());
+					cardToPlayer(i);
 				}
 				dealer.getCard(dealer.getTop());
 			}
@@ -90,15 +92,14 @@ public class BlackJack {
 			return false;
 		}
 	}
-	
-	
-	
+
 	/**
 	 * es wird geguckt ob das Spiel gestartet wird
+	 * 
 	 * @return boolean
 	 */
 	public boolean canStartGame() {
-		if(table.getPlayerCount() >= 2 || table.getPlayerCount() <= 6) {
+		if (table.getPlayerCount() >= 2 || table.getPlayerCount() <= 6) {
 			return true;
 		} else {
 			return false;
@@ -124,18 +125,72 @@ public class BlackJack {
 			return false;
 		}
 	}
-	
+
 	public String getPlayerCards(int pPlayer) {
 		String cardsAsString = "";
 		Player p = table.getPlace(pPlayer);
-		for(int i = 0; i < p.getCardAmount(); i++) {
-			cardsAsString += p.getCards().get(i).getColour() + "_";
-			cardsAsString += p.getCards().get(i).getType();
+		for (int i = 0; i < p.getCardAmount(); i++) {
+			cardsAsString += cardInfo(p.getCards().get(i));
 		}
 		return cardsAsString;
 	}
-	
+
 	public int getPlayerTurn() {
 		return playerTurn;
+	}
+
+	public void setPlayerTurn() {
+		if (playerTurn == table.getPlayerCount()) {
+			playerTurn = 1;
+		} else {
+			playerTurn += 1;
+		}
+	}
+
+	public String cardInfo(Card c) {
+		String tmp = "";
+		tmp += c.getColour() + "_";
+		tmp += c.getType();
+		return tmp;
+	}
+
+	public int winLose(int pPlayer) {
+		Player tmp = table.getPlace(pPlayer);
+		if (tmp.checkWin()) {
+			return 0;
+		} else if (tmp.checkLose()) {
+			return 1;
+		} else {
+			return 2;
+		}
+	}
+
+	public void reset() {
+		playerTurn = 0;
+	}
+
+	public boolean forcePlace(int pPlayer, int place) {
+			switch (place) {
+			case 1:
+				table.setPlaceOne(table.getPlace(pPlayer));
+				return true;
+			case 2:
+				table.setPlaceTwo(table.getPlace(pPlayer));
+				return true;
+			case 3:
+				table.setPlaceThree(table.getPlace(pPlayer));
+				return true;
+			case 4:
+				table.setPlaceFour(table.getPlace(pPlayer));
+				return true;
+			case 5:
+				table.setPlaceFive(table.getPlace(pPlayer));
+				return true;
+			case 6:
+				table.setPlaceSix(table.getPlace(pPlayer));
+				return true;
+			default:
+				return false;
+			}
 	}
 }

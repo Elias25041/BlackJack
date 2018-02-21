@@ -55,11 +55,14 @@ public class Player {
 	 */
 	public void hit(Card c) {
 		cards.add(c);
+		cardAmount++;
 	}
+
 	/**
 	 * Kartenwert wird berechnetn
 	 */
 	public void calculateWorth() {
+		cardWorth = 0;
 		for (int i = 0; i < cards.size(); i++) {
 			Card c = cards.get(i);
 			if (c.getType().equals("K�nig") || c.getType().equals("Dame") || c.getType().equals("Bube")
@@ -93,6 +96,7 @@ public class Player {
 
 	/**
 	 * Der Kartenwert wird zur�ckgegeben
+	 * 
 	 * @return cardWorth
 	 */
 	public int getCardWorth() {
@@ -101,6 +105,7 @@ public class Player {
 
 	/**
 	 * gibt das Guthaben des Spielers zur�ck
+	 * 
 	 * @return credit
 	 */
 	public int getCredit() {
@@ -109,18 +114,37 @@ public class Player {
 
 	/**
 	 * gibt die coins des Spielers wieder
+	 * 
 	 * @param coins
 	 * @return coins
 	 */
 	public int setCoins(int coins) {
 		return coins;
 	}
-	
+
 	public int getCardAmount() {
 		return cardAmount;
 	}
-	
+
 	public ArrayList<Card> getCards() {
 		return cards;
+	}
+
+	public boolean checkWin() {
+		calculateWorth();
+		if (cardWorth == 21) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean checkLose() {
+		calculateWorth();
+		if (cardWorth > 21) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

@@ -32,4 +32,8 @@ public class Account {
 	public int getPlayer() {
 		return player;
 	}
+	
+	public void setPlayer(int p) {
+		player = p;
+	}
 }
