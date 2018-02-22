@@ -17,6 +17,7 @@ public class gameServer extends Server {
 		super(pPort);
 		bj = new BlackJack(cardAmount);
 		accounts = new ArrayList<Account>();
+		System.out.println("Hallo ich bin der server auf Port: " + pPort + "; und CA = " + cardAmount);
 	}
 
 	public void processNewConnection(String pClientIP, int pClientPort) {
@@ -61,6 +62,7 @@ public class gameServer extends Server {
 	}
 
 	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
+		System.out.println("Ich habe erhalten: " + pMessage);
 		String backMessage = "";
 		int currentMove = 0;
 		String[] splitMessage = pMessage.split(Protokoll.TRENNER);
@@ -96,6 +98,8 @@ public class gameServer extends Server {
 				bj.setPlayerTurn();
 			}
 		}
+		System.out.println("Ich schicke: " + backMessage);
+
 		this.sendToAll(backMessage);
 
 	}
@@ -138,7 +142,7 @@ public class gameServer extends Server {
 		
 	}
 
-	public Account IPAndPortToAccount(String pClientIP, int pClientPort) {
+	private Account IPAndPortToAccount(String pClientIP, int pClientPort) {
 		Account tmp = null;
 		for (int i = 0; i < accounts.size(); i++) {
 			tmp = accounts.get(i);
