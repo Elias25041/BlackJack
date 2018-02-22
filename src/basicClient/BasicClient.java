@@ -1,4 +1,4 @@
-package Client;
+package basicClient;
 import AbiturKlassen.Client;
 
 public class BasicClient extends Client{
@@ -10,8 +10,8 @@ public class BasicClient extends Client{
 
 	@Override
 	public void processMessage(String pMessage) {
-		// TODO Auto-generated method stub
+		System.out.println(pMessage);
 		
 	}
-
+	
 }
