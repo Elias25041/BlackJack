@@ -69,9 +69,11 @@ public class BasicGUI extends JFrame {
 				if(Port.getText().equals("") || IP.getText().equals("")) {
 					Ausgabefeld.setText("Missing input");
 				}else {
+				
 					ip = IP.getText();
 					port = Integer.parseInt(Port.getText());
-					
+					bc = new BasicClient(ip, port);
+					//bc.send(pMessage);
 					
 				}
 			}
