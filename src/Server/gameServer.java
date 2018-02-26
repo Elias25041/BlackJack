@@ -28,6 +28,7 @@ public class gameServer extends Server {
 				bj.setPlayertoTable(new Player());
 				accounts.add(accountOne);
 				System.out.println("Bin da");
+				this.sendToAll("Nr. 1 ist da");
 				break;
 			case 1:
 				Account accountTwo = new Account(pClientIP, pClientPort, 2);
