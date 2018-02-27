@@ -21,7 +21,6 @@ public class gameServer extends Server {
 	}
 
 	public void processNewConnection(String pClientIP, int pClientPort) {
-		if (bj.playerPlay() == true) {
 			switch (accounts.size()) {
 			case 0:
 				Account accountOne = new Account(pClientIP, pClientPort, 1);
@@ -34,56 +33,68 @@ public class gameServer extends Server {
 				Account accountTwo = new Account(pClientIP, pClientPort, 2);
 				bj.setPlayertoTable(new Player());
 				accounts.add(accountTwo);
+				System.out.println("Bin da");
+				this.sendToAll("Nr. 2 ist da");
 				break;
 			case 2:
 				Account accountThree = new Account(pClientIP, pClientPort, 3);
 				bj.setPlayertoTable(new Player());
 				accounts.add(accountThree);
+				System.out.println("Bin da");
+				this.sendToAll("Nr. 3 ist da");
 				break;
 			case 3:
 				Account accountFour = new Account(pClientIP, pClientPort, 4);
 				bj.setPlayertoTable(new Player());
 				accounts.add(accountFour);
+				System.out.println("Bin da");
+				this.sendToAll("Nr. 4 ist da");
 				break;
 			case 4:
 				Account accountFive = new Account(pClientIP, pClientPort, 5);
 				bj.setPlayertoTable(new Player());
 				accounts.add(accountFive);
+				System.out.println("Bin da");
+				this.sendToAll("Nr. 5 ist da");
 				break;
 			case 5:
 				Account accountSix = new Account(pClientIP, pClientPort, 6);
 				bj.setPlayertoTable(new Player());
 				accounts.add(accountSix);
+				System.out.println("Bin da");
+				this.sendToAll("Nr. 6 ist da");
 				break;
 			default:
 				this.send(pClientIP, pClientPort, "Kein Platz mehr");
 			}
-		} else {
-			this.send(pClientIP, pClientPort, "Kein Platz mehr");
-		}
 	}
 
 	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
 		System.out.println("Ich habe erhalten: " + pMessage);
-		String backMessage = "";
+		String backMessage = Protokoll.SC_ERROR;
 		int currentMove = 0;
 		String[] splitMessage = pMessage.split(Protokoll.TRENNER);
 		String start = splitMessage[0];
+		System.out.println("Nichts");
 		if(bj.getPlayerTurn() == 0) {
+			System.out.println("PlayerTurn=0");
 			switch (start) {
 			case Protokoll.CS_STARTGAME:
 				backMessage = Protokoll.SC_GAMESTART;
+				System.out.println("GameStart");
 				if (bj.startGame()) {
+					System.out.println("Spielgestartet");
 					for (int i = 0; i < accounts.size(); i++) {
-						backMessage += Protokoll.TRENNER + bj.getPlayerCards(accounts.get(i).getPlayer())
-									 + Protokoll.TRENNER + accounts.get(i).getPlayer();
+						backMessage += Protokoll.TRENNER + bj.getPlayerCards(accounts.get(i).getPlayer()) + accounts.get(i).getPlayer();
 					}
+				} else {
+					backMessage = Protokoll.SC_ERROR;
 				}
 			default:
-				backMessage = Protokoll.SC_ERROR;
 			}
 		} else if (this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer() == bj.getPlayerTurn()) {
 			currentMove = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
+			backMessage += "" + currentMove;
 			switch (start) {
 			case Protokoll.CS_HIT:
 				backMessage = Protokoll.SC_CARD + bj.cardInfo(bj.cardToPlayer(currentMove));
@@ -97,6 +108,7 @@ public class gameServer extends Server {
 				backMessage += currentMove;
 				break;
 			case Protokoll.CS_STAND:
+				backMessage = Protokoll.SC_STAND;
 				bj.setPlayerTurn();
 			}
 		}
@@ -148,7 +160,7 @@ public class gameServer extends Server {
 		Account tmp = null;
 		for (int i = 0; i < accounts.size(); i++) {
 			tmp = accounts.get(i);
-			if ((tmp.getClientIP()).equals(pClientIP) || tmp.getClientPort() == pClientPort) {
+			if ((tmp.getClientIP()).equals(pClientIP) && tmp.getClientPort() == pClientPort) {
 				break;
 			}
 		}

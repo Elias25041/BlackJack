@@ -147,4 +147,10 @@ public class Player {
 			return false;
 		}
 	}
+	
+	public void reset() {
+		cardWorth = 0;
+		cardAmount = 0;
+		cards.clear();
+	}
 }

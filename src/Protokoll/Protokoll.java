@@ -37,4 +37,6 @@ public class Protokoll {
 	public static final String SC_WIN = "W";
 	
 	public static final String SC_LOSE = "L";
+	
+	public static final String SC_STAND = "S";
 }

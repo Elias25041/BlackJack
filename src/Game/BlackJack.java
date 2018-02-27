@@ -24,16 +24,6 @@ public class BlackJack {
 		bank = new Bank();
 	}
 
-	public static void main(String[] args) {
-		// BlackJack b = new BlackJack(1);
-		// Player p = new Player();
-		// p.getCard(b.dealer.getTop());
-		// b.startGame();
-		// b.setPlayertoTable(p);
-		// p.calculateWorth();
-		// System.out.println(b.table.getPlace(1).getCardWorth());
-	}
-
 	/**
 	 * Der Spieler wird an den Tisch gesetzt
 	 */
@@ -70,8 +60,12 @@ public class BlackJack {
 	 */
 	public Card cardToPlayer(int pPlayer) {
 		Card tmp = dealer.getTop();
-		table.getPlace(pPlayer).hit(tmp);
-		return tmp;
+		if(this.ableCard(pPlayer) == true) {
+			table.getPlace(pPlayer).hit(tmp);
+			return tmp;
+		} else {
+			return null;
+		}
 	}
 
 	/**
@@ -81,8 +75,9 @@ public class BlackJack {
 	 */
 	public boolean startGame() {
 		if (canStartGame() == true) {
+			playerTurn = 1;
 			for (int j = 0; j < 2; j++) {
-				for (int i = 0; i < table.getPlayerCount(); i++) {
+				for (int i = 0; i <= table.getPlayerCount(); i++) {
 					cardToPlayer(i);
 				}
 				dealer.getCard(dealer.getTop());
@@ -99,7 +94,7 @@ public class BlackJack {
 	 * @return boolean
 	 */
 	public boolean canStartGame() {
-		if (table.getPlayerCount() >= 2 || table.getPlayerCount() <= 6) {
+		if (table.getPlayerCount() >= 2 && table.getPlayerCount() <= 6) {
 			return true;
 		} else {
 			return false;
@@ -130,7 +125,7 @@ public class BlackJack {
 		String cardsAsString = "";
 		Player p = table.getPlace(pPlayer);
 		for (int i = 0; i < p.getCardAmount(); i++) {
-			cardsAsString += cardInfo(p.getCards().get(i));
+			cardsAsString += cardInfo(p.getCards().get(i)) + ":";
 		}
 		return cardsAsString;
 	}
@@ -167,6 +162,10 @@ public class BlackJack {
 
 	public void reset() {
 		playerTurn = 0;
+		int j = table.getPlayerCount();
+		for(int i = 1; i <= j; i++) {
+			table.getPlace(i).reset();
+		}
 	}
 
 	public boolean forcePlace(int pPlayer, int place) {
@@ -192,5 +191,12 @@ public class BlackJack {
 			default:
 				return false;
 			}
+	}
+	
+	public boolean ableCard(int pPlayer) {
+		if(table.getPlace(pPlayer) == null) {
+			return false;
+		}
+		return true;
 	}
 }

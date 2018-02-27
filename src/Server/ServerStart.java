@@ -3,7 +3,8 @@ package Server;
 public class ServerStart {
 	
 	public static void main (String [] args) {
-		new gameServer (Integer.parseInt(args [0]),Integer.parseInt(args [1]) );
+		new gameServer (4444, 3);
+		//Integer.parseInt(args [0]),Integer.parseInt(args [1])
 	}
 
 }
