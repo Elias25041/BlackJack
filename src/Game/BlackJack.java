@@ -60,7 +60,7 @@ public class BlackJack {
 	 */
 	public Card cardToPlayer(int pPlayer) {
 		Card tmp = dealer.getTop();
-		if(this.ableCard(pPlayer) == true) {
+		if(this.playerOnPlace(pPlayer) == true) {
 			table.getPlace(pPlayer).hit(tmp);
 			return tmp;
 		} else {
@@ -93,28 +93,8 @@ public class BlackJack {
 	 * 
 	 * @return boolean
 	 */
-	public boolean canStartGame() {
+	private boolean canStartGame() {
 		if (table.getPlayerCount() >= 2 && table.getPlayerCount() <= 6) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	/**
-	 * Startet eine Runde
-	 */
-	public void startRound() {
-		playerTurn = 1;
-	}
-
-	/**
-	 * guckt ob ein Spieler mitspielen kann
-	 * 
-	 * @return boolean
-	 */
-	public boolean playerPlay() {
-		if (table.getPlayerCount() < 6) {
 			return true;
 		} else {
 			return false;
@@ -137,6 +117,7 @@ public class BlackJack {
 	public void setPlayerTurn() {
 		if (playerTurn == table.getPlayerCount()) {
 			playerTurn = 1;
+			dealer.getCard(dealer.getTop());
 		} else {
 			playerTurn += 1;
 		}
@@ -193,10 +174,20 @@ public class BlackJack {
 			}
 	}
 	
-	public boolean ableCard(int pPlayer) {
+	private boolean playerOnPlace(int pPlayer) {
 		if(table.getPlace(pPlayer) == null) {
 			return false;
 		}
 		return true;
+	}
+	
+	public boolean playerSplit(int pPlayer) {
+		if(this.playerOnPlace(pPlayer)) {
+			Player p = table.getPlace(pPlayer);
+			if(p.split()) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

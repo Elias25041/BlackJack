@@ -39,4 +39,6 @@ public class Protokoll {
 	public static final String SC_LOSE = "L";
 	
 	public static final String SC_STAND = "S";
+	
+	public static final String SC_SPLIT = "SP";
 }

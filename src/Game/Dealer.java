@@ -75,7 +75,7 @@ public class Dealer {
 	}
 
 	/**
-	 * fügt Karte in cars hinzu
+	 * fügt Karte in cards hinzu
 	 * 
 	 * @param c
 	 */

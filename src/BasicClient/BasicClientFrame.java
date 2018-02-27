@@ -59,13 +59,13 @@ public class BasicClientFrame extends JFrame{
 		top.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		ip = new JTextField();
-		ip.setText("IP");
+		ip.setText("localhost");
 		top.add(ip);
 		ip.setColumns(10);
 		
 		port = new JTextField();
 		port.setToolTipText("");
-		port.setText("Port");
+		port.setText("4444");
 		top.add(port);
 		port.setColumns(10);
 		
