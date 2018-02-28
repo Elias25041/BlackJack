@@ -31,21 +31,27 @@ public class BlackJack {
 		switch (table.getPlayerCount()) {
 		case 0:
 			table.setPlaceOne(p);
+			table.addPlayerCount(1);
 			return true;
 		case 1:
 			table.setPlaceTwo(p);
+			table.addPlayerCount(1);
 			return true;
 		case 2:
 			table.setPlaceThree(p);
+			table.addPlayerCount(1);
 			return true;
 		case 3:
 			table.setPlaceFour(p);
+			table.addPlayerCount(1);
 			return true;
 		case 4:
 			table.setPlaceFive(p);
+			table.addPlayerCount(1);
 			return true;
 		case 5:
 			table.setPlaceSix(p);
+			table.addPlayerCount(1);
 			return true;
 		default:
 			return false;
@@ -114,13 +120,19 @@ public class BlackJack {
 		return playerTurn;
 	}
 
-	public void setPlayerTurn() {
+	public String setPlayerTurn() {
+		String tmp = "";
 		if (playerTurn == table.getPlayerCount()) {
 			playerTurn = 1;
 			dealer.getCard(dealer.getTop());
+			this.getDealerCards();
+			if(dealer.checkWin()) {
+				return "win";
+			}
 		} else {
 			playerTurn += 1;
 		}
+		return tmp;
 	}
 
 	public String cardInfo(Card c) {
@@ -143,6 +155,7 @@ public class BlackJack {
 
 	public void reset() {
 		playerTurn = 0;
+		dealer.reset();
 		int j = table.getPlayerCount();
 		for(int i = 1; i <= j; i++) {
 			table.getPlace(i).reset();
@@ -189,5 +202,42 @@ public class BlackJack {
 			}
 		}
 		return false;
+	}
+	
+	public String getDealerCards() {
+		String cardsAsString = "";
+		for (int i = 0; i < dealer.getCardAmount(); i++) {
+			cardsAsString += cardInfo(dealer.getCards().get(i)) + ":";
+		}
+		return cardsAsString;
+	}
+	
+	public void leavePlace(int place) {
+		switch (place) {
+		case 1:
+			table.setPlaceOne(null);
+			table.addPlayerCount(-1);
+			break;
+		case 2:
+			table.setPlaceTwo(null);
+			table.addPlayerCount(-1);
+			break;
+		case 3:
+			table.setPlaceThree(null);
+			table.addPlayerCount(-1);
+			break;
+		case 4:
+			table.setPlaceFour(null);
+			table.addPlayerCount(-1);
+			break;
+		case 5:
+			table.setPlaceFive(null);
+			table.addPlayerCount(-1);
+			break;
+		case 6:
+			table.setPlaceSix(null);
+			table.addPlayerCount(-1);
+			break;
+		}
 	}
 }

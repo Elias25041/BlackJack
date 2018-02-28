@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import Cards.Card;
 
 public class GameMechanic {
-	
-	private int cardAmount;
-	private int cardWorth;
-	private ArrayList<Card> cards;
-	
+
+	protected int cardAmount;
+	protected int cardWorth;
+	protected ArrayList<Card> cards;
+
 	public GameMechanic() {
 		cards = new ArrayList<Card>();
 		cardWorth = 0;
@@ -50,7 +50,7 @@ public class GameMechanic {
 			}
 		}
 	}
-	
+
 	/**
 	 * Der Kartenwert wird zur�ckgegeben
 	 * 
@@ -59,7 +59,7 @@ public class GameMechanic {
 	public int getCardWorth() {
 		return cardWorth;
 	}
-	
+
 	public int getCardAmount() {
 		return cardAmount;
 	}
@@ -85,7 +85,7 @@ public class GameMechanic {
 			return false;
 		}
 	}
-	
+
 	public void reset() {
 		cardWorth = 0;
 		cardAmount = 0;

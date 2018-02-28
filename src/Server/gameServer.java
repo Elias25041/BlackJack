@@ -20,7 +20,7 @@ public class gameServer extends Server {
 		System.out.println("Hallo ich bin der server auf Port: " + pPort + "; und CA = " + cardAmount);
 	}
 
-	public void processNewConnection(String pClientIP, int pClientPort) {
+	public synchronized void processNewConnection(String pClientIP, int pClientPort) {
 		switch (accounts.size()) {
 		case 0:
 			Account accountOne = new Account(pClientIP, pClientPort, 1);
@@ -69,7 +69,7 @@ public class gameServer extends Server {
 		}
 	}
 
-	public void processMessage(String pClientIP, int pClientPort, String pMessage) {
+	public synchronized void processMessage(String pClientIP, int pClientPort, String pMessage) {
 		System.out.println("Ich habe erhalten: " + pMessage);
 		String backMessage = Protokoll.SC_ERROR;
 		int currentMove = 0;
@@ -104,13 +104,17 @@ public class gameServer extends Server {
 					bj.reset();
 				} else if (bj.winLose(currentMove) == 1) {
 					backMessage = Protokoll.SC_LOSE;
-					bj.reset();
+					this.playerLeave(currentMove);
 				}
 				backMessage += currentMove;
 				break;
 			case Protokoll.CS_STAND:
 				backMessage = Protokoll.SC_STAND;
-				bj.setPlayerTurn();
+				String dealerCard = bj.setPlayerTurn();
+				if(dealerCard.equals("win")) {
+					bj.reset();
+					backMessage += Protokoll.TRENNER + Protokoll.SC_DEALERWIN + Protokoll.TRENNER + dealerCard;
+				}
 			case Protokoll.CS_SPLIT:
 				if(bj.playerSplit(currentMove)) {
 					backMessage = Protokoll.SC_SPLIT;
@@ -124,42 +128,29 @@ public class gameServer extends Server {
 
 	}
 
-	public void processClosingConnection(String pClientIP, int pClientPort) {
+	public synchronized void processClosingConnection(String pClientIP, int pClientPort) {
 		int player = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
 		switch (player) {
 		case 1:
-			for (int i = 1; i < accounts.size(); i++) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			}
+			playerLeave(player);
+			break;
 		case 2:
-			for (int i = 2; i < accounts.size(); i++) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			}
+			playerLeave(player);
+			break;
 		case 3:
-			for (int i = 3; i < accounts.size(); i++) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			}
+			playerLeave(player);
+			break;
 		case 4:
-			for (int i = 4; i < accounts.size(); i++) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			}
+			playerLeave(player);
+			break;
 		case 5:
-			for (int i = 5; i < accounts.size(); i++) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			}
+			playerLeave(player);
+			break;
 		case 6:
-			for (int i = 6; i < accounts.size(); i++) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			}
-			this.send(pClientIP, pClientPort, "Verbindung geschlossen");
+			playerLeave(player);
+			break;
 		}
-
+		this.sendToAll("Verbindung von Spieler " + player + " geschlossen");
 	}
 
 	private Account IPAndPortToAccount(String pClientIP, int pClientPort) {
@@ -171,5 +162,14 @@ public class gameServer extends Server {
 			}
 		}
 		return tmp;
+	}
+	
+	private void playerLeave(int pPlayer) {
+		for (int i = pPlayer;i < accounts.size(); i++) {
+			accounts.get(i).setPlayer(i - 1);
+			bj.forcePlace(i, i - 1);
+		}
+		bj.leavePlace(pPlayer);
+		accounts.remove(pPlayer - 1);
 	}
 }

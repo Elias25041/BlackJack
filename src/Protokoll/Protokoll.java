@@ -32,7 +32,7 @@ public class Protokoll {
 	
 	public static final String SC_CARD = "C"; // mit dem Trenner wird der Kartenwert angehängt
 	
-	public static final String SC_GAMESTART = "GS";
+	public static final String SC_GAMESTART = "GS"; //
 	
 	public static final String SC_WIN = "W";
 	
@@ -40,5 +40,7 @@ public class Protokoll {
 	
 	public static final String SC_STAND = "S";
 	
-	public static final String SC_SPLIT = "SP";
+	public static final String SC_SPLIT = "SP"; // bestätigung das man einen Split machen kann
+	
+	public static final String SC_DEALERWIN = "DW"; // wird hinter SC_STAND gehängt, wenn der Dealer einen Blackjack hat
 }

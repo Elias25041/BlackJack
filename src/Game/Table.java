@@ -28,6 +28,11 @@ public class Table {
 	public int getPlayerCount() {
 		return PlayerCount;
 	}
+	
+	public void addPlayerCount(int pPlayerCount) {
+		PlayerCount += pPlayerCount;
+		System.out.println("" + PlayerCount);
+	}
 
 	public Player getPlace(int placeNumber) {
 		switch (placeNumber) {
@@ -64,7 +69,6 @@ public class Table {
 	 */
 	public void setPlaceOne(Player pPlayer) {
 		PlaceOne = pPlayer;
-		PlayerCount++;
 	}
 
 	/**
@@ -74,7 +78,6 @@ public class Table {
 	 */
 	public void setPlaceTwo(Player pPlayer) {
 		PlaceTwo = pPlayer;
-		PlayerCount++;
 	}
 
 	/**
@@ -84,7 +87,6 @@ public class Table {
 	 */
 	public void setPlaceThree(Player pPlayer) {
 		PlaceThree = pPlayer;
-		PlayerCount++;
 	}
 
 	/**
@@ -94,7 +96,6 @@ public class Table {
 	 */
 	public void setPlaceFour(Player pPlayer) {
 		PlaceFour = pPlayer;
-		PlayerCount++;
 	}
 
 	/**
@@ -104,7 +105,6 @@ public class Table {
 	 */
 	public void setPlaceFive(Player pPlayer) {
 		PlaceFive = pPlayer;
-		PlayerCount++;
 	}
 
 	/**
@@ -114,7 +114,6 @@ public class Table {
 	 */
 	public void setPlaceSix(Player pPlayer) {
 		PlaceSix = pPlayer;
-		PlayerCount++;
 	}
 
 	/**
