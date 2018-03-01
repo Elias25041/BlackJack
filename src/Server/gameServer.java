@@ -103,7 +103,8 @@ public class gameServer extends Server {
 				break;
 			case Protokoll.CS_STAND:
 				backMessage = Protokoll.SC_STAND;
-				String dealerCard = bj.setPlayerTurn();
+				String dealerCard = "";
+				dealerCard = bj.setPlayerTurn();
 				if (bj.winLose(currentMove) == 0) {
 					backMessage = Protokoll.SC_WIN;
 					backMessage += currentMove;
@@ -112,12 +113,12 @@ public class gameServer extends Server {
 					backMessage = Protokoll.SC_LOSE;
 					backMessage += currentMove;
 					this.playerLeave(currentMove);
-				} else if(dealerCard.equals("win")) {
+				} else if (dealerCard.equals("win")) {
 					bj.reset();
 					backMessage += Protokoll.TRENNER + Protokoll.SC_DEALERWIN + Protokoll.TRENNER + dealerCard;
 				}
 			case Protokoll.CS_SPLIT:
-				if(bj.playerSplit(currentMove)) {
+				if (bj.playerSplit(currentMove)) {
 					backMessage = Protokoll.SC_SPLIT;
 				}
 				break;
@@ -164,13 +165,17 @@ public class gameServer extends Server {
 		}
 		return tmp;
 	}
-	
+
 	private void playerLeave(int pPlayer) {
-		for (int i = pPlayer;i < accounts.size(); i++) {
-			accounts.get(i).setPlayer(i - 1);
-			bj.forcePlace(i, i - 1);
+		for (int i = pPlayer; i > accounts.size() - i; i--) {
+			if (i > 1) {
+				accounts.get(i).setPlayer(i - 1);
+				bj.forcePlace(i, i - 1);
+			} else {
+				
+			}
 		}
 		bj.leavePlace(pPlayer);
 		accounts.remove(pPlayer - 1);
-	}	
+	}
 }

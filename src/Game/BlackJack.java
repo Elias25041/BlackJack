@@ -66,7 +66,7 @@ public class BlackJack {
 	 */
 	public Card cardToPlayer(int pPlayer) {
 		Card tmp = dealer.getTop();
-		if(this.playerOnPlace(pPlayer) == true) {
+		if (this.playerOnPlace(pPlayer) == true) {
 			table.getPlace(pPlayer).hit(tmp);
 			return tmp;
 		} else {
@@ -124,10 +124,12 @@ public class BlackJack {
 		String tmp = "";
 		if (playerTurn == table.getPlayerCount()) {
 			playerTurn = 1;
-			dealer.getCard(dealer.getTop());
-			this.getDealerCards();
-			if(dealer.checkWin()) {
-				return "win";
+			if (dealer.getCardWorth() < 16) {
+				dealer.getCard(dealer.getTop());
+				this.getDealerCards();
+				if (dealer.checkWin()) {
+					return "win";
+				}
 			}
 		} else {
 			playerTurn += 1;
@@ -157,53 +159,53 @@ public class BlackJack {
 		playerTurn = 0;
 		dealer.reset();
 		int j = table.getPlayerCount();
-		for(int i = 1; i <= j; i++) {
+		for (int i = 1; i <= j; i++) {
 			table.getPlace(i).reset();
 		}
 	}
 
 	public boolean forcePlace(int pPlayer, int place) {
-			switch (place) {
-			case 1:
-				table.setPlaceOne(table.getPlace(pPlayer));
-				return true;
-			case 2:
-				table.setPlaceTwo(table.getPlace(pPlayer));
-				return true;
-			case 3:
-				table.setPlaceThree(table.getPlace(pPlayer));
-				return true;
-			case 4:
-				table.setPlaceFour(table.getPlace(pPlayer));
-				return true;
-			case 5:
-				table.setPlaceFive(table.getPlace(pPlayer));
-				return true;
-			case 6:
-				table.setPlaceSix(table.getPlace(pPlayer));
-				return true;
-			default:
-				return false;
-			}
+		switch (place) {
+		case 1:
+			table.setPlaceOne(table.getPlace(pPlayer));
+			return true;
+		case 2:
+			table.setPlaceTwo(table.getPlace(pPlayer));
+			return true;
+		case 3:
+			table.setPlaceThree(table.getPlace(pPlayer));
+			return true;
+		case 4:
+			table.setPlaceFour(table.getPlace(pPlayer));
+			return true;
+		case 5:
+			table.setPlaceFive(table.getPlace(pPlayer));
+			return true;
+		case 6:
+			table.setPlaceSix(table.getPlace(pPlayer));
+			return true;
+		default:
+			return false;
+		}
 	}
-	
+
 	private boolean playerOnPlace(int pPlayer) {
-		if(table.getPlace(pPlayer) == null) {
+		if (table.getPlace(pPlayer) == null) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	public boolean playerSplit(int pPlayer) {
-		if(this.playerOnPlace(pPlayer)) {
+		if (this.playerOnPlace(pPlayer)) {
 			Player p = table.getPlace(pPlayer);
-			if(p.split()) {
+			if (p.split()) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	public String getDealerCards() {
 		String cardsAsString = "";
 		for (int i = 0; i < dealer.getCardAmount(); i++) {
@@ -211,7 +213,7 @@ public class BlackJack {
 		}
 		return cardsAsString;
 	}
-	
+
 	public void leavePlace(int place) {
 		switch (place) {
 		case 1:
