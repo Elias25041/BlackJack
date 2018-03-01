@@ -30,11 +30,12 @@ public class ExtendetClientFrame extends JFrame{
 	private ExtendetClient bc;
 	private JPanel panel;
 	private JPanel panel_1;
-	private JTextArea output;
 	private JLabel cardWorth;
 	private JButton btnHit;
 	private JButton btnStand;
 	private JButton btnStartgame;
+	private JScrollPane scrollPane;
+	private JTextArea output;
 
 	/**
 	 * Launch the application.
@@ -130,6 +131,12 @@ public class ExtendetClientFrame extends JFrame{
 		
 		btnStand = new JButton("Stand");
 		panel_1.add(btnStand);
+		
+		output = new JTextArea();
+		scrollPane = new JScrollPane(output);
+		panel.add(scrollPane, BorderLayout.CENTER);
+		
+		
 		btnStand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				bc.send("S");
@@ -140,9 +147,6 @@ public class ExtendetClientFrame extends JFrame{
 				bc.send("H");
 			}
 		});
-		
-		output = new JTextArea();
-		panel.add(output, BorderLayout.NORTH);
 	}
 	
 	private void connect() {
@@ -164,6 +168,7 @@ public class ExtendetClientFrame extends JFrame{
 			bc.send(txtSend.getText());
 		}
 	}
+	
 	
 	
 
