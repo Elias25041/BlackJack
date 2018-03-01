@@ -172,4 +172,5 @@ public class gameServer extends Server {
 		bj.leavePlace(pPlayer);
 		accounts.remove(pPlayer - 1);
 	}
+	
 }
