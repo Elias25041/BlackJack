@@ -34,8 +34,8 @@ public class ExtendetClientFrame extends JFrame{
 	private JButton btnHit;
 	private JButton btnStand;
 	private JButton btnStartgame;
-	private JScrollPane scrollPane;
 	private JTextArea output;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -58,7 +58,7 @@ public class ExtendetClientFrame extends JFrame{
 	 */
 	public ExtendetClientFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 727, 457);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -108,6 +108,7 @@ public class ExtendetClientFrame extends JFrame{
 				btnStartgame.setVisible(false);
 			}
 		});
+		buttom.setLayout(new BoxLayout(buttom, BoxLayout.X_AXIS));
 		buttom.add(btnStartgame);
 		
 		txtSend = new JTextField();
@@ -123,8 +124,7 @@ public class ExtendetClientFrame extends JFrame{
 		panel.add(panel_1, BorderLayout.SOUTH);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		cardWorth = new JLabel("cardWorth");
-		panel_1.add(cardWorth);
+		
 		
 		btnHit = new JButton("Hit");
 		panel_1.add(btnHit);
@@ -134,7 +134,8 @@ public class ExtendetClientFrame extends JFrame{
 		
 		output = new JTextArea();
 		scrollPane = new JScrollPane(output);
-		panel.add(scrollPane, BorderLayout.CENTER);
+		panel.add(scrollPane, BorderLayout.EAST);
+		ausgeben("Weitere Meldungen");
 		
 		
 		btnStand.addActionListener(new ActionListener() {
