@@ -57,6 +57,7 @@ public class Player extends GameMechanic {
 	 */
 	public void hit(Card c) {
 		cards.add(c);
+		this.calculateWorth();
 		cardAmount++;
 	}
 

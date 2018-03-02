@@ -123,14 +123,7 @@ public class BlackJack {
 	public String setPlayerTurn() {
 		String tmp = "";
 		if (playerTurn == table.getPlayerCount()) {
-			playerTurn = 1;
-			if (dealer.getCardWorth() < 16) {
-				dealer.getCard(dealer.getTop());
-				this.getDealerCards();
-				if (dealer.checkWin()) {
-					return "win";
-				}
-			}
+			tmp = this.endRound();
 		} else {
 			playerTurn += 1;
 		}
@@ -147,8 +140,10 @@ public class BlackJack {
 	public int winLose(int pPlayer) {
 		Player tmp = table.getPlace(pPlayer);
 		if (tmp.checkWin()) {
+			System.out.println("gewonnen");
 			return 0;
 		} else if (tmp.checkLose()) {
+			System.out.println("verloren");
 			return 1;
 		} else {
 			return 2;
@@ -241,5 +236,17 @@ public class BlackJack {
 			table.addPlayerCount(-1);
 			break;
 		}
+	}
+
+	public String endRound() {
+		playerTurn = 1;
+		if (dealer.getCardWorth() < 16) {
+			dealer.getCard(dealer.getTop());
+			this.getDealerCards();
+			if (dealer.checkWin()) {
+				return "win";
+			}
+		}
+		return "";
 	}
 }

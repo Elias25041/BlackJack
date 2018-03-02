@@ -22,7 +22,7 @@ public class GameMechanic {
 		cardWorth = 0;
 		for (int i = 0; i < cards.size(); i++) {
 			Card c = cards.get(i);
-			if (c.getType().equals("K�nig") || c.getType().equals("Dame") || c.getType().equals("Bube")
+			if (c.getType().equals("Koenig") || c.getType().equals("Dame") || c.getType().equals("Bube")
 					|| c.getType().equals("Zehn")) {
 				cardWorth = cardWorth + 10;
 			} else if (c.getType().equals("Zwei")) {
@@ -31,7 +31,7 @@ public class GameMechanic {
 				cardWorth = cardWorth + 3;
 			} else if (c.getType().equals("Vier")) {
 				cardWorth = cardWorth + 4;
-			} else if (c.getType().equals("F�nf")) {
+			} else if (c.getType().equals("Fuenf")) {
 				cardWorth = cardWorth + 5;
 			} else if (c.getType().equals("Sechs")) {
 				cardWorth = cardWorth + 6;
@@ -57,6 +57,7 @@ public class GameMechanic {
 	 * @return cardWorth
 	 */
 	public int getCardWorth() {
+		this.calculateWorth();
 		return cardWorth;
 	}
 
@@ -69,7 +70,7 @@ public class GameMechanic {
 	}
 
 	public boolean checkWin() {
-		calculateWorth();
+		this.calculateWorth();
 		if (cardWorth == 21) {
 			return true;
 		} else {
@@ -78,7 +79,7 @@ public class GameMechanic {
 	}
 
 	public boolean checkLose() {
-		calculateWorth();
+		this.calculateWorth();
 		if (cardWorth > 21) {
 			return true;
 		} else {

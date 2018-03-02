@@ -30,7 +30,7 @@ public class CardDeck {
 		lType[0] = "Zwei";
 		lType[1] = "Drei";
 		lType[2] = "Vier";
-		lType[3] = "Fünf";
+		lType[3] = "Fuenf";
 		lType[4] = "Sechs";
 		lType[5] = "Sieben";
 		lType[6] = "Acht";
@@ -38,7 +38,7 @@ public class CardDeck {
 		lType[8] = "Zehn";
 		lType[9] = "Bube";
 		lType[10] = "Dame";
-		lType[11] = "König";
+		lType[11] = "Koenig";
 		lType[12] = "Ass";
 
 		String[] lColour = new String[4];

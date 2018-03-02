@@ -83,7 +83,7 @@ public class gameServer extends Server {
 				backMessage = Protokoll.SC_GAMESTART;
 				System.out.println("GameStart");
 				if (bj.startGame()) {
-					System.out.println("Spielgestartet");
+					System.out.println("Spielgestartet" + accounts.size());
 					for (int i = 0; i < accounts.size(); i++) {
 						backMessage += Protokoll.TRENNER + bj.getPlayerCards(accounts.get(i).getPlayer())
 								+ accounts.get(i).getPlayer();
@@ -167,15 +167,13 @@ public class gameServer extends Server {
 	}
 
 	private void playerLeave(int pPlayer) {
-		for (int i = pPlayer; i > accounts.size() - i; i--) {
+		for (int i = pPlayer; i < accounts.size(); i++) {
 			if (i > 1) {
-				accounts.get(i).setPlayer(i - 1);
-				bj.forcePlace(i, i - 1);
-			} else {
-				
+				accounts.get(i + 1).setPlayer(i);
+				bj.forcePlace(i + 1, i);
 			}
 		}
-		bj.leavePlace(pPlayer);
-		accounts.remove(pPlayer - 1);
+		bj.leavePlace(accounts.size());
+		accounts.remove(accounts.size() - 1);
 	}
 }

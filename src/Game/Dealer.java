@@ -43,6 +43,8 @@ public class Dealer extends GameMechanic {
 	 */
 	public void getCard(Card c) {
 		cards.add(c);
+		this.calculateWorth();
+		this.cardAmount++;
 	}
 
 }
