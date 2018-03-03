@@ -23,10 +23,17 @@ public class Bank {
 		return i;
 	}
 	
+	public int getPot() {
+		return pot;
+	}
+	
+	
+	
 	/**
 	 * Bank erhaelt den Inhalt des Pots, wenn der Dealer gewinnt.
 	 */	
 	public void getPaid() {
-		
+		credit=credit+pot;
+		pot=0;
 	}
 }

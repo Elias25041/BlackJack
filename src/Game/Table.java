@@ -15,9 +15,11 @@ public class Table {
 	private Player PlaceSix;
 	private Dealer PlaceDealer;
 	private int PlayerCount;
+	private Player [] player = new Player[5];
 
 	public Table(Dealer pDealer) {
 		PlaceDealer = pDealer;
+		
 	}
 
 	/**
@@ -69,6 +71,7 @@ public class Table {
 	 */
 	public void setPlaceOne(Player pPlayer) {
 		PlaceOne = pPlayer;
+		player[0]=PlaceOne;
 	}
 
 	/**
@@ -78,6 +81,7 @@ public class Table {
 	 */
 	public void setPlaceTwo(Player pPlayer) {
 		PlaceTwo = pPlayer;
+		player[1]=PlaceTwo;
 	}
 
 	/**
@@ -87,6 +91,7 @@ public class Table {
 	 */
 	public void setPlaceThree(Player pPlayer) {
 		PlaceThree = pPlayer;
+		player[2]=PlaceThree;
 	}
 
 	/**
@@ -96,6 +101,7 @@ public class Table {
 	 */
 	public void setPlaceFour(Player pPlayer) {
 		PlaceFour = pPlayer;
+		player[3]=PlaceFour;
 	}
 
 	/**
@@ -105,6 +111,7 @@ public class Table {
 	 */
 	public void setPlaceFive(Player pPlayer) {
 		PlaceFive = pPlayer;
+		player[4]=PlaceFive;
 	}
 
 	/**
@@ -114,6 +121,7 @@ public class Table {
 	 */
 	public void setPlaceSix(Player pPlayer) {
 		PlaceSix = pPlayer;
+		player[5]=PlaceSix;
 	}
 
 	/**
@@ -124,4 +132,18 @@ public class Table {
 	public void setPlaceDealer(Dealer pDealer) {
 		PlaceDealer = pDealer;
 	}
+	
+	/**
+	 * Der Gewinner kriegt den Inhalt des Pots gutgeschrieben
+	 * @param winningPlayer
+	 * @param potAmount
+	 */
+	public void getPaid(Player winningPlayer, int potAmount) {
+		winningPlayer.getPaid(potAmount);
+	}
+	
+	public Player getPlayer(int i) {
+		return player[i];
+	}
+	
 }

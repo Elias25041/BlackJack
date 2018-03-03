@@ -238,13 +238,27 @@ public class BlackJack {
 		}
 	}
 
+	/**
+	 * Am Ende der Runde wird der Gewinner ermittelt und dieser kriegt den Inhalt des Pots gutgeschrieben
+	 * @return
+	 */
 	public String endRound() {
 		playerTurn = 1;
 		if (dealer.getCardWorth() < 16) {
 			dealer.getCard(dealer.getTop());
 			this.getDealerCards();
 			if (dealer.checkWin()) {
-				return "win";
+				bank.getPaid();
+				return "win";	
+			}else {
+				Player p;
+				for(int i=0; i<5; i++) {
+					p=table.getPlayer(i);
+					if(p.checkWin()) {
+						table.getPaid(p, bank.pay());
+						break;
+					}
+				}
 			}
 		}
 		return "";

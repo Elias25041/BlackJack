@@ -79,4 +79,8 @@ public class Player extends GameMechanic {
 	public int setCoins(int coins) {
 		return coins;
 	}
+	
+	public void getPaid(int i) {
+		credit=credit+i;
+	}
 }
