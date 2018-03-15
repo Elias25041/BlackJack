@@ -123,9 +123,37 @@ public class BlackJack {
 	public String setPlayerTurn() {
 		String tmp = "";
 		if (playerTurn == table.getPlayerCount()) {
+			int maxPoints = 0;
+			int maxPlayer = 0;
 			tmp = this.endRound();
+			if (!tmp.equals("dealerWin")) {
+				for (int i = 1; i <= table.getPlayerCount(); i++) {
+					int points = table.getPlayer(i).getCardWorth();
+					if (points > maxPoints) {
+						maxPoints = points;
+						maxPlayer = i;
+					} else if (points == maxPoints) {
+						if (table.getPlace(maxPlayer).getCardAmount() > table.getPlace(i).getCardAmount()) {
+							maxPoints = points;
+							maxPlayer = i;
+						}
+					}
+				}
+				int toPay = bank.pay();
+				table.getPaid(table.getPlace(maxPlayer), toPay);
+				tmp = maxPlayer + "_win_" + maxPoints;
+				this.reset();
+			}
 		} else {
-			playerTurn += 1;
+			if (this.winLose(playerTurn) == 0) {
+				tmp = playerTurn + "_W";
+				this.reset();
+			} else if (this.winLose(playerTurn) == 1) {
+				tmp = playerTurn + "_L";
+				this.reset();
+			} else {
+				playerTurn += 1;
+			}
 		}
 		return tmp;
 	}
@@ -239,7 +267,9 @@ public class BlackJack {
 	}
 
 	/**
-	 * Am Ende der Runde wird der Gewinner ermittelt und dieser kriegt den Inhalt des Pots gutgeschrieben
+	 * Am Ende der Runde wird der Gewinner ermittelt und dieser kriegt den Inhalt
+	 * des Pots gutgeschrieben
+	 * 
 	 * @return
 	 */
 	public String endRound() {
@@ -249,12 +279,13 @@ public class BlackJack {
 			this.getDealerCards();
 			if (dealer.checkWin()) {
 				bank.getPaid();
-				return "win";	
-			}else {
+				this.reset();
+				return "dealerWin";
+			} else {
 				Player p;
-				for(int i=0; i<5; i++) {
-					p=table.getPlayer(i);
-					if(p.checkWin()) {
+				for (int i = 0; i < 5; i++) {
+					p = table.getPlayer(i);
+					if (p.checkWin()) {
 						table.getPaid(p, bank.pay());
 						break;
 					}

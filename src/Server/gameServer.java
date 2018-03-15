@@ -102,21 +102,8 @@ public class gameServer extends Server {
 				backMessage += currentMove;
 				break;
 			case Protokoll.CS_STAND:
-				backMessage = Protokoll.SC_STAND;
-				String dealerCard = "";
-				dealerCard = bj.setPlayerTurn();
-				if (bj.winLose(currentMove) == 0) {
-					backMessage = Protokoll.SC_WIN;
-					backMessage += currentMove;
-					bj.reset();
-				} else if (bj.winLose(currentMove) == 1) {
-					backMessage = Protokoll.SC_LOSE;
-					backMessage += currentMove;
-					this.playerLeave(currentMove);
-				} else if (dealerCard.equals("win")) {
-					bj.reset();
-					backMessage += Protokoll.TRENNER + Protokoll.SC_DEALERWIN + Protokoll.TRENNER + dealerCard;
-				}
+				backMessage = Protokoll.SC_STAND + Protokoll.TRENNER;
+				backMessage += bj.setPlayerTurn();
 			case Protokoll.CS_SPLIT:
 				if (bj.playerSplit(currentMove)) {
 					backMessage = Protokoll.SC_SPLIT;
