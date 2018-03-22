@@ -98,11 +98,11 @@ public class gameServer extends Server {
 			backMessage += "" + currentMove;
 			switch (start) {
 			case Protokoll.CS_HIT:
-				backMessage = Protokoll.SC_CARD + bj.cardInfo(bj.cardToPlayer(currentMove));
+				backMessage = Protokoll.SC_CARD + Protokoll.TRENNER + bj.cardInfo(bj.cardToPlayer(currentMove));
 				backMessage += currentMove;
 				break;
 			case Protokoll.CS_STAND:
-				backMessage = Protokoll.SC_STAND + Protokoll.TRENNER;
+				backMessage = Protokoll.SC_STAND + Protokoll.TRENNER + currentMove + Protokoll.TRENNER;
 				backMessage += bj.setPlayerTurn();
 			case Protokoll.CS_SPLIT:
 				if (bj.playerSplit(currentMove)) {

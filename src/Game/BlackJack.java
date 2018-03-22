@@ -128,7 +128,7 @@ public class BlackJack {
 			tmp = this.endRound();
 			if (!tmp.equals("dealerWin")) {
 				for (int i = 1; i <= table.getPlayerCount(); i++) {
-					int points = table.getPlayer(i).getCardWorth();
+					int points = table.getPlace(i).getCardWorth();
 					if (points > maxPoints) {
 						maxPoints = points;
 						maxPlayer = i;
