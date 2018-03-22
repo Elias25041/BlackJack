@@ -268,7 +268,7 @@ public class BlackJack {
 
 	/**
 	 * Am Ende der Runde wird der Gewinner ermittelt und dieser kriegt den Inhalt
-	 * des Pots gutgeschrieben
+	 * des Pots gutgeschrieben 
 	 * 
 	 * @return
 	 */

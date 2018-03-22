@@ -150,7 +150,7 @@ public class gameServer extends Server {
 				break;
 			}
 		}
-		return tmp;
+		return tmp; 
 	}
 
 	private void playerLeave(int pPlayer) {
