@@ -13,13 +13,17 @@ public class BlackJack {
 	private Dealer dealer;
 	private Table table;
 	private int playerTurn = 0;
+	private int cardAmount;
+	private int startCredit;
 
 	/**
 	 * Erstellt eine Bank, einen Dealer, einen Tisch
 	 * 
 	 */
-	public BlackJack(int cardAmount) {
-		dealer = new Dealer(cardAmount);
+	public BlackJack(int pCardAmount, int pStartCredit) {
+		startCredit = pStartCredit;
+		cardAmount = pCardAmount;
+		dealer = new Dealer(pCardAmount);
 		table = new Table(dealer);
 		bank = new Bank();
 	}
@@ -122,7 +126,17 @@ public class BlackJack {
 
 	public String setPlayerTurn() {
 		String tmp = "";
-		if (playerTurn == table.getPlayerCount()) {
+		int toPay = bank.pay();
+		if (!(playerTurn == table.getPlayerCount())) {
+			if (this.winLose(playerTurn) == 0) {
+				tmp = "W" + "" + toPay;
+				this.reset();
+			} else if (this.winLose(playerTurn) == 1) {
+				tmp = "L";
+			} else {
+				playerTurn += 1;
+			}
+		} else {
 			int maxPoints = 0;
 			int maxPlayer = 0;
 			tmp = this.endRound();
@@ -139,21 +153,11 @@ public class BlackJack {
 						}
 					}
 				}
-				int toPay = bank.pay();
 				table.getPaid(table.getPlace(maxPlayer), toPay);
-				tmp = maxPlayer + "_win_" + maxPoints;
+				tmp = maxPlayer + "_win_" + maxPoints + "_" + toPay;
 				this.reset();
 			}
-		} else {
-			if (this.winLose(playerTurn) == 0) {
-				tmp = playerTurn + "_W";
-				this.reset();
-			} else if (this.winLose(playerTurn) == 1) {
-				tmp = playerTurn + "_L";
-				this.reset();
-			} else {
-				playerTurn += 1;
-			}
+			tmp = ":" + tmp;
 		}
 		return tmp;
 	}
@@ -181,6 +185,7 @@ public class BlackJack {
 	public void reset() {
 		playerTurn = 0;
 		dealer.reset();
+		table.setPlaceDealer(new Dealer(cardAmount));
 		int j = table.getPlayerCount();
 		for (int i = 1; i <= j; i++) {
 			table.getPlace(i).reset();
@@ -268,7 +273,7 @@ public class BlackJack {
 
 	/**
 	 * Am Ende der Runde wird der Gewinner ermittelt und dieser kriegt den Inhalt
-	 * des Pots gutgeschrieben 
+	 * des Pots gutgeschrieben
 	 * 
 	 * @return
 	 */
@@ -283,7 +288,7 @@ public class BlackJack {
 				return "dealerWin";
 			} else {
 				Player p;
-				for (int i = 0; i < 5; i++) {
+				for (int i = 0; i < table.getPlayerCount(); i++) {
 					p = table.getPlayer(i);
 					if (p.checkWin()) {
 						table.getPaid(p, bank.pay());
@@ -293,5 +298,13 @@ public class BlackJack {
 			}
 		}
 		return "";
+	}
+
+	public int getStartCredit() {
+		return startCredit;
+	}
+	
+	public int getPlayerCount() {
+		return table.getPlayerCount();
 	}
 }

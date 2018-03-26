@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Player extends GameMechanic {
 	// Guthaben des Spielers
-	private int credit;
+	private int credit = 50;
 	// ob spieler inGame ist
 	private boolean inGame;
 
@@ -70,16 +70,6 @@ public class Player extends GameMechanic {
 		return credit;
 	}
 
-	/**
-	 * gibt die coins des Spielers wieder
-	 * 
-	 * @param coins
-	 * @return coins
-	 */
-	public int setCoins(int coins) {
-		return coins;
-	}
-	
 	public void getPaid(int i) {
 		credit=credit+i;
 	}

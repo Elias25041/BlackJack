@@ -15,7 +15,7 @@ public class Table {
 	private Player PlaceSix;
 	private Dealer PlaceDealer;
 	private int PlayerCount;
-	private Player [] player = new Player[5];
+	private Player [] player = new Player[6];
 
 	public Table(Dealer pDealer) {
 		PlaceDealer = pDealer;
@@ -145,5 +145,4 @@ public class Table {
 	public Player getPlayer(int i) {
 		return player[i];
 	}
-	
 }
