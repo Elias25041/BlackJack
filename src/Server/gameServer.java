@@ -26,6 +26,7 @@ public class gameServer extends Server {
 
 	public synchronized void processNewConnection(String pClientIP, int pClientPort) {
 		int sessions = bjs.getBlackJacks().size();
+		System.out.println("Sessions:" + sessions);
 		switch (bjs.getBlackJacks().get(sessions - 1).getPlayerCount()) {
 		case 0:
 			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
@@ -67,7 +68,7 @@ public class gameServer extends Server {
 			bjs.getBlackJacks().add(new BlackJack(cardAmount, startCredit));
 			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 1,sessions + 1));
-			this.send(pClientIP, pClientPort, "" + sessions);
+			this.send(pClientIP, pClientPort, "Sessions: " + sessions);
 		}
 	}
 
@@ -85,7 +86,7 @@ public class gameServer extends Server {
 			case Protokoll.CS_STARTGAME:
 				backMessage = Protokoll.SC_GAMESTART + Protokoll.TRENNER +  bjs.getBlackJacks().get(currentBlackJack).getStartCredit();
 				System.out.println("GameStart");
-				if ( bjs.getBlackJacks().get(currentBlackJack).startGame()) {
+				if (bjs.getBlackJacks().get(currentBlackJack).startGame()) {
 					System.out.println("Spielgestartet" + bjs.getBlackJacks().get(currentBlackJack).getPlayerCount());
 					for (int i = 0; i < bjs.getBlackJacks().get(currentBlackJack).getPlayerCount(); i++) {
 						backMessage += Protokoll.TRENNER +  bjs.getBlackJacks().get(currentBlackJack).getPlayerCards(accounts.get(i).getPlayer())
@@ -108,7 +109,7 @@ public class gameServer extends Server {
 				backMessage = Protokoll.SC_STAND + Protokoll.TRENNER + currentMove;
 				backMessage +=  bjs.getBlackJacks().get(currentBlackJack).setPlayerTurn();
 				if ( bjs.getBlackJacks().get(currentBlackJack).winLose(currentMove) == 1) {
-					this.playerLeave(currentMove, currentBlackJack);
+					this.playerLost(currentMove, currentBlackJack);
 				}
 			case Protokoll.CS_SPLIT:
 				if ( bjs.getBlackJacks().get(currentBlackJack).playerSplit(currentMove)) {
@@ -124,29 +125,29 @@ public class gameServer extends Server {
 	}
 	
 	public synchronized void processClosingConnection(String pClientIP, int pClientPort) {
-		int player = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
-		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks();
-		switch (player) {
+		Account account = this.IPAndPortToAccount(pClientIP, pClientPort);
+		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks() - 1;
+		switch (account.getPlayer()) {
 		case 1:
-			playerLeave(player, currentBlacksJacks);
+			playerLeave(account, currentBlacksJacks);
 			break;
 		case 2:
-			playerLeave(player, currentBlacksJacks);
+			playerLeave(account, currentBlacksJacks);
 			break;
 		case 3:
-			playerLeave(player, currentBlacksJacks);
+			playerLeave(account, currentBlacksJacks);
 			break;
 		case 4:
-			playerLeave(player, currentBlacksJacks);
+			playerLeave(account, currentBlacksJacks);
 			break;
 		case 5:
-			playerLeave(player, currentBlacksJacks);
+			playerLeave(account, currentBlacksJacks);
 			break;
 		case 6:
-			playerLeave(player, currentBlacksJacks);
+			playerLeave(account, currentBlacksJacks);
 			break;
 		}
-		this.sendToAll("Verbindung von Spieler " + player + " geschlossen");
+		this.sendToAll("Verbindung von Spieler " + account.getPlayer() + " geschlossen");
 	}
 
 	private Account IPAndPortToAccount(String pClientIP, int pClientPort) {
@@ -160,14 +161,22 @@ public class gameServer extends Server {
 		return tmp;
 	}
 
-	private void playerLeave(int pPlayer, int currentB) {
-		for (int i = pPlayer; i < accounts.size(); i++) {
+	private void playerLeave(Account pAccount, int currentB) {
+		for (int i = pAccount.getPlayer(); i < bjs.getBlackJacks().get(currentB).getPlayerCount(); i++) {
 			if (i > 1) {
-				accounts.get(i + 1).setPlayer(i);
 				 bjs.getBlackJacks().get(currentB).forcePlace(i + 1, i);
 			}
 		}
-		 bjs.getBlackJacks().get(currentB).leavePlace(accounts.size());
-		accounts.remove(accounts.size() - 1);
+		 bjs.getBlackJacks().get(currentB).leavePlace(bjs.getBlackJacks().get(currentB).getPlayerCount());
+		 accounts.remove(pAccount);
+	}
+	
+	private void playerLost(int pPlayer, int currentB) {
+		for (int i = pPlayer; i < bjs.getBlackJacks().get(currentB).getPlayerCount(); i++) {
+			if (i > 1) {
+				 bjs.getBlackJacks().get(currentB).forcePlace(i + 1, i);
+			}
+		}
+		 bjs.getBlackJacks().get(currentB).leavePlace(bjs.getBlackJacks().get(currentB).getPlayerCount());
 	}
 }
