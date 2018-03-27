@@ -140,7 +140,7 @@ public class BlackJack {
 			int maxPoints = 0;
 			int maxPlayer = 0;
 			tmp = this.endRound();
-			if (!tmp.equals("dealerWin")) {
+			if (!tmp.equals("DW")) {
 				for (int i = 1; i <= table.getPlayerCount(); i++) {
 					int points = table.getPlace(i).getCardWorth();
 					if (points > maxPoints) {
@@ -285,7 +285,7 @@ public class BlackJack {
 			if (dealer.checkWin()) {
 				bank.getPaid();
 				this.reset();
-				return "dealerWin";
+				return "DW";
 			} else {
 				Player p;
 				for (int i = 0; i < table.getPlayerCount(); i++) {
@@ -306,5 +306,9 @@ public class BlackJack {
 	
 	public int getPlayerCount() {
 		return table.getPlayerCount();
+	}
+	
+	public int checkPay() {
+		
 	}
 }

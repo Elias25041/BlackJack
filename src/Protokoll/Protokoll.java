@@ -32,7 +32,7 @@ public class Protokoll {
 	
 	public static final String SC_CARD = "C"; // mit dem Trenner wird der Kartenwert angehängt
 	
-	public static final String SC_GAMESTART = "GS"; //
+	public static final String SC_GAMESTART = "GS"; // der Startcredit und die Karten  werden für alle Clients bekanntgegeben
 	
 	public static final String SC_WIN = "W";
 	
