@@ -15,18 +15,13 @@ public class Player extends GameMechanic {
 	private int credit = 50;
 	// ob spieler inGame ist
 	private boolean inGame;
+	private boolean alreadyBet;
 
 	public Player() {
 		super();
 		cards = new ArrayList<Card>();
 		cardWorth = 0;
-	}
-
-	/**
-	 * Der Spieler beendet seinen Zug
-	 */
-	public void stand() {
-
+		alreadyBet = false;
 	}
 
 	/**
@@ -71,6 +66,21 @@ public class Player extends GameMechanic {
 	}
 
 	public void getPaid(int i) {
-		credit=credit+i;
+		credit = credit + i;
+	}
+
+	public boolean getAlreadyBet() {
+		return alreadyBet;
+	}
+
+	public void setAlreadyBet(boolean changeBet) {
+		alreadyBet = changeBet;
+	}
+	
+	public void reset() {
+		cardWorth = 0;
+		cardAmount = 0;
+		cards.clear();
+		alreadyBet = false;
 	}
 }

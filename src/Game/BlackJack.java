@@ -15,6 +15,8 @@ public class BlackJack {
 	private int playerTurn = 0;
 	private int cardAmount;
 	private int startCredit;
+	private boolean inGame;
+	private int playerNotBetted;
 
 	/**
 	 * Erstellt eine Bank, einen Dealer, einen Tisch
@@ -26,6 +28,8 @@ public class BlackJack {
 		dealer = new Dealer(pCardAmount);
 		table = new Table(dealer);
 		bank = new Bank();
+		inGame = false;
+		playerNotBetted = 0;
 	}
 
 	/**
@@ -85,9 +89,10 @@ public class BlackJack {
 	 */
 	public boolean startGame() {
 		if (canStartGame() == true) {
-			playerTurn = 1;
+			playerNotBetted = table.getPlayerCount();
+			inGame = true;
 			for (int j = 0; j < 2; j++) {
-				for (int i = 0; i <= table.getPlayerCount(); i++) {
+				for (int i = 1; i <= table.getPlayerCount(); i++) {
 					cardToPlayer(i);
 				}
 				dealer.getCard(dealer.getTop());
@@ -126,15 +131,17 @@ public class BlackJack {
 
 	public String setPlayerTurn() {
 		String tmp = "";
-		int toPay = bank.pay();
 		if (!(playerTurn == table.getPlayerCount())) {
 			if (this.winLose(playerTurn) == 0) {
-				tmp = "W" + "" + toPay;
-				this.reset();
+				tmp += winMessage(playerTurn, bank.pay());
 			} else if (this.winLose(playerTurn) == 1) {
-				tmp = "L";
+				tmp += ":L";
+				playerTurn++;
+				if(playerTurn == table.getPlayerCount()) {
+					tmp = winMessage(playerTurn, bank.pay());
+				}
 			} else {
-				playerTurn += 1;
+				playerTurn ++;
 			}
 		} else {
 			int maxPoints = 0;
@@ -143,7 +150,7 @@ public class BlackJack {
 			if (!tmp.equals("DW")) {
 				for (int i = 1; i <= table.getPlayerCount(); i++) {
 					int points = table.getPlace(i).getCardWorth();
-					if (points > maxPoints) {
+					if (points > maxPoints && points <= 21) {
 						maxPoints = points;
 						maxPlayer = i;
 					} else if (points == maxPoints) {
@@ -153,11 +160,8 @@ public class BlackJack {
 						}
 					}
 				}
-				table.getPaid(table.getPlace(maxPlayer), toPay);
-				tmp = maxPlayer + "_win_" + maxPoints + "_" + toPay;
-				this.reset();
+				tmp = winMessage(maxPlayer, bank.pay());
 			}
-			tmp = ":" + tmp;
 		}
 		return tmp;
 	}
@@ -183,6 +187,7 @@ public class BlackJack {
 	}
 
 	public void reset() {
+		inGame = false;
 		playerTurn = 0;
 		dealer.reset();
 		table.setPlaceDealer(new Dealer(cardAmount));
@@ -303,12 +308,36 @@ public class BlackJack {
 	public int getStartCredit() {
 		return startCredit;
 	}
-	
+
 	public int getPlayerCount() {
 		return table.getPlayerCount();
 	}
+
+	public boolean Bet(int player, int bet) {
+		Player p = table.getPlace(player);
+		if (p.getAlreadyBet()) {
+			return false;
+		} else {
+			p.setAlreadyBet(true);
+			p.getPaid(-bet);
+			bank.addPot(bet);
+			playerNotBetted--;
+			if (playerNotBetted == 0) {
+				playerTurn = 1;
+			}
+			return true;
+		}
+	}
+
+	public boolean getInGame() {
+		return inGame;
+	}
 	
-	public int checkPay() {
-		
+	private String winMessage(int player, int toPay) {
+		table.getPaid(table.getPlace(player), toPay);
+		String tmp = "W:" + player + ":" +  toPay;
+		this.reset();
+		tmp = ":" + tmp;
+		return tmp;
 	}
 }

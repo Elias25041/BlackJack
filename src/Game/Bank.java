@@ -1,4 +1,5 @@
 package Game;
+
 /**
  * 
  * @author tamlyn.brandau
@@ -9,11 +10,11 @@ public class Bank {
 	private int credit;
 	// der Wert der in der Mitte liegt
 	private int pot;
-	
+
 	public Bank() {
-		credit=1000000;
+		credit = 1000000;
 	}
-	
+
 	/**
 	 * Bank zahlt Gewinn aus.
 	 */
@@ -22,18 +23,20 @@ public class Bank {
 		pot = 0;
 		return i;
 	}
-	
+
 	public int getPot() {
 		return pot;
 	}
-	
-	
-	
+
 	/**
 	 * Bank erhaelt den Inhalt des Pots, wenn der Dealer gewinnt.
-	 */	
+	 */
 	public void getPaid() {
-		credit=credit+pot;
-		pot=0;
+		credit = credit + pot;
+		pot = 0;
+	}
+
+	public void addPot(int toAdd) {
+		pot += toAdd;
 	}
 }

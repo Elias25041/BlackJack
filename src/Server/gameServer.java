@@ -75,11 +75,13 @@ public class gameServer extends Server {
 	public synchronized void processMessage(String pClientIP, int pClientPort, String pMessage) {
 		System.out.println("Ich habe erhalten: " + pMessage);
 		String backMessage = Protokoll.SC_ERROR;
-		int currentMove = 0;
+		int currentMove = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
+		System.out.println("currentMove: " + currentMove);
 		int currentBlackJack = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks() - 1;
 		String[] splitMessage = pMessage.split(Protokoll.TRENNER);
 		String start = splitMessage[0];
 		System.out.println("Nichts");
+		System.out.println("playerTurn:" + bjs.getBlackJacks().get(currentBlackJack).getPlayerTurn());
 		if (bjs.getBlackJacks().get(currentBlackJack).getPlayerTurn() == 0) {
 			System.out.println("PlayerTurn=0");
 			switch (start) {
@@ -98,23 +100,31 @@ public class gameServer extends Server {
 					backMessage = Protokoll.SC_ERROR;
 				}
 				break;
+			case Protokoll.CS_PAY:
+				if (bjs.getBlackJacks().get(currentBlackJack).getInGame()) {
+					try {
+					if (bjs.getBlackJacks().get(currentBlackJack).Bet(currentMove, Integer.parseInt(splitMessage[1]))) {
+						backMessage = Protokoll.SC_PAY;
+					} else {
+						backMessage = Protokoll.CONVERT + Protokoll.SC_PAY;
+					}
+					} catch(Exception e) {
+						backMessage = Protokoll.SC_ERROR;
+					}
+				}
+				break;
 			}
-		} else if (this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer() == bjs.getBlackJacks()
-				.get(currentBlackJack).getPlayerTurn()) {
-			currentMove = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
+		} else if (currentMove == bjs.getBlackJacks().get(currentBlackJack).getPlayerTurn()) {
 			backMessage += "" + currentMove;
 			switch (start) {
 			case Protokoll.CS_HIT:
 				backMessage = Protokoll.SC_CARD + Protokoll.TRENNER + bjs.getBlackJacks().get(currentBlackJack)
 						.cardInfo(bjs.getBlackJacks().get(currentBlackJack).cardToPlayer(currentMove));
-				backMessage += currentMove;
+				backMessage += Protokoll.TRENNER + currentMove;
 				break;
 			case Protokoll.CS_STAND:
 				backMessage = Protokoll.SC_STAND + Protokoll.TRENNER + currentMove;
 				backMessage += bjs.getBlackJacks().get(currentBlackJack).setPlayerTurn();
-				if (bjs.getBlackJacks().get(currentBlackJack).winLose(currentMove) == 1) {
-					bjs.getBlackJacks().get(currentBlackJack).setPlayerTurn();
-				}
 			case Protokoll.CS_SPLIT:
 				if (bjs.getBlackJacks().get(currentBlackJack).playerSplit(currentMove)) {
 					backMessage = Protokoll.SC_SPLIT;
