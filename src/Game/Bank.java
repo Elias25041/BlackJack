@@ -24,6 +24,11 @@ public class Bank {
 		return i;
 	}
 
+	/**
+	 * pot wird zurück gegeben
+	 * 
+	 * @return pot
+	 */
 	public int getPot() {
 		return pot;
 	}
@@ -36,6 +41,11 @@ public class Bank {
 		pot = 0;
 	}
 
+	/**
+	 * es wird eine bestimmte Anzahl auf den Pot addiert
+	 * 
+	 * @param toAdd
+	 */
 	public void addPot(int toAdd) {
 		pot += toAdd;
 	}

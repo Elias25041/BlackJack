@@ -42,7 +42,7 @@ public class Protokoll {
 	
 	public static final String SC_STAND = "S"; // es wird die Nummer des Spielers hinten angehängt
 	
-	public static final String SC_SPLIT = "SP"; // bestätigung das man einen Split machen kann
+	public static final String SC_SPLIT = "SP"; // Wenn ein Split möglich ist dann werden die Karten 
 	
 	public static final String SC_DEALERWIN = "DW"; // wird hinter SC_STAND gehängt, wenn der Dealer einen Blackjack hat
 }

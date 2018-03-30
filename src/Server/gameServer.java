@@ -3,7 +3,6 @@ package Server;
 import AbiturKlassen.Server;
 import Game.BlackJack;
 import Game.Player;
-import Game.Table;
 import Protokoll.Protokoll;
 
 import java.util.ArrayList;
@@ -24,6 +23,9 @@ public class gameServer extends Server {
 		System.out.println("Hallo ich bin der server auf Port: " + pPort + "; und CA = " + cardAmount);
 	}
 
+	/**
+	 * produziert eine neue Verbindung
+	 */
 	public synchronized void processNewConnection(String pClientIP, int pClientPort) {
 		int sessions = bjs.getBlackJacks().size();
 		System.out.println("Sessions:" + sessions);
@@ -72,6 +74,9 @@ public class gameServer extends Server {
 		}
 	}
 
+	/**
+	 * produziert eine neue Mitteilung für den Client
+	 */
 	public synchronized void processMessage(String pClientIP, int pClientPort, String pMessage) {
 		System.out.println("Ich habe erhalten: " + pMessage);
 		String backMessage = Protokoll.SC_ERROR;
@@ -118,8 +123,7 @@ public class gameServer extends Server {
 			backMessage += "" + currentMove;
 			switch (start) {
 			case Protokoll.CS_HIT:
-				backMessage = Protokoll.SC_CARD + Protokoll.TRENNER + bjs.getBlackJacks().get(currentBlackJack)
-						.cardInfo(bjs.getBlackJacks().get(currentBlackJack).cardToPlayer(currentMove));
+				backMessage = Protokoll.SC_CARD + Protokoll.TRENNER + bjs.getBlackJacks().get(currentBlackJack).cardToPlayer(currentMove);
 				backMessage += Protokoll.TRENNER + currentMove;
 				break;
 			case Protokoll.CS_STAND:
@@ -138,6 +142,9 @@ public class gameServer extends Server {
 
 	}
 
+	/**
+	 * schließt die verbindung zu Client
+	 */
 	public synchronized void processClosingConnection(String pClientIP, int pClientPort) {
 		Account account = this.IPAndPortToAccount(pClientIP, pClientPort);
 		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks() - 1;
@@ -164,17 +171,30 @@ public class gameServer extends Server {
 		this.sendToAll("Verbindung von Spieler " + account.getPlayer() + " geschlossen");
 	}
 
+	/**
+	 * ordnet IP und Port zu einem Client zu
+	 * 
+	 * @param pClientIP
+	 * @param pClientPort
+	 * @return account
+	 */
 	private Account IPAndPortToAccount(String pClientIP, int pClientPort) {
-		Account tmp = null;
+		Account account = null;
 		for (int i = 0; i < accounts.size(); i++) {
-			tmp = accounts.get(i);
-			if ((tmp.getClientIP()).equals(pClientIP) && tmp.getClientPort() == pClientPort) {
+			account = accounts.get(i);
+			if ((account.getClientIP()).equals(pClientIP) && account.getClientPort() == pClientPort) {
 				break;
 			}
 		}
-		return tmp;
+		return account;
 	}
 
+	/**
+	 * Spieler verlässt das Spiel
+	 * 
+	 * @param pAccount
+	 * @param currentB
+	 */
 	private void playerLeave(Account pAccount, int currentB) {
 		for (int i = pAccount.getPlayer(); i < bjs.getBlackJacks().get(currentB).getPlayerCount(); i++) {
 			if (i > 1) {

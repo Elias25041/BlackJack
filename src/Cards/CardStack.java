@@ -56,6 +56,10 @@ public class CardStack {
 
 	}
 
+	/**
+	 * stack wird zurueck gegeben
+	 * @return stack
+	 */
 	public ArrayList<Card> getStack() {
 		return stack;
 	}

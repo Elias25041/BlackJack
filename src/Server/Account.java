@@ -31,14 +31,28 @@ public class Account {
 		return clientPort;
 	}
 
+	/**
+	 * gibt die Nummer des Spielers zurück
+	 * @return player
+	 */
 	public int getPlayer() {
 		return player;
 	}
 	
+	/**
+	 * gibt die Nummer des Spiels an, indem es ist
+	 * 
+	 * @return blackjacks
+	 */
 	public int getBlackJacks() {
 		return blackJacks;
 	}
 	
+	/**
+	 * setzt die Nummer des Spielers
+	 * 
+	 * @param p
+	 */
 	public void setPlayer(int p) {
 		player = p;
 	}

@@ -3,7 +3,6 @@ package Game;
 import Cards.Card;
 import Cards.CardStack;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Dealer extends GameMechanic {
 
@@ -44,7 +43,6 @@ public class Dealer extends GameMechanic {
 	public void getCard(Card c) {
 		cards.add(c);
 		this.calculateWorth();
-		this.cardAmount++;
 	}
 
 }

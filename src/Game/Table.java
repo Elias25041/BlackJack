@@ -31,11 +31,21 @@ public class Table {
 		return PlayerCount;
 	}
 	
+	/**
+	 * 
+	 * @param pPlayerCount
+	 */
 	public void addPlayerCount(int pPlayerCount) {
 		PlayerCount += pPlayerCount;
 		System.out.println("" + PlayerCount);
 	}
 
+	/**
+	 * der Platz eines Spielers wird zurück gegeben
+	 * 
+	 * @param placeNumber
+	 * @return PlaceOne || PlaceTwo || PlaceThree || PlaceFour || PlaceFive || PlaceSix
+	 */
 	public Player getPlace(int placeNumber) {
 		switch (placeNumber) {
 		case 1:
@@ -56,9 +66,9 @@ public class Table {
 	}
 
 	/**
-	 * gibt den Dealer zurÃ¼ck
+	 * gibt den Dealer zurueck
 	 * 
-	 * @return
+	 * @return PlaceDealer
 	 */
 	public Dealer getPlaceDealer() {
 		return PlaceDealer;
@@ -142,7 +152,13 @@ public class Table {
 		winningPlayer.getPaid(potAmount);
 	}
 	
-	public Player getPlayer(int i) {
-		return player[i];
+	/**
+	 * gibt den Spieler eines Platzes zurück
+	 * 
+	 * @param place
+	 * @return Player
+	 */
+	public Player getPlayer(int place) {
+		return player[place];
 	}
 }

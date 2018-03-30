@@ -6,7 +6,6 @@ import Cards.Card;
 
 public class GameMechanic {
 
-	protected int cardAmount;
 	protected int cardWorth;
 	protected ArrayList<Card> cards;
 
@@ -19,36 +18,7 @@ public class GameMechanic {
 	 * Kartenwert wird berechnetn
 	 */
 	public void calculateWorth() {
-		cardWorth = 0;
-		for (int i = 0; i < cards.size(); i++) {
-			Card c = cards.get(i);
-			if (c.getType().equals("Koenig") || c.getType().equals("Dame") || c.getType().equals("Bube")
-					|| c.getType().equals("Zehn")) {
-				cardWorth = cardWorth + 10;
-			} else if (c.getType().equals("Zwei")) {
-				cardWorth = cardWorth + 2;
-			} else if (c.getType().equals("Drei")) {
-				cardWorth = cardWorth + 3;
-			} else if (c.getType().equals("Vier")) {
-				cardWorth = cardWorth + 4;
-			} else if (c.getType().equals("Fuenf")) {
-				cardWorth = cardWorth + 5;
-			} else if (c.getType().equals("Sechs")) {
-				cardWorth = cardWorth + 6;
-			} else if (c.getType().equals("Sieben")) {
-				cardWorth = cardWorth + 7;
-			} else if (c.getType().equals("Acht")) {
-				cardWorth = cardWorth + 8;
-			} else if (c.getType().equals("Neun")) {
-				cardWorth = cardWorth + 9;
-			} else if (c.getType().equals("Ass")) {
-				if (cardWorth + 11 <= 21) {
-					cardWorth = cardWorth + 11;
-				} else {
-					cardWorth = cardWorth + 1;
-				}
-			}
-		}
+		cardWorth = this.cardsWorth(cards);
 	}
 
 	/**
@@ -61,14 +31,20 @@ public class GameMechanic {
 		return cardWorth;
 	}
 
-	public int getCardAmount() {
-		return cardAmount;
-	}
-
+	/**
+	 * cards wird zurück gegeben
+	 * 
+	 * @return cards
+	 */
 	public ArrayList<Card> getCards() {
 		return cards;
 	}
 
+	/**
+	 * es wird gegeuckt ob die Person gewonnen hat
+	 * 
+	 * @return boolean
+	 */
 	public boolean checkWin() {
 		this.calculateWorth();
 		if (cardWorth == 21) {
@@ -78,6 +54,11 @@ public class GameMechanic {
 		}
 	}
 
+	/**
+	 * es wird geguckt ob die Person verloren hat
+	 * 
+	 * @return boolean
+	 */
 	public boolean checkLose() {
 		this.calculateWorth();
 		if (cardWorth > 21) {
@@ -87,9 +68,52 @@ public class GameMechanic {
 		}
 	}
 
+	/**
+	 * Person wird zurück gesetzt
+	 */
 	public void reset() {
 		cardWorth = 0;
-		cardAmount = 0;
 		cards.clear();
+	}
+	
+	/**
+	 * der Kartenwert einer Arraylist vom typ Card wird errechnet
+	 * 
+	 * @param a
+	 * @return worth
+	 */
+	public int cardsWorth(ArrayList<Card> a) {
+		int worth = 0;
+		for (int i = 0; i < a.size(); i++) {
+			Card c = a.get(i);
+			if (c.getType().equals("Koenig") || c.getType().equals("Dame") || c.getType().equals("Bube")
+					|| c.getType().equals("Zehn")) {
+				worth = worth + 10;
+			} else if (c.getType().equals("Zwei")) {
+				worth = worth + 2;
+			} else if (c.getType().equals("Drei")) {
+				worth = worth + 3;
+			} else if (c.getType().equals("Vier")) {
+				worth = worth + 4;
+			} else if (c.getType().equals("Fuenf")) {
+				worth = worth + 5;
+			} else if (c.getType().equals("Sechs")) {
+				worth = worth + 6;
+			} else if (c.getType().equals("Sieben")) {
+				worth = worth + 7;
+			} else if (c.getType().equals("Acht")) {
+				worth = worth + 8;
+			} else if (c.getType().equals("Neun")) {
+				worth = worth + 9;
+			} else if (c.getType().equals("Ass")) {
+				if (worth + 11 <= 21) {
+					worth = worth + 11;
+				} else {
+					worth = worth + 1;
+				}
+			}
+		}
+		
+		return worth;
 	}
 }
