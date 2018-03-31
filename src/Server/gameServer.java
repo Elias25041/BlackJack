@@ -101,6 +101,7 @@ public class gameServer extends Server {
 								+ bjs.getBlackJacks().get(currentBlackJack).getPlayerCards(accounts.get(i).getPlayer())
 								+ accounts.get(i).getPlayer();
 					}
+					backMessage += ":" + bjs.getBlackJacks().get(currentBlackJack).getDealerCard(2);
 				} else {
 					backMessage = Protokoll.SC_ERROR;
 				}
@@ -109,9 +110,9 @@ public class gameServer extends Server {
 				if (bjs.getBlackJacks().get(currentBlackJack).getInGame()) {
 					try {
 					if (bjs.getBlackJacks().get(currentBlackJack).Bet(currentMove, Integer.parseInt(splitMessage[1]))) {
-						backMessage = Protokoll.SC_PAY;
+						backMessage = Protokoll.SC_PAY + ":" + currentMove;
 					} else {
-						backMessage = Protokoll.CONVERT + Protokoll.SC_PAY;
+						backMessage = Protokoll.CONVERT + Protokoll.SC_PAY + ":" + currentMove;
 					}
 					} catch(Exception e) {
 						backMessage = Protokoll.SC_ERROR;
@@ -134,11 +135,15 @@ public class gameServer extends Server {
 					backMessage = Protokoll.SC_SPLIT;
 				}
 				break;
+			case Protokoll.CS_DOUBLEDOWN:
+				if(bjs.getBlackJacks().get(currentBlackJack).playerDoubleDown(currentMove)) {
+					backMessage = Protokoll.SC_DOUBLEDOWN + Protokoll.TRENNER + currentMove;
+				}
 			}
 		}
 		System.out.println("Ich schicke: " + backMessage);
 
-		this.sendToAll(backMessage);
+		this.sendToSession(currentBlackJack, backMessage);
 
 	}
 
@@ -188,6 +193,22 @@ public class gameServer extends Server {
 		}
 		return account;
 	}
+	
+	/**
+	 * ordnet spieler und Spiele zu einem Account zu
+	 * 
+	 * @param blackJack
+	 * @param player
+	 * @return Account || null
+	 */
+	private Account sessionAndPlayerToAccount(int blackJack, int player) {
+		for(int i = 0; i < accounts.size(); i++) {
+			if(accounts.get(i).getBlackJacks() == blackJack && accounts.get(i).getPlayer() == player) {
+				return accounts.get(i);
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * Spieler verlässt das Spiel
@@ -203,5 +224,19 @@ public class gameServer extends Server {
 		}
 		bjs.getBlackJacks().get(currentB).leavePlace(bjs.getBlackJacks().get(currentB).getPlayerCount());
 		accounts.remove(pAccount);
+	}
+	
+	/**
+	 * sendet eine Message zu einem Spiel
+	 * 
+	 * @param blackJack
+	 * @param message
+	 */
+	private void sendToSession(int blackJack, String message) {
+		BlackJack  bj = bjs.getBlackJacks().get(blackJack);
+		for(int i = 0; i < bj.getPlayerCount(); i++) {
+			Account acc = this.sessionAndPlayerToAccount(blackJack, i + 1);
+			this.send(acc.getClientIP(),acc.getClientPort() , message);
+		}
 	}
 }

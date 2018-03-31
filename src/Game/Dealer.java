@@ -27,15 +27,6 @@ public class Dealer extends GameMechanic {
 	}
 
 	/**
-	 * Der Wert aller Karten des Dealers wird zurÃ¼ckgegeben.
-	 * 
-	 * @return CardWorth
-	 */
-	public int getCardWorth() {
-		return cardWorth;
-	}
-
-	/**
 	 * fügt Karte in cards hinzu
 	 * 
 	 * @param c

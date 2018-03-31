@@ -4,7 +4,7 @@ import Cards.Card;
 import java.util.ArrayList;
 
 /**
- * Der Spieler kann �ber Einsatz, weitere Karten ziehen oder aufh�ren
+ * Der Spieler kann ueber Einsatz, weitere Karten ziehen oder aufh�ren
  * entscheiden und desweiteren verschiedene Aktionen im Spiel ausf�hren.
  * 
  * @author tamlyn.brandau
@@ -48,8 +48,11 @@ public class Player extends GameMechanic {
 	/**
 	 * Wenn der Spieler 2 Karten hat, kann er seinen Einsatz verdoppeln.
 	 */
-	public void doubleDown() {
-
+	public boolean doubleDown() {
+		if(cards.size() == 2 && credit > bet) {
+			return true;
+		}
+		return false;
 	}
 
 	/**

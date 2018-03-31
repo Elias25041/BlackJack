@@ -22,7 +22,7 @@ public class GameMechanic {
 	}
 
 	/**
-	 * Der Kartenwert wird zur�ckgegeben
+	 * Der Kartenwert wird zurueckgegeben
 	 * 
 	 * @return cardWorth
 	 */

@@ -68,8 +68,8 @@ public class BlackJack {
 	}
 
 	/**
-	 * gibt einem Spieler eine Karte, wenn der Spieler einen Split gemacht hat wird dem Spieler zwei Karten gegeben.
-	 * jedem Stapel eine
+	 * gibt einem Spieler eine Karte, wenn der Spieler einen Split gemacht hat wird
+	 * dem Spieler zwei Karten gegeben. jedem Stapel eine
 	 * 
 	 * @param pPlayer
 	 * @return backMessage
@@ -91,7 +91,8 @@ public class BlackJack {
 	}
 
 	/**
-	 * das Spiel wird gestartet, jeder Spieler und Dealer bekommen zwei Karten, playerNotBetted und inGame werden neu Initialisiert
+	 * das Spiel wird gestartet, jeder Spieler und Dealer bekommen zwei Karten,
+	 * playerNotBetted und inGame werden neu Initialisiert
 	 * 
 	 * @return boolean
 	 */
@@ -128,7 +129,7 @@ public class BlackJack {
 	}
 
 	/**
-	 * die Karten des Spielers werden zurückgegeben
+	 * die Karten des Spielers werden zurueckgegeben
 	 * 
 	 * @param pPlayer
 	 * @return cardAsString
@@ -143,7 +144,7 @@ public class BlackJack {
 	}
 
 	/**
-	 * gibt den palyerTurn zurück
+	 * gibt den playerTurn zurueck
 	 * 
 	 * @return playerTurn
 	 */
@@ -152,21 +153,22 @@ public class BlackJack {
 	}
 
 	/**
-	 * der playerTurn wird verändert, wenn der playerTurn gleich der Anzahl der Spieler ist wird die Runde beendet.
-	 * Ein Gewinner wird errechnet und es wird alles zurück gesetzt, damit eine nächste Runde gestartet werden kann
+	 * der playerTurn wird veraendert, wenn er gleich der Anzahl der
+	 * Spieler ist wird die Runde beendet. Ein Gewinner wird errechnet und es wird
+	 * alles zurück gesetzt, damit eine nächste Runde gestartet werden kann
 	 * 
-	 * @return tmp
+	 * @return winMessage
 	 */
 	public String setPlayerTurn() {
-		String tmp = "";
+		String winMessage = "";
 		if (!(playerTurn == table.getPlayerCount())) {
 			if (this.winLose(playerTurn) == 0) {
-				tmp += winMessage(playerTurn, bank.pay());
+				winMessage += winMessage(playerTurn, bank.pay());
 			} else if (this.winLose(playerTurn) == 1) {
-				tmp += ":L";
+				winMessage += ":L";
 				playerTurn++;
 				if (playerTurn == table.getPlayerCount()) {
-					tmp = winMessage(playerTurn, bank.pay());
+					winMessage = winMessage(playerTurn, bank.pay());
 				}
 			} else {
 				playerTurn++;
@@ -174,8 +176,9 @@ public class BlackJack {
 		} else {
 			int maxPoints = 0;
 			int maxPlayer = 0;
-			tmp = this.endRound();
-			if (!tmp.equals("DW")) {
+			winMessage = ":" + this.endRound();
+			System.out.println(" Dealerpoints: " + dealer.getCardWorth());
+			if (!winMessage.equals(":DW")) {
 				for (int i = 1; i <= table.getPlayerCount(); i++) {
 					if (table.getPlace(i).getSplitted()) {
 						int points = table.getPlace(i).getSplitCardWorth();
@@ -183,7 +186,8 @@ public class BlackJack {
 							maxPoints = points;
 							maxPlayer = i;
 						} else if (points == maxPoints) {
-							if (table.getPlace(maxPlayer).getSplitCards().size() > table.getPlace(i).getSplitCards().size()) {
+							if (table.getPlace(maxPlayer).getSplitCards().size() > table.getPlace(i).getSplitCards()
+									.size()) {
 								maxPoints = points;
 								maxPlayer = i;
 							}
@@ -200,10 +204,15 @@ public class BlackJack {
 						}
 					}
 				}
-				tmp = winMessage(maxPlayer, bank.pay());
+				if (dealer.getCardWorth() > maxPoints && dealer.getCardWorth() <= 21) {
+					bank.getPaid();
+					return ":DW";
+				}
+				winMessage = winMessage(maxPlayer, bank.pay());
 			}
+			System.out.println("PlayerPoints: " + maxPoints);
 		}
-		return tmp;
+		return winMessage;
 	}
 
 	/**
@@ -220,8 +229,8 @@ public class BlackJack {
 	}
 
 	/**
-	 * es wird geguckt ob ein Spieler genau 21 Punkte (gewonnen), mehr als 21 Punkte (verloren), 
-	 * oder unter 21 Punkte (kann weiter spielen) hat
+	 * es wird geguckt ob ein Spieler genau 21 Punkte (gewonnen), mehr als 21 Punkte
+	 * (verloren), oder unter 21 Punkte (kann weiter spielen) hat
 	 * 
 	 * @param pPlayer
 	 * @return 0,1,2
@@ -474,4 +483,31 @@ public class BlackJack {
 		}
 		return cardsAsString;
 	}
+	
+	/**
+	 * gibt eine Karte des Dealers an einer bestimmten Stelle wieder (fängt mit 1 an)
+	 * 
+	 * @param card
+	 * @return
+	 */
+	public String getDealerCard(int card) {
+		return this.cardInfo(dealer.getCards().get(card - 1));
+	}
+	
+	/**
+	 * prueft die Anfrage für einen DoubleDown
+	 * 
+	 * @return
+	 */
+	public boolean playerDoubleDown(int pPlayer) {
+		Player player = table.getPlace(pPlayer);
+		if(player.doubleDown()) {
+			player.getPaid(-player.getBet());
+			bank.addPot(player.getBet());
+			return true;
+		}
+		return false;
+	}
+	
+	
 }
