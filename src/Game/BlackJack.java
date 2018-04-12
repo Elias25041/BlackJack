@@ -508,6 +508,4 @@ public class BlackJack {
 		}
 		return false;
 	}
-	
-	
 }

@@ -27,50 +27,50 @@ public class gameServer extends Server {
 	 * produziert eine neue Verbindung
 	 */
 	public synchronized void processNewConnection(String pClientIP, int pClientPort) {
-		int sessions = bjs.getBlackJacks().size();
+		int sessions = bjs.getBlackJacks().size() - 1;
 		System.out.println("Sessions:" + sessions);
-		switch (bjs.getBlackJacks().get(sessions - 1).getPlayerCount()) {
+		switch (bjs.getBlackJacks().get(sessions).getPlayerCount()) {
 		case 0:
-			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 1, sessions));
-			System.out.println("Bin da");
-			this.sendToAll("Nr. 1 ist da");
+			System.out.println("Bin da 1");
+			this.send(pClientIP, pClientPort, "" + 1);
 			break;
 		case 1:
-			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 2, sessions));
-			System.out.println("Bin da");
-			this.sendToAll("Nr. 2 ist da");
+			System.out.println("Bin da 2");
+			this.send(pClientIP, pClientPort, "" + 2);
 			break;
 		case 2:
-			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 3, sessions));
-			System.out.println("Bin da");
-			this.sendToAll("Nr. 3 ist da");
+			System.out.println("Bin da 3");
+			this.send(pClientIP, pClientPort, "" + 3);
 			break;
 		case 3:
-			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 4, sessions));
-			System.out.println("Bin da");
-			this.sendToAll("Nr. 4 ist da");
+			System.out.println("Bin da 4");
+			this.send(pClientIP, pClientPort, "" + 4);
 			break;
 		case 4:
-			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 5, sessions));
-			System.out.println("Bin da");
-			this.sendToAll("Nr. 5 ist da");
+			System.out.println("Bin da 5");
+			this.send(pClientIP, pClientPort, "" + 5);
 			break;
 		case 5:
-			bjs.getBlackJacks().get(sessions - 1).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 6, sessions));
-			System.out.println("Bin da");
-			this.sendToAll("Nr. 6 ist da");
+			System.out.println("Bin da 6");
+			this.send(pClientIP, pClientPort, "" + 6);
 			break;
 		default:
 			bjs.getBlackJacks().add(new BlackJack(cardAmount, startCredit));
-			bjs.getBlackJacks().get(sessions).setPlayertoTable(new Player());
+			bjs.getBlackJacks().get(sessions + 1).setPlayertoTable(new Player());
 			accounts.add(new Account(pClientIP, pClientPort, 1, sessions + 1));
-			this.send(pClientIP, pClientPort, "Sessions: " + sessions);
+			this.send(pClientIP, pClientPort, "" + 1);
 		}
 	}
 
@@ -82,13 +82,12 @@ public class gameServer extends Server {
 		String backMessage = Protokoll.SC_ERROR;
 		int currentMove = this.IPAndPortToAccount(pClientIP, pClientPort).getPlayer();
 		System.out.println("currentMove: " + currentMove);
-		int currentBlackJack = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks() - 1;
+		int currentBlackJack = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks();
+		System.out.println("currentBlackJack: " + currentBlackJack);
 		String[] splitMessage = pMessage.split(Protokoll.TRENNER);
 		String start = splitMessage[0];
-		System.out.println("Nichts");
 		System.out.println("playerTurn:" + bjs.getBlackJacks().get(currentBlackJack).getPlayerTurn());
 		if (bjs.getBlackJacks().get(currentBlackJack).getPlayerTurn() == 0) {
-			System.out.println("PlayerTurn=0");
 			switch (start) {
 			case Protokoll.CS_STARTGAME:
 				backMessage = Protokoll.SC_GAMESTART + Protokoll.TRENNER
@@ -235,7 +234,7 @@ public class gameServer extends Server {
 	private void sendToSession(int blackJack, String message) {
 		BlackJack  bj = bjs.getBlackJacks().get(blackJack);
 		for(int i = 0; i < bj.getPlayerCount(); i++) {
-			Account acc = this.sessionAndPlayerToAccount(blackJack, i + 1);
+			Account acc = this.sessionAndPlayerToAccount(blackJack, i);
 			this.send(acc.getClientIP(),acc.getClientPort() , message);
 		}
 	}
