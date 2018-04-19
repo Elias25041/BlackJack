@@ -153,9 +153,9 @@ public class BlackJack {
 	}
 
 	/**
-	 * der playerTurn wird veraendert, wenn er gleich der Anzahl der
-	 * Spieler ist wird die Runde beendet. Ein Gewinner wird errechnet und es wird
-	 * alles zurück gesetzt, damit eine nächste Runde gestartet werden kann
+	 * der playerTurn wird veraendert, wenn er gleich der Anzahl der Spieler ist
+	 * wird die Runde beendet. Ein Gewinner wird errechnet und es wird alles zurück
+	 * gesetzt, damit eine nächste Runde gestartet werden kann
 	 * 
 	 * @return winMessage
 	 */
@@ -483,9 +483,10 @@ public class BlackJack {
 		}
 		return cardsAsString;
 	}
-	
+
 	/**
-	 * gibt eine Karte des Dealers an einer bestimmten Stelle wieder (fängt mit 1 an)
+	 * gibt eine Karte des Dealers an einer bestimmten Stelle wieder (fängt mit 1
+	 * an)
 	 * 
 	 * @param card
 	 * @return
@@ -493,7 +494,7 @@ public class BlackJack {
 	public String getDealerCard(int card) {
 		return this.cardInfo(dealer.getCards().get(card - 1));
 	}
-	
+
 	/**
 	 * prueft die Anfrage für einen DoubleDown
 	 * 
@@ -501,7 +502,7 @@ public class BlackJack {
 	 */
 	public boolean playerDoubleDown(int pPlayer) {
 		Player player = table.getPlace(pPlayer);
-		if(player.doubleDown()) {
+		if (player.doubleDown()) {
 			player.getPaid(-player.getBet());
 			bank.addPot(player.getBet());
 			return true;
