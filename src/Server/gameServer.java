@@ -1,6 +1,7 @@
 package Server;
 
 import AbiturKlassen.Server;
+import Bot.Bot_Client;
 import Game.BlackJack;
 import Game.Player;
 import Protokoll.Protokoll;
@@ -13,6 +14,7 @@ public class gameServer extends Server {
 	private ArrayList<Account> accounts;
 	private int cardAmount;
 	private int startCredit;
+	private Bot_Client bot;
 
 	public gameServer(int pPort, int pCardAmount, int pStartCredit) {
 		super(pPort);
@@ -20,6 +22,7 @@ public class gameServer extends Server {
 		startCredit = pStartCredit;
 		bjs = new BlackJacks(pCardAmount, pStartCredit);
 		accounts = new ArrayList<Account>();
+		bot = new Bot_Client("localhost", pPort);
 		System.out.println("Hallo ich bin der server auf Port: " + pPort + "; und CA = " + cardAmount);
 	}
 
@@ -108,12 +111,13 @@ public class gameServer extends Server {
 			case Protokoll.CS_PAY:
 				if (bjs.getBlackJacks().get(currentBlackJack).getInGame()) {
 					try {
-					if (bjs.getBlackJacks().get(currentBlackJack).Bet(currentMove, Integer.parseInt(splitMessage[1]))) {
-						backMessage = Protokoll.SC_PAY + ":" + currentMove;
-					} else {
-						backMessage = Protokoll.CONVERT + Protokoll.SC_PAY + ":" + currentMove;
-					}
-					} catch(Exception e) {
+						if (bjs.getBlackJacks().get(currentBlackJack).Bet(currentMove,
+								Integer.parseInt(splitMessage[1]))) {
+							backMessage = Protokoll.SC_PAY + ":" + currentMove;
+						} else {
+							backMessage = Protokoll.CONVERT + Protokoll.SC_PAY + ":" + currentMove;
+						}
+					} catch (Exception e) {
 						backMessage = Protokoll.SC_ERROR;
 					}
 				}
@@ -123,7 +127,8 @@ public class gameServer extends Server {
 			backMessage += "" + currentMove;
 			switch (start) {
 			case Protokoll.CS_HIT:
-				backMessage = Protokoll.SC_CARD + Protokoll.TRENNER + bjs.getBlackJacks().get(currentBlackJack).cardToPlayer(currentMove);
+				backMessage = Protokoll.SC_CARD + Protokoll.TRENNER
+						+ bjs.getBlackJacks().get(currentBlackJack).cardToPlayer(currentMove);
 				backMessage += Protokoll.TRENNER + currentMove;
 				break;
 			case Protokoll.CS_STAND:
@@ -135,7 +140,7 @@ public class gameServer extends Server {
 				}
 				break;
 			case Protokoll.CS_DOUBLEDOWN:
-				if(bjs.getBlackJacks().get(currentBlackJack).playerDoubleDown(currentMove)) {
+				if (bjs.getBlackJacks().get(currentBlackJack).playerDoubleDown(currentMove)) {
 					backMessage = Protokoll.SC_DOUBLEDOWN + Protokoll.TRENNER + currentMove;
 				}
 			}
@@ -151,7 +156,7 @@ public class gameServer extends Server {
 	 */
 	public synchronized void processClosingConnection(String pClientIP, int pClientPort) {
 		Account account = this.IPAndPortToAccount(pClientIP, pClientPort);
-		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks() - 1;
+		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks();
 		switch (account.getPlayer()) {
 		case 1:
 			playerLeave(account, currentBlacksJacks);
@@ -192,7 +197,7 @@ public class gameServer extends Server {
 		}
 		return account;
 	}
-	
+
 	/**
 	 * ordnet spieler und Spiele zu einem Account zu
 	 * 
@@ -201,8 +206,8 @@ public class gameServer extends Server {
 	 * @return Account || null
 	 */
 	private Account sessionAndPlayerToAccount(int blackJack, int player) {
-		for(int i = 0; i < accounts.size(); i++) {
-			if(accounts.get(i).getBlackJacks() == blackJack && accounts.get(i).getPlayer() == player) {
+		for (int i = 0; i < accounts.size(); i++) {
+			if (accounts.get(i).getBlackJacks() == blackJack && accounts.get(i).getPlayer() == player) {
 				return accounts.get(i);
 			}
 		}
@@ -224,7 +229,7 @@ public class gameServer extends Server {
 		bjs.getBlackJacks().get(currentB).leavePlace(bjs.getBlackJacks().get(currentB).getPlayerCount());
 		accounts.remove(pAccount);
 	}
-	
+
 	/**
 	 * sendet eine Message zu einem Spiel
 	 * 
@@ -232,10 +237,10 @@ public class gameServer extends Server {
 	 * @param message
 	 */
 	private void sendToSession(int blackJack, String message) {
-		BlackJack  bj = bjs.getBlackJacks().get(blackJack);
-		for(int i = 0; i < bj.getPlayerCount(); i++) {
-			Account acc = this.sessionAndPlayerToAccount(blackJack, i);
-			this.send(acc.getClientIP(),acc.getClientPort() , message);
+		BlackJack bj = bjs.getBlackJacks().get(blackJack);
+		for (int i = 0; i < bj.getPlayerCount(); i++) {
+			Account acc = this.sessionAndPlayerToAccount(blackJack, i + 1);
+			this.send(acc.getClientIP(), acc.getClientPort(), message);
 		}
 	}
 }
