@@ -151,7 +151,7 @@ public class gameServer extends Server {
 	 */
 	public synchronized void processClosingConnection(String pClientIP, int pClientPort) {
 		Account account = this.IPAndPortToAccount(pClientIP, pClientPort);
-		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks() - 1;
+		int currentBlacksJacks = this.IPAndPortToAccount(pClientIP, pClientPort).getBlackJacks();
 		switch (account.getPlayer()) {
 		case 1:
 			playerLeave(account, currentBlacksJacks);
@@ -234,7 +234,7 @@ public class gameServer extends Server {
 	private void sendToSession(int blackJack, String message) {
 		BlackJack  bj = bjs.getBlackJacks().get(blackJack);
 		for(int i = 0; i < bj.getPlayerCount(); i++) {
-			Account acc = this.sessionAndPlayerToAccount(blackJack, i);
+			Account acc = this.sessionAndPlayerToAccount(blackJack, i + 1);
 			this.send(acc.getClientIP(),acc.getClientPort() , message);
 		}
 	}

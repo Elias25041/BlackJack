@@ -34,7 +34,7 @@ public class Protokoll {
 	
 	public static final String SC_ERROR = "E"; // schickt einen Error zurück
 	
-	public static final String SC_CARD = "C"; // mit dem Trenner wird der Kartenwert angehängt
+	public static final String SC_CARD = "C"; // mit dem Trenner wird der Kartenwert und Spieler angehängt
 	
 	public static final String SC_GAMESTART = "GS"; // der Startcredit und die Karten  werden für alle Clients bekanntgegeben, als letztes wird die erste Karte des Dealers bekann gegeben
 	
