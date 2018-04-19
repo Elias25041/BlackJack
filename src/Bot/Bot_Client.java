@@ -7,7 +7,6 @@ public class Bot_Client extends Client{
 	
 	public Bot_Client(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
-		credit=100;
 	}
 
 	public void processMessage(String pMessage) {
@@ -15,6 +14,8 @@ public class Bot_Client extends Client{
 		switch(splitMessage[0]) {
 			case Protokoll.SC_GAMESTART:
 				credit = Integer.parseInt(splitMessage[1]);
+				
+			case Protokoll.SC_CARD:
 				
 		}
 		}
@@ -27,5 +28,11 @@ public class Bot_Client extends Client{
 		int x=credit/10;
 		send("CS_PAY:" + x);
 	}
+	
+	public void stand() {
+		send("CS_STAND");
+	}
+	
+	
 
 }
