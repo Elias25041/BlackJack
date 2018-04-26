@@ -36,7 +36,7 @@ public class Protokoll {
 	
 	public static final String SC_CARD = "C"; // mit dem Trenner wird der Kartenwert und Spieler angehängt
 	
-	public static final String SC_GAMESTART = "GS"; // der Startcredit und die Karten  werden für alle Clients bekanntgegeben, als letztes wird die erste Karte des Dealers bekann gegeben
+	public static final String SC_GAMESTART = "G"; // der Startcredit und die Karten  werden für alle Clients bekanntgegeben, als letztes wird die erste Karte des Dealers bekann gegeben
 	
 	public static final String SC_WIN = "W"; // dahinter wird der Spieler und der Gewinn angehängt
 	
@@ -44,9 +44,9 @@ public class Protokoll {
 	
 	public static final String SC_STAND = "S"; // es wird die Nummer des Spielers hinten angehängt
 	
-	public static final String SC_SPLIT = "SP"; // Wenn ein Split möglich ist dann werden die Karten 
+	public static final String SC_SPLIT = "T"; // Wenn ein Split möglich ist dann werden die Karten 
 	
-	public static final String SC_DEALERWIN = "DW"; // wird hinter SC_STAND gehängt, wenn der Dealer einen Blackjack hat
+	public static final String SC_DEALERWIN = "M"; // wird hinter SC_STAND gehängt, wenn der Dealer einen Blackjack hat
 	
 	public static final String SC_DOUBLEDOWN = "D"; // bestätigt die Anfrage, ob der Client sein Einsatz verdoppeln kann
 }

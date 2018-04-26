@@ -26,7 +26,6 @@ public class Bot_Client extends Client {
 		switch(splitMessage[0]) {
 			case Protokoll.SC_GAMESTART:
 				credit = Integer.parseInt(splitMessage[1]);
-				send("CS_HIT");
 				//Startkarten auswerten hinzufügen
 				break;
 				
