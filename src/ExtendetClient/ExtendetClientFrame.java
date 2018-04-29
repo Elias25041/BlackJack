@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class ExtendetClientFrame extends JFrame{
@@ -29,13 +31,17 @@ public class ExtendetClientFrame extends JFrame{
 	
 	private ExtendetClient bc;
 	private JPanel panel;
-	private JPanel panel_1;
 	private JLabel cardWorth;
 	private JButton btnHit;
 	private JButton btnStand;
 	private JButton btnStartgame;
 	private JTextArea output;
 	private JScrollPane scrollPane;
+	private JPanel panel_1;
+	private JLabel card1;
+	private JLabel card2;
+	private JLabel card3;
+	private Icon icon1;
 
 	/**
 	 * Launch the application.
@@ -111,6 +117,26 @@ public class ExtendetClientFrame extends JFrame{
 		buttom.setLayout(new BoxLayout(buttom, BoxLayout.X_AXIS));
 		buttom.add(btnStartgame);
 		
+		
+		
+		btnHit = new JButton("Hit");
+		buttom.add(btnHit);
+		btnHit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bc.send("H");
+			}
+		});
+		
+		btnStand = new JButton("Stand");
+		buttom.add(btnStand);
+		
+		
+		btnStand.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				bc.send("S");
+			}
+		});
+		
 		txtSend = new JTextField();
 		buttom.add(txtSend);
 		txtSend.setColumns(10);
@@ -119,35 +145,27 @@ public class ExtendetClientFrame extends JFrame{
 		panel = new JPanel();
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
-		
-		panel_1 = new JPanel();
-		panel.add(panel_1, BorderLayout.SOUTH);
-		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		
-		
-		btnHit = new JButton("Hit");
-		panel_1.add(btnHit);
-		
-		btnStand = new JButton("Stand");
-		panel_1.add(btnStand);
+		scrollPane = new JScrollPane();
+		panel.add(scrollPane, BorderLayout.NORTH);
 		
 		output = new JTextArea();
-		scrollPane = new JScrollPane(output);
-		panel.add(scrollPane, BorderLayout.EAST);
+		panel.add(output, BorderLayout.SOUTH);
+		
+		panel_1 = new JPanel();
+		panel.add(panel_1, BorderLayout.CENTER);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		card1 = new JLabel(icon1);
+		panel_1.add(card1);
+		
+		card2 = new JLabel("New label");
+		panel_1.add(card2);
+		
+		card3 = new JLabel("New label");
+		panel_1.add(card3);
 		ausgeben("Weitere Meldungen");
 		
-		
-		btnStand.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				bc.send("S");
-			}
-		});
-		btnHit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				bc.send("H");
-			}
-		});
+		icon1 = new ImageIcon(getClass().getResource("ExtendetClient.cardsPic/10-karo.jpg"));
 	}
 	
 	private void connect() {
