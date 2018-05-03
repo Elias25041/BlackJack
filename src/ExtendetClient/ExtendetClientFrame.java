@@ -21,6 +21,9 @@ import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.SwingConstants;
 
 public class ExtendetClientFrame extends JFrame{
 
@@ -63,6 +66,7 @@ public class ExtendetClientFrame extends JFrame{
 	 * Create the frame.
 	 */
 	public ExtendetClientFrame() {
+		setBackground(Color.GREEN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 727, 457);
 		contentPane = new JPanel();
@@ -143,6 +147,7 @@ public class ExtendetClientFrame extends JFrame{
 		buttom.add(btnServer);
 		
 		panel = new JPanel();
+		panel.setBackground(Color.GREEN);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
 		scrollPane = new JScrollPane();
@@ -155,17 +160,18 @@ public class ExtendetClientFrame extends JFrame{
 		panel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		icon1 = new ImageIcon(getClass().getResource("10-karo.jpg"));
 		card1 = new JLabel(icon1);
 		panel_1.add(card1);
 		
-		card2 = new JLabel("New label");
+		card2 = new JLabel();
 		panel_1.add(card2);
 		
-		card3 = new JLabel("New label");
+		card3 = new JLabel();
 		panel_1.add(card3);
 		ausgeben("Weitere Meldungen");
 		
-		icon1 = new ImageIcon(getClass().getResource("ExtendetClient.cardsPic/10-karo.jpg"));
+		
 	}
 	
 	private void connect() {

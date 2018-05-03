@@ -15,22 +15,30 @@ public class ExtendetClient extends Client {
 
 	public void processMessage(String pMessage) {
 		meineGui.ausgeben(pMessage);
-		String anfang = pMessage.substring(0, 0);
-		String rest = pMessage.substring(2);
-		switch (anfang) {
+		String[] splitMessage = pMessage.split(":");
+		switch (splitMessage[0]) {
 		case Protokoll.SC_GAMESTART:
-			karteGezogen(rest);
+			for (int i = 2; i < splitMessage.length; i++) {
+				String toWork = splitMessage[i];
+				if(splitMessage.length == 21 ) {
+					
+					for(int j = 0; i<5; i++) {
+						
+						
+					}
+				}
+					
+			}
 			break;
 		case Protokoll.SC_CARD:
-			karteGezogen(rest);
-			break;
-		case Protokoll.SC_ERROR:
-			meineGui.ausgeben(pMessage);
 			break;
 		}
+		//System.out.println("" + splitMessage[i]);
 	}
+
 	
+
 	public void karteGezogen(String rest) {
-		
+
 	}
 }
