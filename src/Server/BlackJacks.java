@@ -19,4 +19,19 @@ public class BlackJacks {
 	public ArrayList<BlackJack> getBlackJacks() {
 		return blackJacks;
 	}
+	
+	/**
+	 * diese Methode löscht alle Blakjackspiele, wo kein Spieler drin ist
+	 * 
+	 */
+	public void deletUnusedBlackJack() {
+		for(int i = 0; i < blackJacks.size(); i++) {
+			if(blackJacks.get(i).getPlayerCount() == 0) {
+				blackJacks.remove(i);
+				//for() {
+					
+				//}
+			}
+		}
+	}
 }
