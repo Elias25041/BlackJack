@@ -13,9 +13,7 @@ public class Bot_Client extends Client {
 
 	public Bot_Client(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
-
 		credit = 100;
-
 	}
 
 	public void processMessage(String pMessage) {
