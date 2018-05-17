@@ -228,6 +228,7 @@ public class gameServer extends Server {
 		}
 		bjs.getBlackJacks().get(currentB).leavePlace(bjs.getBlackJacks().get(currentB).getPlayerCount());
 		accounts.remove(pAccount);
+		bjs.deleteUnusedBlackJack();
 	}
 
 	/**
