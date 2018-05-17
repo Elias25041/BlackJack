@@ -12,10 +12,15 @@ public class Bot_Client extends Client {
 	
 
 	public Bot_Client(String pServerIP, int pServerPort) {
+<<<<<<< HEAD
 		super(pServerIP, pServerPort);
 
 		credit = 100;
 
+=======
+		super(pServerIP, pServerPort);
+		credit = 100;
+>>>>>>> branch 'master' of https://github.com/Elias25041/BlackJack.git
 	}
 
 	public void processMessage(String pMessage) {
