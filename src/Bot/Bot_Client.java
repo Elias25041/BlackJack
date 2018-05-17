@@ -26,13 +26,41 @@ public class Bot_Client extends Client {
 		switch(splitMessage[0]) {
 			case Protokoll.SC_GAMESTART:
 				credit = Integer.parseInt(splitMessage[1]);
-				//Startkarten auswerten hinzufügen
+				int startspieler = splitMessage.length;
+				//
 				break;
 				
 			case Protokoll.SC_CARD:
 				cardworth = getCardtype(splitMessage[1]);
 				y = Integer.parseInt(splitMessage[2]);
 				cardworths[y] = cardworths[y] + cardworth;
+				
+				break;
+				
+			case Protokoll.SC_DEALERWIN:
+				clearArray();
+				
+				break;
+				
+			case Protokoll.SC_LOSE:
+				clearArray();
+				
+				break;
+				
+			case Protokoll.SC_WIN:
+				clearArray();
+				
+				break;
+				
+			case Protokoll.SC_STAND:
+				y = Integer.parseInt(splitMessage[2]);				
+					while(cardworths[y]<cardworths[player]) {
+						hit();
+					}
+					stand();
+					
+				break;			
+				
 		}
 				
 	}
@@ -50,6 +78,15 @@ public class Bot_Client extends Client {
 		send("CS_STAND");
 	}
 	
+	/*
+	 * Die Inhalte des Arrays, der die Kartenwerte der Spieler beinhaltet, werden gelöscht.
+	 */
+	public void clearArray() {
+		for(int j=0; j<5; j++) {
+			cardworths[j] = 0;
+		}
+	}
+	
 	private int getCardtype(String card) {
 		String[] cardComponent = card.split("_");
 		if(cardComponent[1].equals("Koenig") || cardComponent[1].equals("Dame") ||cardComponent[1].equals("Bube")) {
@@ -61,5 +98,4 @@ public class Bot_Client extends Client {
 	}
 	
 	
-
 }
