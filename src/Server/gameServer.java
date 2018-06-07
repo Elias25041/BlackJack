@@ -28,7 +28,7 @@ public class gameServer extends Server {
 
 	/**
 	 * produziert eine neue Verbindung
-	 */
+	 */ 
 	public synchronized void processNewConnection(String pClientIP, int pClientPort) {
 		int sessions = bjs.getBlackJacks().size() - 1;
 		System.out.println("Sessions:" + sessions);

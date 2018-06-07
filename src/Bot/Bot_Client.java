@@ -12,15 +12,8 @@ public class Bot_Client extends Client {
 	
 
 	public Bot_Client(String pServerIP, int pServerPort) {
-<<<<<<< HEAD
-		super(pServerIP, pServerPort);
-
-		credit = 100;
-
-=======
 		super(pServerIP, pServerPort);
 		credit = 100;
->>>>>>> branch 'master' of https://github.com/Elias25041/BlackJack.git
 	}
 
 	public void processMessage(String pMessage) {
@@ -32,7 +25,7 @@ public class Bot_Client extends Client {
 			case Protokoll.SC_GAMESTART:
 				credit = Integer.parseInt(splitMessage[1]);
 				int startspieler = splitMessage.length;
-				//
+				this.set();
 				break;
 				
 			case Protokoll.SC_CARD:
@@ -71,16 +64,16 @@ public class Bot_Client extends Client {
 	}
 
 	public void hit() {
-		send("CS_HIT");
+		send(Protokoll.CS_HIT);
 	}
 
 	public void set() {
 		int x = credit / 10;
-		send("CS_PAY:" + x);
+		send(Protokoll.CS_PAY + ":"+ x);
 	}
 	
 	public void stand() {
-		send("CS_STAND");
+		send(Protokoll.CS_STAND);
 	}
 	
 	/*
