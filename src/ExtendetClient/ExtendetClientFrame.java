@@ -14,6 +14,7 @@ import java.awt.FlowLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -98,11 +99,18 @@ public class ExtendetClientFrame extends JFrame{
 	private JLabel d5;
 	private JTextField dealer;
 	
+	ArrayList<ImageIcon> images1 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> images2 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> images3 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> images4 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> images5 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> images6 = new ArrayList<ImageIcon>();
+	
 	
 	ImageIcon herz2 = new ImageIcon(getClass().getResource("Herz_Zwei.jpg"));
 	ImageIcon herz3 = new ImageIcon(getClass().getResource("Herz_Drei.jpg"));
 	ImageIcon herz4 = new ImageIcon(getClass().getResource("Herz_Vier.jpg"));
-	ImageIcon herz5 = new ImageIcon(getClass().getResource("Herz_Fünf.jpg"));
+	ImageIcon herz5 = new ImageIcon(getClass().getResource("Herz_Fï¿½nf.jpg"));
 	ImageIcon herz6 = new ImageIcon(getClass().getResource("Herz_Sechs.jpg"));
 	ImageIcon herz7 = new ImageIcon(getClass().getResource("Herz_Sieben.jpg"));
 	ImageIcon herz8 = new ImageIcon(getClass().getResource("Herz_Acht.jpg"));
@@ -409,12 +417,95 @@ public class ExtendetClientFrame extends JFrame{
 		this.bc = new ExtendetClient(ip.getText(), Integer.valueOf(port.getText()), this);
 	}
 	
-
-	public void returnCards(String label, String card) {
-		label.equals(p1c1);
-		//p1c1.setIcon(this.getIconImage().equals(card));
-		//p1c1.setText(this.getIconImage().equals(card));;
+	private ImageIcon returnPic(String card) {
+		switch(card) {
+			case "Herz_Zwei":
+				return herz2;
+			case "Herz_Drei":
+				return herz3;
+			case "Herz_Vier":
+				return herz4;
+			case "Herz_Fï¿½nf":
+				return herz5;
+			case "Herz_Sechs":
+				return herz6;
+			case "Herz_Sieben":
+				return herz7;
+			case "Herz_Acht":
+				return herz8;
+			case "Herz_Neun":
+				return herz9;
+			case "Herz_Zehn":
+				return herz10;
+			case "Herz_Bube":
+				return herzB;
+			case "Herz_Dame":
+				return herzD;
+			case "Herz_Koenig":
+				return herzK;
+			case "Herz_Ass":
+				return herzA;
+	
+		}
+		return null;
 	}
+	
+	public ArrayList<ImageIcon> returnImages(ArrayList<String> cs){
+		
+		if(cs.equals("player1")) {
+			for(int i=0; i<cs.size(); i++) {
+				images1.add(returnPic(cs.get(i)));
+				return images1;
+			}
+		}else if(cs.equals("player2")) {
+			for(int i=0; i<cs.size(); i++) {
+				images2.add(returnPic(cs.get(i)));
+				return images2;
+			}
+		}else if(cs.equals("player3")) {
+			for(int i=0; i<cs.size();) {
+				images3.add(returnPic(cs.get(i)));
+				return images3;
+			}
+		}else if(cs.equals("player3")) {
+			for(int i=0; i<cs.size(); i++) {
+				images4.add(returnPic(cs.get(i)));
+				return images4;
+			}
+		}else if(cs.equals("player4")) {
+			for(int i=0; i<cs.size(); i++) {
+				images5.add(returnPic(cs.get(i)));
+				return images5;
+			}
+		}
+		return null;
+	}
+	
+	public void setImagesToGUI(ArrayList<ImageIcon> c) {
+		if(c.equals("playerCard2")) {
+			p1c1.setIcon(c.get(0));
+			p1c2.setIcon(c.get(1));
+			p1c3.setIcon(c.get(2));
+			p1c4.setIcon(c.get(3));
+			p1c5.setIcon(c.get(4));
+		}else if(c.equals("playerCard2")) {
+			p2c1.setIcon(c.get(0));
+			p2c2.setIcon(c.get(1));
+			p2c3.setIcon(c.get(2));
+			p2c4.setIcon(c.get(3));
+			p2c5.setIcon(c.get(4));
+		}else if(c.equals("playerCard3")) {
+			p3c1.setIcon(c.get(0));
+			p3c2.setIcon(c.get(1));
+			p3c3.setIcon(c.get(2));
+			p3c4.setIcon(c.get(3));
+			p3c5.setIcon(c.get(4));
+		}
+	}
+	
+	
+
+	
 	
 	
 	public void ausgeben(String message) {

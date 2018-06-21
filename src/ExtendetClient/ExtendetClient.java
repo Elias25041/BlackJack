@@ -6,6 +6,8 @@ import Protokoll.Protokoll;
 import Cards.Card;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
+
 public class ExtendetClient extends Client {
 	private ExtendetClientFrame meineGui;
 	ArrayList<String> player1 = new ArrayList<String>();
@@ -15,6 +17,14 @@ public class ExtendetClient extends Client {
 	ArrayList<String> player5 = new ArrayList<String>();
 	ArrayList<String> player6 = new ArrayList<String>();
 	ArrayList<String> dealer = new ArrayList<String>();
+	
+	ArrayList<ImageIcon> playerCard1 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> playerCard2 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> playerCard3 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> playerCard4 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> playerCard5 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> playerCard6 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> dealerCard = new ArrayList<ImageIcon>();
 	
 	
 
@@ -68,7 +78,7 @@ public class ExtendetClient extends Client {
 				for(int h = 14; h<15; h++) {
 					player5.add(splitMessage[h]);
 				}
-				dealer.add(splitMessage[19]);
+				dealer.add(splitMessage[17]);
 			}else if(splitMessage.length == 15) {
 				for(int i = 2; i<3; i++) {
 					player1.add(splitMessage[i]);
@@ -121,6 +131,21 @@ public class ExtendetClient extends Client {
 			}
 			break;
 		}
+		
+		playerCard1 = meineGui.returnImages(player1);
+		playerCard2 = meineGui.returnImages(player2);
+		playerCard3 = meineGui.returnImages(player3);
+		playerCard4 = meineGui.returnImages(player4);
+		playerCard5 = meineGui.returnImages(player5);
+		playerCard6 = meineGui.returnImages(player6);
+		
+		meineGui.setImagesToGUI(playerCard1);
+		meineGui.setImagesToGUI(playerCard2);
+		meineGui.setImagesToGUI(playerCard3);
+		
+		
+		
+		
 		//System.out.println("" + splitMessage[i]);
 	}
 
@@ -137,5 +162,33 @@ public class ExtendetClient extends Client {
 
 	public void karteGezogen(String rest) {
 
+	}
+	
+	public ArrayList<String> getPlayer1() {
+		return player1;
+	}
+	
+	public ArrayList<String> getPlayer2() {
+		return player2;
+	}
+	
+	public ArrayList<String> getPlayer3() {
+		return player3;
+	}
+	
+	public ArrayList<String> getPlayer4() {
+		return player4;
+	}
+	
+	public ArrayList<String> getPlayer5() {
+		return player5;
+	}
+	
+	public ArrayList<String> getPlayer6() {
+		return player6;
+	}
+	
+	public ArrayList<String> getDealer() {
+		return dealer;
 	}
 }
