@@ -14,7 +14,7 @@ public class gameServer extends Server {
 	private ArrayList<Account> accounts;
 	private int cardAmount;
 	private int startCredit;
-	//private Bot_Client bot;
+	private Bot_Client bot;
 
 	public gameServer(int pPort, int pCardAmount, int pStartCredit) {
 		super(pPort);
@@ -22,7 +22,7 @@ public class gameServer extends Server {
 		startCredit = pStartCredit;
 		bjs = new BlackJacks(pCardAmount, pStartCredit);
 		accounts = new ArrayList<Account>();
-		//bot = new Bot_Client("localhost", pPort);
+		bot = new Bot_Client("localhost", pPort);
 		System.out.println("Hallo ich bin der server auf Port: " + pPort + "; und CA = " + cardAmount);
 	}
 

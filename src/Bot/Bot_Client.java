@@ -1,5 +1,7 @@
 package Bot;
 
+import java.util.ArrayList;
+
 import AbiturKlassen.Client;
 import Cards.Card;
 import Protokoll.Protokoll;
@@ -11,6 +13,7 @@ public class Bot_Client extends Client {
 	int cardworth;
 	int playerCount;
 	int playerBet;
+	protected ArrayList<Card> cards;
 
 	public Bot_Client(String pServerIP, int pServerPort) {
 		super(pServerIP, pServerPort);
@@ -115,35 +118,5 @@ public class Bot_Client extends Client {
 		}
 		return Integer.parseInt(cardComponent[1]);
 	}
+}
 	
-	private int transformCardStrings(String number) {
-		int worth = 0;
-		Card c = a.get(i);
-		if (c.getType().equals("Koenig") || c.getType().equals("Dame") || c.getType().equals("Bube")
-				|| c.getType().equals("Zehn")) {
-			worth = worth + 10;
-		} else if (c.getType().equals("Zwei")) {
-			worth = worth + 2;
-		} else if (c.getType().equals("Drei")) {
-			worth = worth + 3;
-		} else if (c.getType().equals("Vier")) {
-			worth = worth + 4;
-		} else if (c.getType().equals("Fuenf")) {
-			worth = worth + 5;
-		} else if (c.getType().equals("Sechs")) {
-			worth = worth + 6;
-		} else if (c.getType().equals("Sieben")) {
-			worth = worth + 7;
-		} else if (c.getType().equals("Acht")) {
-			worth = worth + 8;
-		} else if (c.getType().equals("Neun")) {
-			worth = worth + 9;
-		} else if (c.getType().equals("Ass")) {
-			if (worth + 11 <= 21) {
-				worth = worth + 11;
-			} else {
-				worth = worth + 1;
-			}
-	}
-}
-}
