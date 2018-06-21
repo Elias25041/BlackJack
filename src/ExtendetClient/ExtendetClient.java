@@ -127,6 +127,8 @@ public class ExtendetClient extends Client {
 		player5.clear();
 		player6.clear();
 	}
+	
+	
 
 	public void karteGezogen(String rest) {
 
