@@ -108,15 +108,30 @@ public class Bot_Client extends Client {
 			cardworths[j] = 0;
 		}
 	}
-
+	
 	private int getCardtype(String card) {
 		String[] cardComponent = card.split("_");
-		if (cardComponent[1].equals("Koenig") || cardComponent[1].equals("Dame") || cardComponent[1].equals("Bube")) {
+		if (cardComponent[1].equals("Koenig") || cardComponent[1].equals("Dame") || cardComponent[1].equals("Bube") || cardComponent[1].equals("Zehn") ) {
 			return 10;
 		} else if (cardComponent[1].equals("Ass")) {
 			return 11;
-		}
-		return Integer.parseInt(cardComponent[1]);
-	}
+		} else if (cardComponent[1].equals("Zwei")) {
+			return 2;
+		}else if (cardComponent[1].equals("Drei")) {
+			return 3;
+		}else if (cardComponent[1].equals("Vier")) {
+			return 4;
+		}else if (cardComponent[1].equals("Fünf")) {
+			return 5;
+		}else if (cardComponent[1].equals("Sechs")) {
+			return 6;
+		}else if (cardComponent[1].equals("Sieben")) {
+			return 7;
+		}else if (cardComponent[1].equals("Acht")) {
+			return 8;
+		}else  {
+			return 9;
+}
+}
 }
 	

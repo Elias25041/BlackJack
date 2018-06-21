@@ -51,6 +51,7 @@ public class ExtendetClient extends Client {
 				for(int g = 17; g<18; g++) {
 					player6.add(splitMessage[g]);
 				}
+				dealer.add(splitMessage[20]);
 			}else if(splitMessage.length == 18) {
 				for(int i = 2; i<3; i++) {
 					player1.add(splitMessage[i]);
@@ -67,6 +68,7 @@ public class ExtendetClient extends Client {
 				for(int h = 14; h<15; h++) {
 					player5.add(splitMessage[h]);
 				}
+				dealer.add(splitMessage[19]);
 			}else if(splitMessage.length == 15) {
 				for(int i = 2; i<3; i++) {
 					player1.add(splitMessage[i]);
@@ -80,6 +82,7 @@ public class ExtendetClient extends Client {
 				for(int l = 11; l<12; l++) {
 					player4.add(splitMessage[l]);
 				}
+				dealer.add(splitMessage[14]);
 			}else if(splitMessage.length == 12) {
 				for(int i = 2; i<3; i++) {
 					player1.add(splitMessage[i]);
@@ -90,6 +93,7 @@ public class ExtendetClient extends Client {
 				for(int j = 8; j<9; j++) {
 					player3.add(splitMessage[j]);
 				}
+				dealer.add(splitMessage[11]);
 			}else if(splitMessage.length == 9) {
 				for(int i = 2; i<3; i++) {
 					player1.add(splitMessage[i]);
@@ -97,8 +101,9 @@ public class ExtendetClient extends Client {
 				for(int k = 5; k<6; k++) {
 					player2.add(splitMessage[k]);
 				}
+				dealer.add(splitMessage[8]);
 			}
-			dealer.add(splitMessage[20]);
+			
 			break;
 		case Protokoll.SC_CARD:
 			if(splitMessage[2].equals("1")) {
