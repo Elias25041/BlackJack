@@ -24,6 +24,9 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.SystemColor;
 import javax.swing.SwingConstants;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class ExtendetClientFrame extends JFrame{
 
@@ -45,6 +48,74 @@ public class ExtendetClientFrame extends JFrame{
 	private JLabel card2;
 	private JLabel card3;
 	private Icon icon1;
+	private JPanel playerPanel2;
+	private JPanel playerPanel1;
+	private JPanel playerPanel3;
+	private JPanel playerPanel4;
+	private JPanel playerPanel5;
+	private JPanel playerPanel6;
+	private JPanel dealerPanel;
+	private JLabel p1c1;
+	private JLabel p1c2;
+	private JLabel p1c3;
+	private JLabel p1c4;
+	private JLabel p1c5;
+	private JLabel p2c1;
+	private JLabel p2c2;
+	private JLabel p2c3;
+	private JLabel p2c4;
+	private JLabel p2c5;
+	private JLabel p3c1;
+	private JLabel p3c2;
+	private JLabel p3c3;
+	private JTextField player1;
+	private JTextField player2;
+	private JLabel p3c4;
+	private JLabel p3c5;
+	private JTextField player3;
+	private JLabel p4c1;
+	private JLabel p4c2;
+	private JLabel p4c3;
+	private JLabel p4c4;
+	private JLabel p4c5;
+	private JTextField player4;
+	private JLabel p5c1;
+	private JLabel p5c2;
+	private JLabel p5c3;
+	private JLabel p5c4;
+	private JLabel p5c5;
+	private JTextField player5;
+	private JLabel p6c1;
+	private JLabel p6c2;
+	private JLabel p6c3;
+	private JLabel p6c4;
+	private JLabel p6c5;
+	private JTextField player6;
+	private JLabel d1;
+	private JLabel d2;
+	private JLabel d3;
+	private JLabel d4;
+	private JLabel d5;
+	private JTextField dealer;
+	
+	
+	ImageIcon herz2 = new ImageIcon(getClass().getResource("Herz_Zwei.jpg"));
+	ImageIcon herz3 = new ImageIcon(getClass().getResource("Herz_Drei.jpg"));
+	ImageIcon herz4 = new ImageIcon(getClass().getResource("Herz_Vier.jpg"));
+	ImageIcon herz5 = new ImageIcon(getClass().getResource("Herz_Fünf.jpg"));
+	ImageIcon herz6 = new ImageIcon(getClass().getResource("Herz_Sechs.jpg"));
+	ImageIcon herz7 = new ImageIcon(getClass().getResource("Herz_Sieben.jpg"));
+	ImageIcon herz8 = new ImageIcon(getClass().getResource("Herz_Acht.jpg"));
+	ImageIcon herz9 = new ImageIcon(getClass().getResource("Herz_Neun.jpg"));
+	ImageIcon herz10 = new ImageIcon(getClass().getResource("Herz_Zehn.jpg"));
+	ImageIcon herzB= new ImageIcon(getClass().getResource("Herz_Bube.jpg"));
+	ImageIcon herzD = new ImageIcon(getClass().getResource("Herz_Dame.jpg"));
+	ImageIcon herzK = new ImageIcon(getClass().getResource("Herz_Koenig.jpg"));
+	ImageIcon herzA = new ImageIcon(getClass().getResource("Herz_Ass.jpg"));
+
+	
+	
+	
 
 	/**
 	 * Launch the application.
@@ -62,13 +133,14 @@ public class ExtendetClientFrame extends JFrame{
 		});
 	}
 
+	
 	/**
 	 * Create the frame.
 	 */
 	public ExtendetClientFrame() {
 		setBackground(Color.GREEN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 727, 457);
+		setBounds(100, 100, 929, 599);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -160,15 +232,174 @@ public class ExtendetClientFrame extends JFrame{
 		panel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		icon1 = new ImageIcon(getClass().getResource("10-karo.jpg"));
-		card1 = new JLabel(icon1);
-		panel_1.add(card1);
+		playerPanel1 = new JPanel();
+		panel_1.add(playerPanel1);
 		
-		card2 = new JLabel();
-		panel_1.add(card2);
+		player1 = new JTextField();
+		player1.setText("Player 1");
+		playerPanel1.add(player1);
+		player1.setColumns(10);
 		
-		card3 = new JLabel();
-		panel_1.add(card3);
+		p1c1 = new JLabel("New Lable");
+		playerPanel1.add(p1c1);
+		
+		p1c2 = new JLabel("New label");
+		playerPanel1.add(p1c2);
+		
+		playerPanel1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		
+		
+		p1c3 = new JLabel("New label");
+		playerPanel1.add(p1c3);
+		
+		p1c4 = new JLabel("New label");
+		playerPanel1.add(p1c4);
+		
+		p1c5 = new JLabel("New label");
+		playerPanel1.add(p1c5);
+		
+		playerPanel2 = new JPanel();
+		panel_1.add(playerPanel2);
+		
+		player2 = new JTextField();
+		player2.setText("Player 2");
+		playerPanel2.add(player2);
+		player2.setColumns(10);
+		
+		p2c1 = new JLabel("New label");
+		playerPanel2.add(p2c1);
+		
+		p2c2 = new JLabel("New label");
+		playerPanel2.add(p2c2);
+		
+		p2c3 = new JLabel("New label");
+		playerPanel2.add(p2c3);
+		
+		p2c4 = new JLabel("New label");
+		playerPanel2.add(p2c4);
+		
+		p2c5 = new JLabel("New label");
+		playerPanel2.add(p2c5);
+		
+		playerPanel3 = new JPanel();
+		panel_1.add(playerPanel3);
+		
+		player3 = new JTextField();
+		player3.setText("Player 3");
+		playerPanel3.add(player3);
+		player3.setColumns(10);
+		
+		p3c1 = new JLabel("New label");
+		playerPanel3.add(p3c1);
+		
+		p3c2 = new JLabel("New label");
+		playerPanel3.add(p3c2);
+		
+		p3c3 = new JLabel("New label");
+		playerPanel3.add(p3c3);
+		
+		p3c4 = new JLabel("New label");
+		playerPanel3.add(p3c4);
+		
+		p3c5 = new JLabel("New label");
+		playerPanel3.add(p3c5);
+		
+		playerPanel4 = new JPanel();
+		panel_1.add(playerPanel4);
+		
+		player4 = new JTextField();
+		player4.setText("Player 4");
+		player4.setColumns(10);
+		playerPanel4.add(player4);
+		
+		p4c1 = new JLabel("New label");
+		playerPanel4.add(p4c1);
+		
+		p4c2 = new JLabel("New label");
+		playerPanel4.add(p4c2);
+		
+		p4c3 = new JLabel("New label");
+		playerPanel4.add(p4c3);
+		
+		p4c4 = new JLabel("New label");
+		playerPanel4.add(p4c4);
+		
+		p4c5 = new JLabel("New label");
+		playerPanel4.add(p4c5);
+		
+		playerPanel5 = new JPanel();
+		panel_1.add(playerPanel5);
+		
+		player5 = new JTextField();
+		player5.setText("Player 5");
+		player5.setColumns(10);
+		playerPanel5.add(player5);
+		
+		p5c1 = new JLabel("New label");
+		playerPanel5.add(p5c1);
+		
+		p5c2 = new JLabel("New label");
+		playerPanel5.add(p5c2);
+		
+		p5c3 = new JLabel("New label");
+		playerPanel5.add(p5c3);
+		
+		p5c4 = new JLabel("New label");
+		playerPanel5.add(p5c4);
+		
+		p5c5 = new JLabel("New label");
+		playerPanel5.add(p5c5);
+		
+		playerPanel6 = new JPanel();
+		panel_1.add(playerPanel6);
+		
+		player6 = new JTextField();
+		player6.setText("Player 6");
+		player6.setColumns(10);
+		playerPanel6.add(player6);
+		
+		p6c1 = new JLabel("New label");
+		playerPanel6.add(p6c1);
+		
+		p6c2 = new JLabel("New label");
+		playerPanel6.add(p6c2);
+		
+		p6c3 = new JLabel("New label");
+		playerPanel6.add(p6c3);
+		
+		p6c4 = new JLabel("New label");
+		playerPanel6.add(p6c4);
+		
+		p6c5 = new JLabel("New label");
+		playerPanel6.add(p6c5);
+		
+		dealerPanel = new JPanel();
+		panel_1.add(dealerPanel);
+		
+		dealer = new JTextField();
+		dealer.setText("Dealer");
+		dealer.setColumns(10);
+		dealerPanel.add(dealer);
+		
+		d1 = new JLabel("New label");
+		dealerPanel.add(d1);
+		
+		d2 = new JLabel("New label");
+		dealerPanel.add(d2);
+		
+		d3 = new JLabel("New label");
+		dealerPanel.add(d3);
+		
+		d4 = new JLabel("New label");
+		dealerPanel.add(d4);
+		
+		d5 = new JLabel("New label");
+		dealerPanel.add(d5);
+		
+		
+		
+		
 		ausgeben("Weitere Meldungen");
 		
 		
@@ -179,12 +410,20 @@ public class ExtendetClientFrame extends JFrame{
 	}
 	
 
+	public void returnCards(String label, String card) {
+		label.equals(p1c1);
+		//p1c1.setIcon(this.getIconImage().equals(card));
+		//p1c1.setText(this.getIconImage().equals(card));;
+	}
+	
 	
 	public void ausgeben(String message) {
 		String bisher = this.output.getText();
 		bisher = message + "\n" + bisher;
 		this.output.setText(bisher);
 	}
+	
+	public void cardOutput() {}
 	
 	public void send() {
 		if(txtSend.getText().equals("")) {
