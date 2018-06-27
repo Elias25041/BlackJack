@@ -106,11 +106,11 @@ public class ExtendetClientFrame extends JFrame{
 	ArrayList<ImageIcon> images5 = new ArrayList<ImageIcon>();
 	ArrayList<ImageIcon> images6 = new ArrayList<ImageIcon>();
 	
-	
+	//Herz Karten
 	ImageIcon herz2 = new ImageIcon(getClass().getResource("Herz_Zwei.jpg"));
 	ImageIcon herz3 = new ImageIcon(getClass().getResource("Herz_Drei.jpg"));
 	ImageIcon herz4 = new ImageIcon(getClass().getResource("Herz_Vier.jpg"));
-	ImageIcon herz5 = new ImageIcon(getClass().getResource("Herz_F�nf.jpg"));
+	ImageIcon herz5 = new ImageIcon(getClass().getResource("Herz_Fuenf.jpg"));
 	ImageIcon herz6 = new ImageIcon(getClass().getResource("Herz_Sechs.jpg"));
 	ImageIcon herz7 = new ImageIcon(getClass().getResource("Herz_Sieben.jpg"));
 	ImageIcon herz8 = new ImageIcon(getClass().getResource("Herz_Acht.jpg"));
@@ -120,6 +120,52 @@ public class ExtendetClientFrame extends JFrame{
 	ImageIcon herzD = new ImageIcon(getClass().getResource("Herz_Dame.jpg"));
 	ImageIcon herzK = new ImageIcon(getClass().getResource("Herz_Koenig.jpg"));
 	ImageIcon herzA = new ImageIcon(getClass().getResource("Herz_Ass.jpg"));
+	
+	//Karo Karten
+	ImageIcon karo2 = new ImageIcon(getClass().getResource("Karo_Zwei.jpg"));
+	ImageIcon karo3 = new ImageIcon(getClass().getResource("Karo_Drei.jpg"));
+	ImageIcon karo4 = new ImageIcon(getClass().getResource("Karo_Vier.jpg"));
+	ImageIcon karo5 = new ImageIcon(getClass().getResource("Karo_Fuenf.jpg"));
+	ImageIcon karo6 = new ImageIcon(getClass().getResource("Karo_Sechs.jpg"));
+	ImageIcon karo7 = new ImageIcon(getClass().getResource("Karo_Sieben.jpg"));
+	ImageIcon karo8 = new ImageIcon(getClass().getResource("Karo_Acht.jpg"));
+	ImageIcon karo9 = new ImageIcon(getClass().getResource("Karo_Neun.jpg"));
+	ImageIcon karo10 = new ImageIcon(getClass().getResource("Karo_Zehn.jpg"));
+	ImageIcon karoB= new ImageIcon(getClass().getResource("Karo_Bube.jpg"));
+	ImageIcon karoD = new ImageIcon(getClass().getResource("Karo_Dame.jpg"));
+	ImageIcon karoK = new ImageIcon(getClass().getResource("Karo_Koenig.jpg"));
+	ImageIcon karoA = new ImageIcon(getClass().getResource("Karo_Ass.jpg"));
+	
+	//Kreuz Karten
+	ImageIcon kreuz2 = new ImageIcon(getClass().getResource("Kreuz_Zwei.jpg"));
+	ImageIcon kreuz3 = new ImageIcon(getClass().getResource("Kreuz_Drei.jpg"));
+	ImageIcon kreuz4 = new ImageIcon(getClass().getResource("Kreuz_Vier.jpg"));
+	ImageIcon kreuz5 = new ImageIcon(getClass().getResource("Kreuz_Fuenf.jpg"));
+	ImageIcon kreuz6 = new ImageIcon(getClass().getResource("Kreuz_Sechs.jpg"));
+	ImageIcon kreuz7 = new ImageIcon(getClass().getResource("Kreuz_Sieben.jpg"));
+	ImageIcon kreuz8 = new ImageIcon(getClass().getResource("Kreuz_Acht.jpg"));
+	ImageIcon kreuz9 = new ImageIcon(getClass().getResource("Kreuz_Neun.jpg"));
+	ImageIcon kreuz10 = new ImageIcon(getClass().getResource("Kreuz_Zehn.jpg"));
+	ImageIcon kreuzB= new ImageIcon(getClass().getResource("Kreuz_Bube.jpg"));
+	ImageIcon kreuzD = new ImageIcon(getClass().getResource("Kreuz_Dame.jpg"));
+	ImageIcon kreuzK = new ImageIcon(getClass().getResource("Kreuz_Koenig.jpg"));
+	ImageIcon kreuzA = new ImageIcon(getClass().getResource("Kreuz_Ass.jpg"));
+	
+	//Pik Karten
+	ImageIcon pik2 = new ImageIcon(getClass().getResource("Pik_Zwei.jpg"));
+	ImageIcon pik3 = new ImageIcon(getClass().getResource("Pik_Drei.jpg"));
+	ImageIcon pik4 = new ImageIcon(getClass().getResource("Pik_Vier.jpg"));
+	ImageIcon pik5 = new ImageIcon(getClass().getResource("Pik_Fuenf.jpg"));
+	ImageIcon pik6 = new ImageIcon(getClass().getResource("Pik_Sechs.jpg"));
+	ImageIcon pik7 = new ImageIcon(getClass().getResource("Pik_Sieben.jpg"));
+	ImageIcon pik8 = new ImageIcon(getClass().getResource("Pik_Acht.jpg"));
+	ImageIcon pik9 = new ImageIcon(getClass().getResource("Pik_Neun.jpg"));
+	ImageIcon pik10 = new ImageIcon(getClass().getResource("Pik_Zehn.jpg"));
+	ImageIcon pikB= new ImageIcon(getClass().getResource("Pik_Bube.jpg"));
+	ImageIcon pikD = new ImageIcon(getClass().getResource("Pik_Dame.jpg"));
+	ImageIcon pikK = new ImageIcon(getClass().getResource("Pik_Koenig.jpg"));
+	ImageIcon pikA = new ImageIcon(getClass().getResource("Pik_Ass.jpg"));
+	
 
 	
 	
@@ -425,7 +471,7 @@ public class ExtendetClientFrame extends JFrame{
 				return herz3;
 			case "Herz_Vier":
 				return herz4;
-			case "Herz_F�nf":
+			case "Herz_Fuenf":
 				return herz5;
 			case "Herz_Sechs":
 				return herz6;
@@ -445,34 +491,116 @@ public class ExtendetClientFrame extends JFrame{
 				return herzK;
 			case "Herz_Ass":
 				return herzA;
+			
+			case "Karo_Zwei":
+				return karo2;
+			case "Karo_Drei":
+				return karo3;
+			case "Karo_Vier":
+				return karo4;
+			case "Karo_Fuenf":
+				return karo5;
+			case "Karo_Sechs":
+				return karo6;
+			case "Karo_Sieben":
+				return karo7;
+			case "Karo_Acht":
+				return karo8;
+			case "Karo_Neun":
+				return karo9;
+			case "Karo_Zehn":
+				return karo10;
+			case "Karo_Bube":
+				return karoB;
+			case "Karo_Dame":
+				return karoD;
+			case "Karo_Koenig":
+				return karoK;
+			case "Karo_Ass":
+				return karoA;
+				
+			case "Kreuz_Zwei":
+				return kreuz2;
+			case "Kreuz_Drei":
+				return kreuz3;
+			case "Kreuz_Vier":
+				return kreuz4;
+			case "Kreuz_Fuenf":
+				return kreuz5;
+			case "Kreuz_Sechs":
+				return kreuz6;
+			case "Kreuz_Sieben":
+				return kreuz7;
+			case "Kreuz_Acht":
+				return kreuz8;
+			case "Kreuz_Neun":
+				return kreuz9;
+			case "Kreuz_Zehn":
+				return kreuz10;
+			case "Kreuz_Bube":
+				return kreuzB;
+			case "Kreuz_Dame":
+				return kreuzD;
+			case "Kreuz_Koenig":
+				return kreuzK;
+			case "Kreuz_Ass":
+				return kreuzA;
+				
+			case "Pik_Zwei":
+				return pik2;
+			case "Pik_Drei":
+				return pik3;
+			case "Pik_Vier":
+				return pik4;
+			case "Pik_Fuenf":
+				return pik5;
+			case "Pik_Sechs":
+				return pik6;
+			case "Pik_Sieben":
+				return pik7;
+			case "Pik_Acht":
+				return pik8;
+			case "Pik_Neun":
+				return pik9;
+			case "Pik_Zehn":
+				return pik10;
+			case "Pik_Bube":
+				return pikB;
+			case "Pik_Dame":
+				return pikD;
+			case "Pik_Koenig":
+				return pikK;
+			case "Pik_Ass":
+				return pikA;
+				
 	
 		}
 		return null;
 	}
 	
-	public ArrayList<ImageIcon> returnImages(ArrayList<String> cs){
-		
-		if(cs.equals("player1")) {
+	public ArrayList<ImageIcon> returnImages(ArrayList<String> cs, String player){
+
+		if(player.equals("player1")) {
 			for(int i=0; i<cs.size(); i++) {
 				images1.add(returnPic(cs.get(i)));
 				return images1;
 			}
-		}else if(cs.equals("player2")) {
+		}else if(player.equals("player2")) {
 			for(int i=0; i<cs.size(); i++) {
 				images2.add(returnPic(cs.get(i)));
 				return images2;
 			}
-		}else if(cs.equals("player3")) {
+		}else if(player.equals("player3")) {
 			for(int i=0; i<cs.size();) {
 				images3.add(returnPic(cs.get(i)));
 				return images3;
 			}
-		}else if(cs.equals("player3")) {
+		}else if(player.equals("player4")) {
 			for(int i=0; i<cs.size(); i++) {
 				images4.add(returnPic(cs.get(i)));
 				return images4;
 			}
-		}else if(cs.equals("player4")) {
+		}else if(player.equals("player5")) {
 			for(int i=0; i<cs.size(); i++) {
 				images5.add(returnPic(cs.get(i)));
 				return images5;
@@ -481,20 +609,20 @@ public class ExtendetClientFrame extends JFrame{
 		return null;
 	}
 	
-	public void setImagesToGUI(ArrayList<ImageIcon> c) {
-		if(c.equals("playerCard2")) {
+	public void setImagesToGUI(ArrayList<ImageIcon> c, String player) {
+		if(player.equals("player1")) {
 			p1c1.setIcon(c.get(0));
 			p1c2.setIcon(c.get(1));
 			p1c3.setIcon(c.get(2));
 			p1c4.setIcon(c.get(3));
 			p1c5.setIcon(c.get(4));
-		}else if(c.equals("playerCard2")) {
+		}else if(player.equals("player2")) {
 			p2c1.setIcon(c.get(0));
 			p2c2.setIcon(c.get(1));
 			p2c3.setIcon(c.get(2));
 			p2c4.setIcon(c.get(3));
 			p2c5.setIcon(c.get(4));
-		}else if(c.equals("playerCard3")) {
+		}else if(player.equals("player3")) {
 			p3c1.setIcon(c.get(0));
 			p3c2.setIcon(c.get(1));
 			p3c3.setIcon(c.get(2));

@@ -31,13 +31,14 @@ public class ExtendetClient extends Client {
 	public ExtendetClient(String pServerIP, int pServerPort, ExtendetClientFrame gui) {
 		super(pServerIP, pServerPort);
 		meineGui = gui;
-		clearCardSlots();
+		
 		// TODO Auto-generated constructor stub
 	}
 	
 	// 3 + 3*anzahlSpieler
 	
 	public void processMessage(String pMessage) {
+		clearCardSlots();
 		meineGui.ausgeben(pMessage);
 		String[] splitMessage = pMessage.split(":");
 		switch (splitMessage[0]) {
@@ -113,7 +114,19 @@ public class ExtendetClient extends Client {
 				}
 				dealer.add(splitMessage[8]);
 			}
+			playerCard1 = meineGui.returnImages(player1, "player1");
+			playerCard2 = meineGui.returnImages(player2, "player2");
+			playerCard3 = meineGui.returnImages(player3, "player3");
+			playerCard4 = meineGui.returnImages(player4, "player4");
+			playerCard5 = meineGui.returnImages(player5, "player5");
+			playerCard6 = meineGui.returnImages(player6, "player6");
 			
+			meineGui.setImagesToGUI(playerCard1, "player1");
+			meineGui.setImagesToGUI(playerCard2, "player2");
+			meineGui.setImagesToGUI(playerCard3, "player3");
+			meineGui.setImagesToGUI(playerCard4, "player4");
+			meineGui.setImagesToGUI(playerCard5, "player5");
+			meineGui.setImagesToGUI(playerCard6, "player6");
 			break;
 		case Protokoll.SC_CARD:
 			if(splitMessage[2].equals("1")) {
@@ -129,19 +142,23 @@ public class ExtendetClient extends Client {
 			}else if(splitMessage[2].equals("6")) {
 				player6.add(splitMessage[1]);
 			}
+			playerCard1 = meineGui.returnImages(player1, "player1");
+			playerCard2 = meineGui.returnImages(player2, "player2");
+			playerCard3 = meineGui.returnImages(player3, "player3");
+			playerCard4 = meineGui.returnImages(player4, "player4");
+			playerCard5 = meineGui.returnImages(player5, "player5");
+			playerCard6 = meineGui.returnImages(player6, "player6");
+			
+			meineGui.setImagesToGUI(playerCard1, "player1");
+			meineGui.setImagesToGUI(playerCard2, "player2");
+			meineGui.setImagesToGUI(playerCard3, "player3");
+			meineGui.setImagesToGUI(playerCard4, "player4");
+			meineGui.setImagesToGUI(playerCard5, "player5");
+			meineGui.setImagesToGUI(playerCard6, "player6");
 			break;
 		}
 		
-		playerCard1 = meineGui.returnImages(player1);
-		playerCard2 = meineGui.returnImages(player2);
-		playerCard3 = meineGui.returnImages(player3);
-		playerCard4 = meineGui.returnImages(player4);
-		playerCard5 = meineGui.returnImages(player5);
-		playerCard6 = meineGui.returnImages(player6);
 		
-		meineGui.setImagesToGUI(playerCard1);
-		meineGui.setImagesToGUI(playerCard2);
-		meineGui.setImagesToGUI(playerCard3);
 		
 		
 		
