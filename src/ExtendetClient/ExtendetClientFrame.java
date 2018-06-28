@@ -721,9 +721,9 @@ public class ExtendetClientFrame extends JFrame{
 				p5c5.setIcon(c.get(4));
 			}	
 		}else if(player.equals("player6")) {
-			System.out.println ("X" + c.size());
+			//System.out.println ("X" + c.size());
 			if(c.size() == 1) {
-				p6c1.setIcon(c.get(0));
+			p6c1.setIcon(c.get(0));
 			}else if(c.size() == 2) {
 				p6c1.setIcon(c.get(0));
 				p6c2.setIcon(c.get(1));
