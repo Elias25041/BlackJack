@@ -294,23 +294,23 @@ public class ExtendetClientFrame extends JFrame{
 		playerPanel1.add(player1);
 		player1.setColumns(10);
 		
-		p1c1 = new JLabel("New Lable");
+		p1c1 = new JLabel("");
 		playerPanel1.add(p1c1);
 		
-		p1c2 = new JLabel("New label");
+		p1c2 = new JLabel("");
 		playerPanel1.add(p1c2);
 		
 		playerPanel1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		
 		
-		p1c3 = new JLabel("New label");
+		p1c3 = new JLabel("");
 		playerPanel1.add(p1c3);
 		
-		p1c4 = new JLabel("New label");
+		p1c4 = new JLabel("");
 		playerPanel1.add(p1c4);
 		
-		p1c5 = new JLabel("New label");
+		p1c5 = new JLabel("");
 		playerPanel1.add(p1c5);
 		
 		playerPanel2 = new JPanel();
@@ -321,19 +321,19 @@ public class ExtendetClientFrame extends JFrame{
 		playerPanel2.add(player2);
 		player2.setColumns(10);
 		
-		p2c1 = new JLabel("New label");
+		p2c1 = new JLabel("");
 		playerPanel2.add(p2c1);
 		
-		p2c2 = new JLabel("New label");
+		p2c2 = new JLabel("");
 		playerPanel2.add(p2c2);
 		
-		p2c3 = new JLabel("New label");
+		p2c3 = new JLabel("");
 		playerPanel2.add(p2c3);
 		
-		p2c4 = new JLabel("New label");
+		p2c4 = new JLabel("");
 		playerPanel2.add(p2c4);
 		
-		p2c5 = new JLabel("New label");
+		p2c5 = new JLabel("");
 		playerPanel2.add(p2c5);
 		
 		playerPanel3 = new JPanel();
@@ -344,19 +344,19 @@ public class ExtendetClientFrame extends JFrame{
 		playerPanel3.add(player3);
 		player3.setColumns(10);
 		
-		p3c1 = new JLabel("New label");
+		p3c1 = new JLabel("");
 		playerPanel3.add(p3c1);
 		
-		p3c2 = new JLabel("New label");
+		p3c2 = new JLabel("");
 		playerPanel3.add(p3c2);
 		
-		p3c3 = new JLabel("New label");
+		p3c3 = new JLabel("");
 		playerPanel3.add(p3c3);
 		
-		p3c4 = new JLabel("New label");
+		p3c4 = new JLabel("");
 		playerPanel3.add(p3c4);
 		
-		p3c5 = new JLabel("New label");
+		p3c5 = new JLabel("");
 		playerPanel3.add(p3c5);
 		
 		playerPanel4 = new JPanel();
@@ -367,19 +367,19 @@ public class ExtendetClientFrame extends JFrame{
 		player4.setColumns(10);
 		playerPanel4.add(player4);
 		
-		p4c1 = new JLabel("New label");
+		p4c1 = new JLabel("");
 		playerPanel4.add(p4c1);
 		
-		p4c2 = new JLabel("New label");
+		p4c2 = new JLabel("");
 		playerPanel4.add(p4c2);
 		
-		p4c3 = new JLabel("New label");
+		p4c3 = new JLabel("");
 		playerPanel4.add(p4c3);
 		
-		p4c4 = new JLabel("New label");
+		p4c4 = new JLabel("");
 		playerPanel4.add(p4c4);
 		
-		p4c5 = new JLabel("New label");
+		p4c5 = new JLabel("");
 		playerPanel4.add(p4c5);
 		
 		playerPanel5 = new JPanel();
@@ -390,19 +390,19 @@ public class ExtendetClientFrame extends JFrame{
 		player5.setColumns(10);
 		playerPanel5.add(player5);
 		
-		p5c1 = new JLabel("New label");
+		p5c1 = new JLabel("");
 		playerPanel5.add(p5c1);
 		
-		p5c2 = new JLabel("New label");
+		p5c2 = new JLabel("");
 		playerPanel5.add(p5c2);
 		
-		p5c3 = new JLabel("New label");
+		p5c3 = new JLabel("");
 		playerPanel5.add(p5c3);
 		
-		p5c4 = new JLabel("New label");
+		p5c4 = new JLabel("");
 		playerPanel5.add(p5c4);
 		
-		p5c5 = new JLabel("New label");
+		p5c5 = new JLabel("");
 		playerPanel5.add(p5c5);
 		
 		playerPanel6 = new JPanel();
@@ -413,19 +413,19 @@ public class ExtendetClientFrame extends JFrame{
 		player6.setColumns(10);
 		playerPanel6.add(player6);
 		
-		p6c1 = new JLabel("New label");
+		p6c1 = new JLabel("");
 		playerPanel6.add(p6c1);
 		
-		p6c2 = new JLabel("New label");
+		p6c2 = new JLabel("");
 		playerPanel6.add(p6c2);
 		
-		p6c3 = new JLabel("New label");
+		p6c3 = new JLabel("");
 		playerPanel6.add(p6c3);
 		
-		p6c4 = new JLabel("New label");
+		p6c4 = new JLabel("");
 		playerPanel6.add(p6c4);
 		
-		p6c5 = new JLabel("New label");
+		p6c5 = new JLabel("");
 		playerPanel6.add(p6c5);
 		
 		dealerPanel = new JPanel();
@@ -436,19 +436,19 @@ public class ExtendetClientFrame extends JFrame{
 		dealer.setColumns(10);
 		dealerPanel.add(dealer);
 		
-		d1 = new JLabel("New label");
+		d1 = new JLabel("");
 		dealerPanel.add(d1);
 		
-		d2 = new JLabel("New label");
+		d2 = new JLabel("");
 		dealerPanel.add(d2);
 		
-		d3 = new JLabel("New label");
+		d3 = new JLabel("");
 		dealerPanel.add(d3);
 		
-		d4 = new JLabel("New label");
+		d4 = new JLabel("");
 		dealerPanel.add(d4);
 		
-		d5 = new JLabel("New label");
+		d5 = new JLabel("");
 		dealerPanel.add(d5);
 		
 		
@@ -583,51 +583,166 @@ public class ExtendetClientFrame extends JFrame{
 		if(player.equals("player1")) {
 			for(int i=0; i<cs.size(); i++) {
 				images1.add(returnPic(cs.get(i)));
-				return images1;
 			}
+			return images1;
 		}else if(player.equals("player2")) {
 			for(int i=0; i<cs.size(); i++) {
 				images2.add(returnPic(cs.get(i)));
-				return images2;
 			}
+			return images2;
 		}else if(player.equals("player3")) {
 			for(int i=0; i<cs.size();) {
 				images3.add(returnPic(cs.get(i)));
-				return images3;
 			}
+			return images3;
 		}else if(player.equals("player4")) {
 			for(int i=0; i<cs.size(); i++) {
 				images4.add(returnPic(cs.get(i)));
-				return images4;
 			}
+			return images4;
 		}else if(player.equals("player5")) {
 			for(int i=0; i<cs.size(); i++) {
 				images5.add(returnPic(cs.get(i)));
-				return images5;
 			}
+			return images5;
 		}
 		return null;
 	}
 	
 	public void setImagesToGUI(ArrayList<ImageIcon> c, String player) {
+		System.out.println ("Y" + player);
+
 		if(player.equals("player1")) {
-			p1c1.setIcon(c.get(0));
-			p1c2.setIcon(c.get(1));
-			p1c3.setIcon(c.get(2));
-			p1c4.setIcon(c.get(3));
-			p1c5.setIcon(c.get(4));
+			if(c.size() == 2) {
+				p1c1.setIcon(c.get(0));
+				p1c2.setIcon(c.get(1));
+			}else if(c.size() == 3) {
+				p1c1.setIcon(c.get(0));
+				p1c2.setIcon(c.get(1));
+				p1c3.setIcon(c.get(2));
+			}else if(c.size() == 4) {
+				p1c1.setIcon(c.get(0));
+				p1c2.setIcon(c.get(1));
+				p1c3.setIcon(c.get(2));
+				p1c4.setIcon(c.get(3));
+			}else if(c.size() == 5) {
+				p1c1.setIcon(c.get(0));
+				p1c2.setIcon(c.get(1));
+				p1c3.setIcon(c.get(2));
+				p1c4.setIcon(c.get(3));
+				p1c5.setIcon(c.get(4));
+			}	
 		}else if(player.equals("player2")) {
-			p2c1.setIcon(c.get(0));
-			p2c2.setIcon(c.get(1));
-			p2c3.setIcon(c.get(2));
-			p2c4.setIcon(c.get(3));
-			p2c5.setIcon(c.get(4));
+			if(c.size() == 1) {
+				p2c1.setIcon(c.get(0));
+			}else if(c.size() == 2) {
+				p2c1.setIcon(c.get(0));
+				p2c2.setIcon(c.get(1));
+			}else if(c.size() == 3) {
+				p2c1.setIcon(c.get(0));
+				p2c2.setIcon(c.get(1));
+				p2c3.setIcon(c.get(2));
+			}else if(c.size() == 4) {
+				p2c1.setIcon(c.get(0));
+				p2c2.setIcon(c.get(1));
+				p2c3.setIcon(c.get(2));
+				p2c4.setIcon(c.get(3));
+			}else if(c.size() == 5) {
+				p2c1.setIcon(c.get(0));
+				p2c2.setIcon(c.get(1));
+				p2c3.setIcon(c.get(2));
+				p2c4.setIcon(c.get(3));
+				p2c5.setIcon(c.get(4));
+			}	
 		}else if(player.equals("player3")) {
-			p3c1.setIcon(c.get(0));
-			p3c2.setIcon(c.get(1));
-			p3c3.setIcon(c.get(2));
-			p3c4.setIcon(c.get(3));
-			p3c5.setIcon(c.get(4));
+			if(c.size() == 1) {
+				p3c1.setIcon(c.get(0));
+			}else if(c.size() == 2) {
+				p3c1.setIcon(c.get(0));
+				p3c2.setIcon(c.get(1));
+			}else if(c.size() == 3) {
+				p3c1.setIcon(c.get(0));
+				p3c2.setIcon(c.get(1));
+				p3c3.setIcon(c.get(2));
+			}else if(c.size() == 4) {
+				p3c1.setIcon(c.get(0));
+				p3c2.setIcon(c.get(1));
+				p3c3.setIcon(c.get(2));
+				p3c4.setIcon(c.get(3));
+			}else if(c.size() == 5) {
+				p3c1.setIcon(c.get(0));
+				p3c2.setIcon(c.get(1));
+				p3c3.setIcon(c.get(2));
+				p3c4.setIcon(c.get(3));
+				p3c5.setIcon(c.get(4));
+			}	
+		}else if(player.equals("player4")) {
+			if(c.size() == 1) {
+				p4c1.setIcon(c.get(0));
+			}else if(c.size() == 2) {
+				p4c1.setIcon(c.get(0));
+				p4c2.setIcon(c.get(1));
+			}else if(c.size() == 3) {
+				p4c1.setIcon(c.get(0));
+				p4c2.setIcon(c.get(1));
+				p4c3.setIcon(c.get(2));
+			}else if(c.size() == 4) {
+				p4c1.setIcon(c.get(0));
+				p4c2.setIcon(c.get(1));
+				p4c3.setIcon(c.get(2));
+				p4c4.setIcon(c.get(3));
+			}else if(c.size() == 5) {
+				p4c1.setIcon(c.get(0));
+				p4c2.setIcon(c.get(1));
+				p4c3.setIcon(c.get(2));
+				p4c4.setIcon(c.get(3));
+				p4c5.setIcon(c.get(4));
+			}	
+		}else if(player.equals("player5")) {
+			if(c.size() == 1) {
+				p5c1.setIcon(c.get(0));
+			}else if(c.size() == 2) {
+				p5c1.setIcon(c.get(0));
+				p5c2.setIcon(c.get(1));
+			}else if(c.size() == 3) {
+				p5c1.setIcon(c.get(0));
+				p5c2.setIcon(c.get(1));
+				p5c3.setIcon(c.get(2));
+			}else if(c.size() == 4) {
+				p5c1.setIcon(c.get(0));
+				p5c2.setIcon(c.get(1));
+				p5c3.setIcon(c.get(2));
+				p5c4.setIcon(c.get(3));
+			}else if(c.size() == 5) {
+				p5c1.setIcon(c.get(0));
+				p5c2.setIcon(c.get(1));
+				p5c3.setIcon(c.get(2));
+				p5c4.setIcon(c.get(3));
+				p5c5.setIcon(c.get(4));
+			}	
+		}else if(player.equals("player6")) {
+			System.out.println ("X" + c.size());
+			if(c.size() == 1) {
+				p6c1.setIcon(c.get(0));
+			}else if(c.size() == 2) {
+				p6c1.setIcon(c.get(0));
+				p6c2.setIcon(c.get(1));
+			}else if(c.size() == 3) {
+				p6c1.setIcon(c.get(0));
+				p6c2.setIcon(c.get(1));
+				p6c3.setIcon(c.get(2));
+			}else if(c.size() == 4) {
+				p6c1.setIcon(c.get(0));
+				p6c2.setIcon(c.get(1));
+				p6c3.setIcon(c.get(2));
+				p6c4.setIcon(c.get(3));
+			}else if(c.size() == 5) {
+				p6c1.setIcon(c.get(0));
+				p6c2.setIcon(c.get(1));
+				p6c3.setIcon(c.get(2));
+				p6c4.setIcon(c.get(3));
+				p6c5.setIcon(c.get(4));
+			}	
 		}
 	}
 	
