@@ -591,7 +591,7 @@ public class ExtendetClientFrame extends JFrame{
 			}
 			return images2;
 		}else if(player.equals("player3")) {
-			for(int i=0; i<cs.size();) {
+			for(int i=0; i<cs.size(); i++) {
 				images3.add(returnPic(cs.get(i)));
 			}
 			return images3;
