@@ -44,72 +44,72 @@ public class ExtendetClient extends Client {
 		switch (splitMessage[0]) {
 		case Protokoll.SC_GAMESTART:
 			if(splitMessage.length == 21) {
-				for(int i = 2; i<3; i++) {
+				for(int i = 2; i<4; i++) {
 					player1.add(splitMessage[i]);
 				}
-				for(int k = 5; k<6; k++) {
+				for(int k = 5; k<7; k++) {
 					player2.add(splitMessage[k]);
 				}
-				for(int j = 8; j<9; j++) {
+				for(int j = 8; j<10; j++) {
 					player3.add(splitMessage[j]);
 				}
-				for(int l = 11; l<12; l++) {
+				for(int l = 11; l<13; l++) {
 					player4.add(splitMessage[l]);
 				}
-				for(int h = 14; h<15; h++) {
+				for(int h = 14; h<16; h++) {
 					player5.add(splitMessage[h]);
 				}
-				for(int g = 17; g<18; g++) {
+				for(int g = 17; g<19; g++) {
 					player6.add(splitMessage[g]);
 				}
 				dealer.add(splitMessage[20]);
 			}else if(splitMessage.length == 18) {
-				for(int i = 2; i<3; i++) {
+				for(int i = 2; i<4; i++) {
 					player1.add(splitMessage[i]);
 				}
-				for(int k = 5; k<6; k++) {
+				for(int k = 5; k<7; k++) {
 					player2.add(splitMessage[k]);
 				}
-				for(int j = 8; j<9; j++) {
+				for(int j = 8; j<10; j++) {
 					player3.add(splitMessage[j]);
 				}
-				for(int l = 11; l<12; l++) {
+				for(int l = 11; l<13; l++) {
 					player4.add(splitMessage[l]);
 				}
-				for(int h = 14; h<15; h++) {
+				for(int h = 14; h<16; h++) {
 					player5.add(splitMessage[h]);
 				}
 				dealer.add(splitMessage[17]);
 			}else if(splitMessage.length == 15) {
-				for(int i = 2; i<3; i++) {
+				for(int i = 2; i<4; i++) {
 					player1.add(splitMessage[i]);
 				}
-				for(int k = 5; k<6; k++) {
+				for(int k = 5; k<7; k++) {
 					player2.add(splitMessage[k]);
 				}
-				for(int j = 8; j<9; j++) {
+				for(int j = 8; j<10; j++) {
 					player3.add(splitMessage[j]);
 				}
-				for(int l = 11; l<12; l++) {
+				for(int l = 11; l<13; l++) {
 					player4.add(splitMessage[l]);
 				}
 				dealer.add(splitMessage[14]);
 			}else if(splitMessage.length == 12) {
-				for(int i = 2; i<3; i++) {
+				for(int i = 2; i<4; i++) {
 					player1.add(splitMessage[i]);
 				}
-				for(int k = 5; k<6; k++) {
+				for(int k = 5; k<7; k++) {
 					player2.add(splitMessage[k]);
 				}
-				for(int j = 8; j<9; j++) {
+				for(int j = 8; j<10; j++) {
 					player3.add(splitMessage[j]);
 				}
 				dealer.add(splitMessage[11]);
 			}else if(splitMessage.length == 9) {
-				for(int i = 2; i<3; i++) {
+				for(int i = 2; i<4; i++) {
 					player1.add(splitMessage[i]);
 				}
-				for(int k = 5; k<6; k++) {
+				for(int k = 5; k<7; k++) {
 					player2.add(splitMessage[k]);
 				}
 				dealer.add(splitMessage[8]);
@@ -121,12 +121,14 @@ public class ExtendetClient extends Client {
 			playerCard5 = meineGui.returnImages(player5, "player5");
 			playerCard6 = meineGui.returnImages(player6, "player6");
 			
+			
 			meineGui.setImagesToGUI(playerCard1, "player1");
 			meineGui.setImagesToGUI(playerCard2, "player2");
 			meineGui.setImagesToGUI(playerCard3, "player3");
 			meineGui.setImagesToGUI(playerCard4, "player4");
 			meineGui.setImagesToGUI(playerCard5, "player5");
 			meineGui.setImagesToGUI(playerCard6, "player6");
+			
 			break;
 		case Protokoll.SC_CARD:
 			if(splitMessage[2].equals("1")) {

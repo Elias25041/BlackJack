@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import java.awt.CardLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.GridLayout;
 
 public class ExtendetClientFrame extends JFrame{
 
@@ -42,8 +43,6 @@ public class ExtendetClientFrame extends JFrame{
 	private JButton btnHit;
 	private JButton btnStand;
 	private JButton btnStartgame;
-	private JTextArea output;
-	private JScrollPane scrollPane;
 	private JPanel panel_1;
 	private JLabel card1;
 	private JLabel card2;
@@ -55,7 +54,6 @@ public class ExtendetClientFrame extends JFrame{
 	private JPanel playerPanel4;
 	private JPanel playerPanel5;
 	private JPanel playerPanel6;
-	private JPanel dealerPanel;
 	private JLabel p1c1;
 	private JLabel p1c2;
 	private JLabel p1c3;
@@ -92,12 +90,6 @@ public class ExtendetClientFrame extends JFrame{
 	private JLabel p6c4;
 	private JLabel p6c5;
 	private JTextField player6;
-	private JLabel d1;
-	private JLabel d2;
-	private JLabel d3;
-	private JLabel d4;
-	private JLabel d5;
-	private JTextField dealer;
 	
 	ArrayList<ImageIcon> images1 = new ArrayList<ImageIcon>();
 	ArrayList<ImageIcon> images2 = new ArrayList<ImageIcon>();
@@ -105,6 +97,7 @@ public class ExtendetClientFrame extends JFrame{
 	ArrayList<ImageIcon> images4 = new ArrayList<ImageIcon>();
 	ArrayList<ImageIcon> images5 = new ArrayList<ImageIcon>();
 	ArrayList<ImageIcon> images6 = new ArrayList<ImageIcon>();
+	ArrayList<ImageIcon> imagesDealer = new ArrayList<ImageIcon>();
 	
 	//Herz Karten
 	ImageIcon herz2 = new ImageIcon(getClass().getResource("Herz_Zwei.jpg"));
@@ -165,6 +158,11 @@ public class ExtendetClientFrame extends JFrame{
 	ImageIcon pikD = new ImageIcon(getClass().getResource("Pik_Dame.jpg"));
 	ImageIcon pikK = new ImageIcon(getClass().getResource("Pik_Koenig.jpg"));
 	ImageIcon pikA = new ImageIcon(getClass().getResource("Pik_Ass.jpg"));
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
+	private JLabel label_3;
+	private JTextArea output;
 	
 
 	
@@ -192,9 +190,10 @@ public class ExtendetClientFrame extends JFrame{
 	 * Create the frame.
 	 */
 	public ExtendetClientFrame() {
-		setBackground(Color.GREEN);
+		
+		//setBackground(Color.GREEN);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 929, 599);
+		setBounds(100, 100, 996, 703);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -276,18 +275,12 @@ public class ExtendetClientFrame extends JFrame{
 		panel.setBackground(Color.GREEN);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(new BorderLayout(0, 0));
-		scrollPane = new JScrollPane();
-		panel.add(scrollPane, BorderLayout.NORTH);
-		
-		output = new JTextArea();
-		panel.add(output, BorderLayout.SOUTH);
 		
 		panel_1 = new JPanel();
 		panel.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		playerPanel1 = new JPanel();
-		panel_1.add(playerPanel1);
 		
 		player1 = new JTextField();
 		player1.setText("Player 1");
@@ -312,9 +305,12 @@ public class ExtendetClientFrame extends JFrame{
 		
 		p1c5 = new JLabel("");
 		playerPanel1.add(p1c5);
+		panel_1.add(playerPanel1);
+		
+		label = new JLabel("");
+		panel_1.add(label);
 		
 		playerPanel2 = new JPanel();
-		panel_1.add(playerPanel2);
 		
 		player2 = new JTextField();
 		player2.setText("Player 2");
@@ -335,9 +331,12 @@ public class ExtendetClientFrame extends JFrame{
 		
 		p2c5 = new JLabel("");
 		playerPanel2.add(p2c5);
+		panel_1.add(playerPanel2);
+		
+		label_1 = new JLabel("");
+		panel_1.add(label_1);
 		
 		playerPanel3 = new JPanel();
-		panel_1.add(playerPanel3);
 		
 		player3 = new JTextField();
 		player3.setText("Player 3");
@@ -358,9 +357,12 @@ public class ExtendetClientFrame extends JFrame{
 		
 		p3c5 = new JLabel("");
 		playerPanel3.add(p3c5);
+		panel_1.add(playerPanel3);
+		
+		label_2 = new JLabel("");
+		panel_1.add(label_2);
 		
 		playerPanel4 = new JPanel();
-		panel_1.add(playerPanel4);
 		
 		player4 = new JTextField();
 		player4.setText("Player 4");
@@ -381,9 +383,12 @@ public class ExtendetClientFrame extends JFrame{
 		
 		p4c5 = new JLabel("");
 		playerPanel4.add(p4c5);
+		panel_1.add(playerPanel4);
+		
+		label_3 = new JLabel("");
+		panel_1.add(label_3);
 		
 		playerPanel5 = new JPanel();
-		panel_1.add(playerPanel5);
 		
 		player5 = new JTextField();
 		player5.setText("Player 5");
@@ -404,9 +409,11 @@ public class ExtendetClientFrame extends JFrame{
 		
 		p5c5 = new JLabel("");
 		playerPanel5.add(p5c5);
+		panel_1.add(playerPanel5);
+		
+		
 		
 		playerPanel6 = new JPanel();
-		panel_1.add(playerPanel6);
 		
 		player6 = new JTextField();
 		player6.setText("Player 6");
@@ -427,30 +434,11 @@ public class ExtendetClientFrame extends JFrame{
 		
 		p6c5 = new JLabel("");
 		playerPanel6.add(p6c5);
+		panel_1.add(playerPanel6);
 		
-		dealerPanel = new JPanel();
-		panel_1.add(dealerPanel);
-		
-		dealer = new JTextField();
-		dealer.setText("Dealer");
-		dealer.setColumns(10);
-		dealerPanel.add(dealer);
-		
-		d1 = new JLabel("");
-		dealerPanel.add(d1);
-		
-		d2 = new JLabel("");
-		dealerPanel.add(d2);
-		
-		d3 = new JLabel("");
-		dealerPanel.add(d3);
-		
-		d4 = new JLabel("");
-		dealerPanel.add(d4);
-		
-		d5 = new JLabel("");
-		dealerPanel.add(d5);
-		
+		output = new JTextArea();
+		output.setText("Weitere Meldungen");
+		panel.add(output, BorderLayout.SOUTH);
 		
 		
 		
@@ -612,7 +600,7 @@ public class ExtendetClientFrame extends JFrame{
 	public void setImagesToGUI(ArrayList<ImageIcon> c, String player) {
 		System.out.println ("Y" + player);
 
-		if(player.equals("player1")) {
+		 if(player.equals("player1")) {
 			if(c.size() == 2) {
 				p1c1.setIcon(c.get(0));
 				p1c2.setIcon(c.get(1));
@@ -720,29 +708,6 @@ public class ExtendetClientFrame extends JFrame{
 				p5c4.setIcon(c.get(3));
 				p5c5.setIcon(c.get(4));
 			}	
-		}else if(player.equals("player6")) {
-			//System.out.println ("X" + c.size());
-			if(c.size() == 1) {
-			p6c1.setIcon(c.get(0));
-			}else if(c.size() == 2) {
-				p6c1.setIcon(c.get(0));
-				p6c2.setIcon(c.get(1));
-			}else if(c.size() == 3) {
-				p6c1.setIcon(c.get(0));
-				p6c2.setIcon(c.get(1));
-				p6c3.setIcon(c.get(2));
-			}else if(c.size() == 4) {
-				p6c1.setIcon(c.get(0));
-				p6c2.setIcon(c.get(1));
-				p6c3.setIcon(c.get(2));
-				p6c4.setIcon(c.get(3));
-			}else if(c.size() == 5) {
-				p6c1.setIcon(c.get(0));
-				p6c2.setIcon(c.get(1));
-				p6c3.setIcon(c.get(2));
-				p6c4.setIcon(c.get(3));
-				p6c5.setIcon(c.get(4));
-			}	
 		}
 	}
 	
@@ -752,9 +717,10 @@ public class ExtendetClientFrame extends JFrame{
 	
 	
 	public void ausgeben(String message) {
-		String bisher = this.output.getText();
-		bisher = message + "\n" + bisher;
-		this.output.setText(bisher);
+		String bisher = output.getText();
+		//String bisher1 = message + "\n";
+		output.setText(message + "\n" + bisher);
+		 
 	}
 	
 	public void cardOutput() {}
