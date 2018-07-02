@@ -37,7 +37,6 @@ public class Table {
 	 */
 	public void addPlayerCount(int pPlayerCount) {
 		PlayerCount += pPlayerCount;
-		System.out.println("" + PlayerCount);
 	}
 
 	/**

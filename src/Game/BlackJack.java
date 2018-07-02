@@ -177,7 +177,6 @@ public class BlackJack {
 			int maxPoints = 0;
 			int maxPlayer = 0;
 			winMessage = ":" + this.endRound();
-			System.out.println(" Dealerpoints: " + dealer.getCardWorth());
 			if (!winMessage.equals(":DW")) {
 				for (int i = 1; i <= table.getPlayerCount(); i++) {
 					if (table.getPlace(i).getSplitted()) {
@@ -210,7 +209,6 @@ public class BlackJack {
 				}
 				winMessage = winMessage(maxPlayer, bank.pay());
 			}
-			System.out.println("PlayerPoints: " + maxPoints);
 		}
 		return winMessage;
 	}
@@ -238,10 +236,8 @@ public class BlackJack {
 	public int winLose(int pPlayer) {
 		Player tmp = table.getPlace(pPlayer);
 		if (tmp.checkWin()) {
-			System.out.println("gewonnen");
 			return 0;
 		} else if (tmp.checkLose()) {
-			System.out.println("verloren");
 			return 1;
 		} else {
 			return 2;
